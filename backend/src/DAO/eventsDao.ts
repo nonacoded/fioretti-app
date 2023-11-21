@@ -8,7 +8,10 @@ import SchoolEvent from "../interfaces/event";
 
 let events: Collection<SchoolEvent>;
 
-
+/**
+ * Data Access Object for events
+ * 
+ */
 export default class EventsDao {
     static async injectDB(conn: MongoClient) {
         if (events) {
@@ -22,6 +25,10 @@ export default class EventsDao {
     }
 
 
+    /**
+     * Returns all events in the database
+     * @returns {SchoolEvent[] | null} Returns an array of SchoolEvents or null if an error occured
+     */
     static async getSchoolEvents() {
         try {
             return await events.find().toArray();
@@ -30,6 +37,13 @@ export default class EventsDao {
             return null;
         }
     }
+
+
+    /**
+     * Inserts a new event into the database
+     * @param event The event to insert into the database
+     * @returns {InsertOneResult | null} Returns the result of the insert command or null if an error occured
+     */
 
     static async insertSchoolEvent(event: SchoolEvent) 
     { 

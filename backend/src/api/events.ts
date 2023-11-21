@@ -5,7 +5,13 @@ import { ObjectId } from "mongodb";
 
 
 
-
+/**
+ * Returns all events in the database
+ * @param req Express request object, no parameters needed
+ * @param res Response object
+ * @param next Next function
+ * @returns All events in the database
+ */
 export async function getSchoolEvents(req: Request, res: Response, next: NextFunction) {
     
     const events = await EventsDao.getSchoolEvents();
@@ -16,6 +22,14 @@ export async function getSchoolEvents(req: Request, res: Response, next: NextFun
     res.json(events);
 }
 
+
+/**
+ * Inserts a new event into the database
+ * @param req Express request object with the event to insert in the body as req.body.event
+ * @param res Response object
+ * @param next Next function
+ * @returns 201 code if the event was inserted successfully, 400 code if the request body was invalid, 500 code if an error occured
+ */
 
 export async function insertSchoolEvent(req: Request, res: Response, next: NextFunction) {
 
@@ -42,7 +56,7 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
             _id: new ObjectId(),
             title: reqEvent.title,
             description: reqEvent.description,
-            date: new Date(reqEvent.date),
+            date: new Date(reqEvent.date * 1000),
             location: reqEvent.location,
             price: reqEvent.price
         } as SchoolEvent;

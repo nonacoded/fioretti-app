@@ -1,5 +1,10 @@
 import { ObjectId } from "mongodb";
 
+
+
+/**
+ * Interface for SchoolEvent
+ */
 export default interface SchoolEvent {
     _id: ObjectId;
     title: string;
