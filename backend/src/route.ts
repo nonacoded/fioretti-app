@@ -1,15 +1,12 @@
 import express from 'express';
+import { getSchoolEvents, insertSchoolEvent } from './api/events';
 
 
 
 const router = express.Router();
 
 
-router.route("/").get((req, res) => {
-
-    res.send("Hello World");
-
-});
+router.route("/events").get(getSchoolEvents).post(insertSchoolEvent);
 
 
 export default router;

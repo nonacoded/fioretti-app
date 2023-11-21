@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { ServerApiVersion, MongoClient } from 'mongodb';
 import cors from 'cors';
 import router from "./route";
+import EventsDao from './DAO/eventsDao';
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ const client = new MongoClient(process.env.MONGO_DB_LOGIN as string, {
 
 client.connect().then(async (client) => {
     console.log("Connected to MongoDB");
+
+    EventsDao.injectDB(client);
 
     app.listen(port, () => {
         console.log(`⚡️ Server is running at http://localhost:${port}`);
