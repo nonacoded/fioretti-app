@@ -10,7 +10,7 @@ let confirmationTokens: Collection<confirmationToken>;
 /**
  * Data Access Object for users. This code interacts directly with the database.
  */
-export default class usersDao {
+export default class loginConfirmationsDAO {
     /**
      * This function is called when the server starts.
      * It passes the connection over to this class so it can be used to interact with the database.
@@ -22,7 +22,7 @@ export default class usersDao {
             return;
         }
         try {
-            confirmationTokens = await conn.db(process.env.DB_NAME).collection("users");
+            confirmationTokens = await conn.db(process.env.DB_NAME).collection("loginConfirmationTokens");
         } catch (e) {
             log(LogLevel.Error, `Unable to establish collection handles in loginConfirmationDAO: ${e}`);
         }
@@ -38,6 +38,16 @@ export default class usersDao {
             return await confirmationTokens.findOne({_id: id});
         } catch (e) {
             log(LogLevel.Debug, `Unable to get confirmation token: ${e}`);
+            return null;
+        }
+    }
+
+
+    static async insertConfirmationToken(token: confirmationToken) {
+        try {
+            return await confirmationTokens.insertOne(token);
+        } catch (e) {
+            log(LogLevel.Debug, `Unable to insert confirmation token: ${e}`);
             return null;
         }
     }

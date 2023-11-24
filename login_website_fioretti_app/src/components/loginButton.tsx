@@ -1,6 +1,7 @@
 'use client'
 
-import ApiError from '@/inerfaces/apiError';
+import ApiError from '@/interfaces/apiError';
+import ConfirmationToken from '@/interfaces/confirmationToken';
 import {GoogleOAuthProvider, CredentialResponse, GoogleLogin} from "@react-oauth/google"
 import axios, { AxiosError } from 'axios';
 
@@ -9,7 +10,7 @@ import axios, { AxiosError } from 'axios';
  * Login button component. Optionally you can pass a onFail and onSuccess callback.
  * 
  */
-export default function LoginButton({onFail, onSuccess} : {onFail?: (status: number | undefined, message: string | undefined) => void, onSuccess?: () => void}) {
+export default function LoginButton({onFail, onSuccess} : {onFail?: (status: number | undefined, message: string | undefined) => void, onSuccess?: (loginConfirmationToken: ConfirmationToken) => void}) {
 
     /**
      * Run whenever the google login was completed
@@ -28,8 +29,10 @@ export default function LoginButton({onFail, onSuccess} : {onFail?: (status: num
         {
             withCredentials: true
         }).then((res) => {
-                // Runs when the login was successful                
-                if (onSuccess) onSuccess();
+                
+            // Runs when the login was successful                
+            if (onSuccess) onSuccess(res.data);
+            
 
         }).catch((e: AxiosError) => {
             // Runs when the login failed. It calls the onFail callback if it exists

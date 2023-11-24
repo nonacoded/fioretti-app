@@ -3,6 +3,7 @@
 import ErrorMessage from '@/components/errorMessage';
 import LoginButton from '@/components/loginButton'
 import { useState } from 'react';
+import ConfirmationToken from '@/interfaces/confirmationToken';
 
 
 export default function Home() {
@@ -18,8 +19,14 @@ export default function Home() {
     setErrorHidden(false);
   }
 
-  function onLoginSuccess() {
-    
+  function onLoginSuccess(confirmationToken: ConfirmationToken) {
+    if (Date.now() < confirmationToken.expires.valueOf()) {
+
+    } else {
+      setErrorTitle("Inloggen mislukt!");
+      setErrorMessage("Deze inlog link is verlopen, probeer het opniew.");
+      setErrorHidden(false);
+    }
   }
 
 

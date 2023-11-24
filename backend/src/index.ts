@@ -5,6 +5,7 @@ import cors from 'cors';
 import router from "./route";
 import EventsDao from './DAO/eventsDAO';
 import usersDao from './DAO/usersDAO';
+import loginConfirmationsDAO from './DAO/loginConfirmationsDAO';
 
 
 // Load environment variables from .env file, where API keys and passwords are configured
@@ -36,6 +37,8 @@ client.connect().then(async (client) => {
     EventsDao.injectDB(client);
 
     usersDao.injectDB(client);
+
+    loginConfirmationsDAO.injectDB(client);
     
 
 

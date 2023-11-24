@@ -5,6 +5,8 @@ import User from '../interfaces/user';
 import ApiFuncError from '../interfaces/apiFuncError';
 import { ObjectId, UUID } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
+import confirmationToken from '../interfaces/confirmationToken';
+import loginConfirmationsDAO from '../DAO/loginConfirmationsDAO';
 
 
 const client = new OAuth2Client(process.env.CLIENT_ID);
@@ -61,11 +63,22 @@ export async function apiLoginUser(req: Request, res: Response, next: NextFuncti
         return;
     };
 
-    // generate confirmation ID
-    const confirmationID = uuidv4();
-    
+    // create confirmation token
+    const confirmationToken = {
+        _id: new UUID(uuidv4()),
+        userId: user._id,
+        expires: new Date(Date.now() + 1000 * 60 * 3) // 3 minutes
+    } as confirmationToken;
 
-    res.status(200);
+
+    // insert confirmation token into database
+    const result = await loginConfirmationsDAO.insertConfirmationToken(confirmationToken);
+
+    if (!result) {
+        res.status(500).json({error: "Niet gelukt om in te loggen (login confirmation token kon niet in de database gezet worden)"});
+    }
+
+    res.status(200).json(confirmationToken._id);
 }
 
 
