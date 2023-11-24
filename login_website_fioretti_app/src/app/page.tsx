@@ -3,6 +3,7 @@
 import ErrorMessage from '@/components/errorMessage';
 import LoginButton from '@/components/loginButton'
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import ConfirmationToken from '@/interfaces/confirmationToken';
 
 
@@ -12,6 +13,8 @@ export default function Home() {
   const [errorTitle, setErrorTitle] = useState<string>("");
   const [errorHidden, setErrorHidden] = useState<boolean>(true);
 
+  const router = useRouter();
+
 
   function onLoginFailed(status: number | undefined, message: string | undefined) {
     setErrorTitle("Inloggen mislukt!");
@@ -20,8 +23,8 @@ export default function Home() {
   }
 
   function onLoginSuccess(confirmationToken: ConfirmationToken) {
-    if (Date.now() < confirmationToken.expires.valueOf()) {
-
+    if (Date.now() < Date.parse(confirmationToken.expires).valueOf()) {
+      router.push(`/loggedin?token=${confirmationToken._id}`);
     } else {
       setErrorTitle("Inloggen mislukt!");
       setErrorMessage("Deze inlog link is verlopen, probeer het opniew.");

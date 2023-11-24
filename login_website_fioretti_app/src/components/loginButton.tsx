@@ -40,11 +40,14 @@ export default function LoginButton({onFail, onSuccess} : {onFail?: (status: num
                 if ((e.response.data as Object).hasOwnProperty("error")) {
                     const res = e.response.data as ApiError;
                     if (onFail) onFail(e.status, res.error);
+                    console.log(e);
                 } else {
                     if (onFail) onFail(e.status, undefined);
+                    console.log(e);
                 }
             } else {
                 if (onFail) onFail(e.status, undefined);
+                console.log(e);
             }
             
         });

@@ -78,7 +78,7 @@ export async function apiLoginUser(req: Request, res: Response, next: NextFuncti
         res.status(500).json({error: "Niet gelukt om in te loggen (login confirmation token kon niet in de database gezet worden)"});
     }
 
-    res.status(200).json(confirmationToken._id);
+    res.status(200).json(confirmationToken);
 }
 
 
