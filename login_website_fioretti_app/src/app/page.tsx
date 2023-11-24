@@ -23,8 +23,9 @@ export default function Home() {
   }
 
   function onLoginSuccess(confirmationToken: ConfirmationToken) {
-    if (Date.now() < Date.parse(confirmationToken.expires).valueOf()) {
-      router.push(`/loggedin?token=${confirmationToken._id}`);
+    const expireNum = Date.parse(confirmationToken.expires).valueOf();
+    if (Date.now() < expireNum) {
+      router.push(`/loggedin?token=${confirmationToken._id}&expires=${expireNum}`);
     } else {
       setErrorTitle("Inloggen mislukt!");
       setErrorMessage("Deze inlog link is verlopen, probeer het opniew.");

@@ -6,10 +6,19 @@ export default function loggedInPage() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
+
     useEffect(() => {
         if (!searchParams.has("token")) {
             router.push("/");
         }
+        if (!searchParams.has("expires")) {
+            router.push("/");
+        }
+        if (parseInt(searchParams.get("expires") as string) < Date.now()) {
+            router.push("/");
+        }
+
+        router.push(`fiorettiapp://fiorettiapplink.nl/login?token=${searchParams.get("token")}&expires=${searchParams.get("expires")}`);
     })
 
     return (

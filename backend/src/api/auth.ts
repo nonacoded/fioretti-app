@@ -67,7 +67,7 @@ export async function apiLoginUser(req: Request, res: Response, next: NextFuncti
     const confirmationToken = {
         _id: new UUID(uuidv4()),
         userId: user._id,
-        expires: new Date(Date.now() + 1000 * 60 * 3) // 3 minutes
+        expires: new Date(Date.now() + 1000 * 60) // 1 minute
     } as confirmationToken;
 
 
