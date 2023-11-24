@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import { ServerApiVersion, MongoClient } from 'mongodb';
 import cors from 'cors';
 import router from "./route";
-import EventsDao from './DAO/eventsDao';
+import EventsDao from './DAO/eventsDAO';
+import usersDao from './DAO/usersDAO';
 
 
 // Load environment variables from .env file, where API keys and passwords are configured
@@ -33,6 +34,9 @@ client.connect().then(async (client) => {
 
     // Inject the database connection into the DAOs
     EventsDao.injectDB(client);
+
+    usersDao.injectDB(client);
+    
 
 
     // Start the server

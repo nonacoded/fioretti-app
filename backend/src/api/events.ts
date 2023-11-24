@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import EventsDao from "../DAO/eventsDao";
+import EventsDao from "../DAO/eventsDAO";
 import SchoolEvent from "../interfaces/event";
 import { ObjectId } from "mongodb";
 
