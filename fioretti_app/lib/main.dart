@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:fioretti_app/pages/home.dart";
+import "package:go_router/go_router.dart";
 
 void main() {
   runApp(const FiorettiApp());
@@ -10,12 +11,16 @@ class FiorettiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      routerConfig: GoRouter(
+        routes: [
+          GoRoute(path: "/", builder: (context, state) => const HomePage())
+        ],
+      ),
     );
   }
 }
