@@ -1,0 +1,9 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.fioretti_app",
+      "sha256_cert_fingerprints":
+      ["EB:FF:58:E8:F3:FC:2D:BD:F9:D4:C8:21:F8:4B:C7:45:77:8C:9B:FD:32:0D:3E:AC:13:44:74:82:AF:24:5C:C2"]
+    }
+  }]
