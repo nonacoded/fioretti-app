@@ -37,11 +37,13 @@ export default function Home() {
   return (
     <>
       <div className="grid static place-content-center h-screen w-screen">
+      <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+      <script>eruda.init();</script>
           <div className="static bg-white rounded-lg p-7">
             <h1 className="text-4xl text-slate-600 text-center font-medium pb-4">Log in</h1>
             <h2 className="text-lg text-slate-500 text-center pb-7">Log in met je school account om toegang te krijgen</h2>
             <div className="grid static place-content-center">
-            <a href="fiorettiapp:fiorettiapplink.nl">test</a>
+            <a href="fiorettiapp://fiorettiapplink.nl/test">test</a>
             <LoginButton onFail={onLoginFailed} onSuccess={onLoginSuccess} />
             </div>
           </div>

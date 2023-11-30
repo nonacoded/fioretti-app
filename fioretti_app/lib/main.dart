@@ -18,7 +18,9 @@ class FiorettiApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routerConfig: GoRouter(
         routes: [
-          GoRoute(path: "/", builder: (context, state) => const HomePage())
+          GoRoute(path: "/", builder: (context, state) => const HomePage()),
+          GoRoute(
+              path: "/test", builder: (context, state) => const Text("Test"))
         ],
       ),
     );
