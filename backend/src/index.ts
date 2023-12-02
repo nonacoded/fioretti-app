@@ -3,8 +3,8 @@ import dotenv from 'dotenv';
 import { ServerApiVersion, MongoClient } from 'mongodb';
 import cors from 'cors';
 import router from "./route";
-import EventsDao from './DAO/eventsDAO';
-import usersDao from './DAO/usersDAO';
+import EventsDao from './DAO/eventsDao';
+import usersDao from './DAO/usersDao';
 import loginConfirmationsDAO from './DAO/loginConfirmationsDAO';
 
 

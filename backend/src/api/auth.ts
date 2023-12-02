@@ -1,6 +1,6 @@
 import { OAuth2Client, TokenPayload } from 'google-auth-library';
 import {Request, Response, NextFunction} from "express";
-import usersDao from '../DAO/usersDAO';
+import usersDao from '../DAO/usersDao';
 import User from '../interfaces/user';
 import ApiFuncError from '../interfaces/apiFuncError';
 import { ObjectId, UUID } from 'mongodb';
