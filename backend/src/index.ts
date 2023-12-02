@@ -19,7 +19,7 @@ const port = process.env.PORT;
 // Express configuration
 app.use(cors());
 app.use(express.json());
-app.use("/api", router);
+app.use("/fioretti-app-api", router);
 
 // Connect to MongoDB
 const client = new MongoClient(process.env.MONGO_DB_LOGIN as string, {
