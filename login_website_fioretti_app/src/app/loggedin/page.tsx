@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
-export default function loggedInPage() {
+export default function LoggedInPage() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
