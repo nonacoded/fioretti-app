@@ -5,7 +5,7 @@ import cors from 'cors';
 import router from "./route";
 import EventsDao from './DAO/eventsDao';
 import usersDao from './DAO/usersDao';
-import loginConfirmationsDAO from './DAO/loginConfirmationsDAO';
+import loginConfirmationsDAO from './DAO/loginConfirmationsDao';
 
 
 // Load environment variables from .env file, where API keys and passwords are configured

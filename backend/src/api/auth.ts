@@ -6,7 +6,7 @@ import ApiFuncError from '../interfaces/apiFuncError';
 import { ObjectId, UUID } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
 import confirmationToken from '../interfaces/confirmationToken';
-import loginConfirmationsDAO from '../DAO/loginConfirmationsDAO';
+import loginConfirmationsDAO from '../DAO/loginConfirmationsDao';
 
 
 const client = new OAuth2Client(process.env.CLIENT_ID);
