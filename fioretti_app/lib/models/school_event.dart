@@ -1,5 +1,7 @@
 import "package:http/http.dart" as http;
 import "dart:convert";
+import "package:flutter_dotenv/flutter_dotenv.dart";
+import "package:requests/requests.dart";
 
 class SchoolEvent {
   final String _id;
@@ -24,7 +26,7 @@ class SchoolEvent {
 }
 
 Future<List<SchoolEvent>> fetchEvents() async {
-  final response = await http.get(Uri.parse('http://10.0.2.2:8000/api/events'));
+  final response = await Requests.get("${dotenv.env['API_URL']!}/events");
   if (response.statusCode == 200) {
     List<dynamic> responseJson = jsonDecode(response.body);
     List<SchoolEvent> events = [];

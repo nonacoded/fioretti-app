@@ -16,7 +16,7 @@ export async function getSchoolEvents(req: Request, res: Response, next: NextFun
     
     const events = await EventsDao.getSchoolEvents();
     if (!events) {
-        res.status(404).json({ error: "Not found" });
+        res.status(404).json({ message: "Not found" });
         return;
     }
     res.json(events);
@@ -62,7 +62,7 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
         } as SchoolEvent;
 
     } catch (e) {
-        res.status(400).json({ error: "Invalid request body" });
+        res.status(400).json({ message: "Invalid request body" });
         throw e;
         return;
     }
@@ -74,7 +74,7 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
 
 
     if (!insertResult) {
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ message: "Internal server error" });
         return;
     }
 

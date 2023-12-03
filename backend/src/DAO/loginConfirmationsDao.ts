@@ -2,15 +2,15 @@ import { MongoClient, Collection } from "mongodb";
 import { ObjectId, UUID } from "bson";
 import log from "../logger";
 import LogLevel from "../enums/logLevel";
-import confirmationToken from "../interfaces/confirmationToken";
+import ConfirmationToken from "../interfaces/confirmationToken";
 
 
-let confirmationTokens: Collection<confirmationToken>;
+let confirmationTokens: Collection<ConfirmationToken>;
 
 /**
  * Data Access Object for users. This code interacts directly with the database.
  */
-export default class loginConfirmationsDAO {
+export default class LoginConfirmationsDao {
     /**
      * This function is called when the server starts.
      * It passes the connection over to this class so it can be used to interact with the database.
@@ -43,7 +43,7 @@ export default class loginConfirmationsDAO {
     }
 
 
-    static async insertConfirmationToken(token: confirmationToken) {
+    static async insertConfirmationToken(token: ConfirmationToken) {
         try {
             return await confirmationTokens.insertOne(token);
         } catch (e) {

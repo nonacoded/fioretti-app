@@ -10,7 +10,7 @@ let users: Collection<User>;
 /**
  * Data Access Object for users. This code interacts directly with the database.
  */
-export default class usersDao {
+export default class UsersDao {
     /**
      * This function is called when the server starts.
      * It passes the connection over to this class so it can be used to interact with the database.
