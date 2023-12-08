@@ -14,8 +14,8 @@ class User {
         json['_id'] as String,
         json['googleId'] as String,
         json['email'] as String,
-        json['firstName'] as String,
-        json['lastName'] as String,
+        json['firstName'] as String?,
+        json['lastName'] as String?,
         json['createdAt'] as String);
   }
 }

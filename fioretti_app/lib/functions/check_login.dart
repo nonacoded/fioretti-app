@@ -3,6 +3,7 @@ import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:fioretti_app/models/user.dart";
 
 Future<User?> checkLogin() async {
+  print("${dotenv.get('API_URL')}/auth/verifySession");
   try {
     var response =
         await Requests.post("${dotenv.get('API_URL')}/auth/verifySession");
