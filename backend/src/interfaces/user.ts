@@ -6,5 +6,6 @@ export default interface User {
     email: string,
     firstName: string | undefined,
     lastName: string | undefined,
-    createdAt: Date
+    createdAt: Date,
+    isAdmin: boolean
 }

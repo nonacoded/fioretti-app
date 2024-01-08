@@ -81,6 +81,74 @@ export async function apiLoginUser(req: Request, res: Response, next: NextFuncti
 }
 
 
+export async function apiAdminPanelLogin(req: Request, res: Response, next: NextFunction) {
+
+    const verify = await verifyGoogleToken(req.body.token);
+
+    // check if google token is valid
+    if (!verify.valid) {
+        res.status(401).json({message: "Google token bestaat niet of is verlopen"});
+        return;
+    }
+
+    // for typescript to make sure it's not undefined
+    if (!verify.payload) return;
+
+    // for typescript to make sure it's not undefined
+    if (!verify.payload) return;
+
+
+    // get user from database
+    let user = await UsersDao.getUserByGoogleId(verify.payload.sub);
+
+    // create user if it doesn't exist
+    if (!user) {
+        try {
+            user = await registerUser(verify.payload);
+        } catch (e) {
+            const err = e as ApiFuncError;
+            res.status(err.code).json({message: err.message});
+            return;
+        }
+    }
+    
+    // check if user exists (if not something went wrong while creating the user)
+    if (!user) {
+        res.status(500).json({message: "Niet gelukt om gebruiker te maken of te vinden"});
+        return;
+    };
+
+
+    // check if user is admin
+    if (!user.isAdmin) {
+        res.status(403).json({message: "Je bent geen admin"});
+        return;
+    }
+
+    const sessionToken = {
+        _id: new UUID(uuidv4()),
+        userId: user._id,
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
+    } as Session;
+
+
+    const result = await SessionsDao.insertSession(sessionToken);
+    if (!result) {
+        res.status(500).json({message: "Niet gelukt om in te loggen (session token kon niet in de database gezet worden)"});
+        return;
+    }
+
+    res.cookie("session", sessionToken._id.toString(), 
+        {
+            expires: sessionToken.expires, 
+            httpOnly: true, sameSite: "lax", 
+            secure: process.env.ENV !== "dev"
+        });
+
+    res.status(200).json(user);
+}
+
+
 
 export async function apiExchangeConfirmationToken(req: Request, res: Response, next: NextFunction) {
     
@@ -111,7 +179,7 @@ export async function apiExchangeConfirmationToken(req: Request, res: Response, 
     const sessionToken = {
         _id: new UUID(uuidv4()),
         userId: user._id,
-        expires: nextAugust1st() // set it to expire on the next august 1st, so the user has to log in again every school year. If they're still in school, they'll get a new token.
+        expires: nextAugust1st()
     } as Session;
 
 
@@ -219,7 +287,8 @@ async function registerUser(google_payload: TokenPayload) {
         email: google_payload.email,
         firstName: google_payload.given_name,
         lastName: google_payload.family_name,
-        createdAt: new Date()
+        createdAt: new Date(),
+        isAdmin: false
     }
 
     const result = await UsersDao.createUser(userObj);

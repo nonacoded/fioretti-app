@@ -19,7 +19,10 @@ const app: Express = express();
 const port = process.env.PORT;
 
 // Express configuration
-app.use(cors());
+app.use(cors({
+  origin: process.env.ADMIN_PANEL_URL,
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 

@@ -1,6 +1,6 @@
 import express from 'express';
 import { getSchoolEvents, insertSchoolEvent } from './api/events';
-import { apiExchangeConfirmationToken, apiLoginUser, apiLogoutUser, apiVerifySession } from './api/auth';
+import { apiAdminPanelLogin, apiExchangeConfirmationToken, apiLoginUser, apiLogoutUser, apiVerifySession } from './api/auth';
 
 
 
@@ -17,5 +17,6 @@ router.route("/auth/logout").post(apiLogoutUser);
 
 router.route("/auth/verifySession").post(apiVerifySession);
 
+router.route("/admin/auth/login").post(apiAdminPanelLogin);
 
 export default router;
