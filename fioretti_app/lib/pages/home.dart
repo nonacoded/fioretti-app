@@ -26,6 +26,7 @@ class _HomePageState extends ConsumerState<HomePage> {
 
     if (user == null) {
       context.go("/");
+      return;
     }
   }
 

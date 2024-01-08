@@ -41,6 +41,7 @@ dependencies:
   url_launcher: ^6.2.1
   requests: ^4.7.0
   flutter_riverpod: ^2.4.9
+  flutter_secure_storage: ^9.0.0
 
 
 dev_dependencies:

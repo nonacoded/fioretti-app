@@ -4,6 +4,7 @@ import "package:fioretti_app/models/api_error.dart";
 import "package:fioretti_app/models/user.dart";
 import 'package:fioretti_app/providers.dart';
 import "package:flutter/material.dart";
+import "package:flutter_secure_storage/flutter_secure_storage.dart";
 import "package:go_router/go_router.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:requests/requests.dart";
@@ -59,6 +60,26 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
           "${dotenv.env['API_URL']!}/auth/exchangeToken",
           body: {"confirmationToken": widget.token!},
           bodyEncoding: RequestBodyEncoding.JSON);
+
+      var hostname = Requests.getHostname(dotenv.env['API_URL']!);
+
+      CookieJar cookie_jar = await Requests.getStoredCookies(hostname);
+
+      // check if cookie exists
+      if (cookie_jar["session"] == null) {
+        setState(() {
+          errorOccurred = true;
+          errorMessage =
+              "Er is iets fout gegaan bij het inloggen: de server heeft geen sessie cookie gestuurd";
+        });
+        return;
+      }
+
+      // store cookie
+      final storage = new FlutterSecureStorage();
+      await storage.write(key: "session", value: cookie_jar["session"]!.value);
+
+      print(cookie_jar["session"]!.value);
 
       if (res.statusCode == 200) {
         if (!context.mounted) return;
