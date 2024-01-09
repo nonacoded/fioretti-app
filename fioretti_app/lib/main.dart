@@ -1,11 +1,11 @@
 import 'package:fioretti_app/pages/start_page.dart';
 import "package:fioretti_app/pages/login_handeler.dart";
+import "package:fioretti_app/pages/event_page.dart";
 import "package:flutter/material.dart";
 import "package:fioretti_app/pages/home.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:fioretti_app/providers.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -43,6 +43,13 @@ class FiorettiApp extends StatelessWidget {
                   token: state.uri.queryParameters["token"],
                   expiresString: state.uri.queryParameters["expires"]),
             ),
+            GoRoute(
+              name: "event",
+              path: "/event/:id",
+              builder: (context, state) => EventPage(
+                id: state.pathParameters["id"]!,
+              ),
+            )
           ],
         ),
       ),

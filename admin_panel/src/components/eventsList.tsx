@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SchoolEvent from "@/interfaces/event";
+import EventDisplay from "./eventDisplay";
 
 export default function EventsList() {
 
@@ -20,14 +21,9 @@ export default function EventsList() {
 
 
     
-    return <div className="flex-coulumn items-start inline-block">
+    return <ul className="flex-coulumn items-start inline-block">
         {events.map((event) => {
-            return <div className="bg-white m-10 p-10 rounded-xl text-slate-800" key={event._id}>
-                <h1>{event.title}</h1>
-                <h2>{event.description}</h2>
-                <h3>{event.date.toString()}</h3>
-                <h4>{event.location}</h4>
-            </div>
+            return <EventDisplay event={event} />;
         })}
-    </div>
+    </ul>
 }

@@ -4,24 +4,27 @@ import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:requests/requests.dart";
 
 class SchoolEvent {
-  final String _id;
+  final String id;
   final String title;
   final String description;
   final String date;
   final String location;
-  final int price;
+  final double price;
 
-  const SchoolEvent(this._id, this.title, this.description, this.date,
+  const SchoolEvent(this.id, this.title, this.description, this.date,
       this.location, this.price);
 
   factory SchoolEvent.fromJson(Map<String, dynamic> json) {
+    if (json['price'] is int) {
+      json['price'] = json['price'].toDouble();
+    }
     return SchoolEvent(
         json['_id'] as String,
         json['title'] as String,
         json['description'] as String,
         json['date'] as String,
         json['location'] as String,
-        json['price'] as int);
+        json['price'] as double);
   }
 }
 
@@ -36,5 +39,14 @@ Future<List<SchoolEvent>> fetchEvents() async {
     return events;
   } else {
     throw Exception('Failed to load events');
+  }
+}
+
+Future<SchoolEvent> fetchEvent(String id) async {
+  final response = await Requests.get("${dotenv.env['API_URL']!}/events/$id");
+  if (response.statusCode == 200) {
+    return SchoolEvent.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load event');
   }
 }

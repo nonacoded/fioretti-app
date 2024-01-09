@@ -1,5 +1,5 @@
 import "package:fioretti_app/models/school_event.dart";
-import "package:fioretti_app/widgets/event.dart";
+import 'package:fioretti_app/widgets/event_card.dart';
 import "package:fioretti_app/widgets/logout_button.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
@@ -60,8 +60,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
-                      return SchoolEventWidget(
-                          events[index].title, events[index].description);
+                      return SchoolEventWidget(event: events[index]);
                     },
                   );
                 } else {

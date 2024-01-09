@@ -8,6 +8,7 @@ import EventsDao from './DAO/eventsDao';
 import UsersDao from './DAO/usersDao';
 import LoginConfirmationsDao from './DAO/loginConfirmationsDao';
 import SessionsDao from './DAO/sessionsDao';
+import TicketsDao from './DAO/ticketsDao';
 
 
 // Load environment variables from .env file, where API keys and passwords are configured
@@ -51,6 +52,7 @@ client.connect().then(async (client) => {
     UsersDao.injectDB(client);
     LoginConfirmationsDao.injectDB(client);
     SessionsDao.injectDB(client);
+    TicketsDao.injectDB(client);
     
 
 

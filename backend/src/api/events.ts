@@ -2,6 +2,9 @@ import { Request, Response, NextFunction } from "express";
 import EventsDao from "../DAO/eventsDao";
 import SchoolEvent from "../interfaces/event";
 import { ObjectId } from "mongodb";
+import { getUserFromSessionCookie } from "./auth";
+import User from "../interfaces/user";
+import ApiFuncError from "../interfaces/apiFuncError";
 
 
 
@@ -28,6 +31,22 @@ export async function getSchoolEvents(req: Request, res: Response, next: NextFun
 }
 
 
+export async function getSchoolEvent(req: Request, res: Response, next: NextFunction) {
+    let event: SchoolEvent | null;
+    try {
+        event = await EventsDao.getSchoolEventById(new ObjectId(req.params.id));
+    } catch (e) {
+        res.status(500).json({ message: `Internal server error (${e})` });
+        return;
+    }
+    if (!event) {
+        res.status(404).json({ message: "Not found" });
+        return;
+    }
+
+    res.status(200).json(event);
+}
+
 
 
 
@@ -40,29 +59,25 @@ export async function getSchoolEvents(req: Request, res: Response, next: NextFun
  */
 
 export async function insertSchoolEvent(req: Request, res: Response, next: NextFunction) {
-
-    const sessionCookie = req.cookies["session"];
-
-    if (!sessionCookie) {
-        res.status(401).json({message: "Je bent niet ingelogd"});
-        return;
-    }
-
-    console.log(req.body);
-
-    let reqEvent: {
-        title: string;
-        description: string;
-        date: number;
-        location: string;
-        price: number;
-    };
-
-    let event: SchoolEvent;
-
     try {
-        console.log(0);
-        reqEvent = req.body as {
+        const sessionCookie = req.cookies["session"];
+
+        let user: User;
+        try {
+            user = await getUserFromSessionCookie(sessionCookie);
+        } catch (err) {
+            const e = err as ApiFuncError;
+            res.status(e.code).json({ message: e.message });
+            return;
+        }
+        
+        if (!user.isAdmin) {
+            res.status(403).json({ message: "Je bent geen admin" });
+            return;
+        }
+
+
+        let reqEvent: {
             title: string;
             description: string;
             date: number;
@@ -70,34 +85,102 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
             price: number;
         };
 
+        let event: SchoolEvent;
 
-        event = {
-            _id: new ObjectId(),
-            title: reqEvent.title,
-            description: reqEvent.description,
-            date: new Date(reqEvent.date),
-            location: reqEvent.location,
-            price: reqEvent.price
+        try {
+            reqEvent = req.body as {
+                title: string;
+                description: string;
+                date: number;
+                location: string;
+                price: number;
+            };
+
+            event = {
+                _id: new ObjectId(),
+                title: reqEvent.title,
+                description: reqEvent.description,
+                date: new Date(reqEvent.date),
+                location: reqEvent.location,
+                price: reqEvent.price
+            } as SchoolEvent;
+
+
+        } catch (e) {
+            res.status(400).json({ message: `Invalid request body (${e})` });
+            return;
+        }
+        
+        const insertResult = await EventsDao.insertSchoolEvent(event);
+
+
+        if (!insertResult) {
+            res.status(500).json({ message: "Internal server error" });
+            return;
+        }
+
+        res.status(201).json({ message: "Event inserted" });
+
+    } catch (e) {
+        res.status(500).json({ message: `Internal server error (${e})` });
+    }
+}
+
+
+export async function editSchoolEvent(req: Request, res: Response, next: NextFunction) {
+    try {
+        const sessionCookie = req.cookies["session"];
+
+        let user: User;
+        try {
+            user = await getUserFromSessionCookie(sessionCookie);
+        } catch (err) {
+            const e = err as ApiFuncError;
+            res.status(e.code).json({ message: e.message });
+            return;
+        }
+        
+        if (!user.isAdmin) {
+            res.status(403).json({ message: "Je bent geen admin" });
+            return;
+        }
+
+
+        interface ReqBody {
+            _id: string;
+            title: string;
+            description: string;
+            date: number;
+            location: string;
+            price: number;
+        }
+        const body = req.body as ReqBody;
+
+        const event: SchoolEvent = {
+            _id: new ObjectId(body._id),
+            title: body.title,
+            description: body.description,
+            date: new Date(body.date),
+            location: body.location,
+            price: body.price
         } as SchoolEvent;
 
 
+        const editResult = await EventsDao.editSchoolEvent(event);
+        console.log(editResult);
+        if (!editResult) {
+            res.status(500).json({ message: "Kon evenement niet aanpassen" });
+            return;
+        }
+
+        if (editResult.modifiedCount === 0) { 
+            res.status(404).json({ message: "Evenement niet gevonden" });
+            return;
+        }
+
+        res.status(200).json({ message: "Event edited" });
+
     } catch (e) {
-        res.status(400).json({ message: `Invalid request body (${e})` });
-        return;
+        res.status(500).json({ message: `Internal server error (${e})` });
     }
-    
-
-    
-    
-    const insertResult = await EventsDao.insertSchoolEvent(event);
-
-
-    if (!insertResult) {
-        res.status(500).json({ message: "Internal server error" });
-        return;
-    }
-
-    res.status(201).json({ message: "Event inserted" });
-
-
 }

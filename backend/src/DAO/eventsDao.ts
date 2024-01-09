@@ -48,6 +48,16 @@ export default class EventsDao {
     }
 
 
+    static async editSchoolEvent(event: SchoolEvent) {
+        try {
+            return await events.updateOne({ _id: event._id }, { $set: event });
+        } catch (e) {
+            log(LogLevel.Error, `Unable to issue update command in events, ${e}`);
+            return null;
+        }
+    }
+
+
     /**
      * Inserts a new event into the database
      * @param event The event to insert into the database
