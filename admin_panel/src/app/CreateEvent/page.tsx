@@ -1,7 +1,11 @@
 'use client';
 
 import CheckLogin from "@/components/checkLogin";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import axios, { AxiosError } from "axios";
+import ErrorMessage from "@/components/errorMessage";
+import Router from "next/router";
+import ApiError from "@/interfaces/apiError";
 
 export default function CreateEventPage() {
 
@@ -12,6 +16,10 @@ export default function CreateEventPage() {
     const eventPriceRef = useRef<HTMLInputElement>(null);
 
 
+    const [errorHidden, setErrorHidden] = useState(true);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [errorTitle, setErrorTitle] = useState("");
+
     function CreateEvent(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         console.log(eventNameRef.current?.value);
@@ -20,11 +28,48 @@ export default function CreateEventPage() {
         console.log(eventLocationRef.current?.value);
         console.log(eventPriceRef.current?.value);
 
-        
+        let eventData: {
+            title: string;
+            description: string;
+            date: number;
+            location: string;
+            price: number;
+        } = {
+            title: eventNameRef.current?.value as string,
+            description: eventDescriptionRef.current?.value as string,
+            date: new Date(eventDateRef.current?.value as string).getTime(),
+            location: eventLocationRef.current?.value as string,
+            price: parseInt(eventPriceRef.current?.value as string)
+        };
+
+        console.log(eventData);
+
+
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/events`, eventData, {withCredentials: true}).then((res) => {
+            Router.push("/");
+        }).catch((e: AxiosError) => {
+            console.log(e);
+            if (e.response) {
+                if ((e.response.data as Object).hasOwnProperty("message")) {
+                    setErrorMessage((e.response.data as ApiError).message);
+                    setErrorTitle(`Evenement aanmaken mislukt! [${e.response.status}]`);
+                    setErrorHidden(false);
+                } else {
+                    setErrorMessage(`Er is een onbekende fout opgetreden! `);
+                    setErrorTitle(`Evenement aanmaken mislukt! [${e.response.status}]`);
+                    setErrorHidden(false);
+                }
+            } else {
+                setErrorMessage(`Er is een onbekende fout opgetreden!`);
+                setErrorTitle(`Evenement aanmaken mislukt!`);
+                setErrorHidden(false);
+            }
+         });
     }
 
     return (<div>
         <CheckLogin />
+        <ErrorMessage title={errorTitle} desc={errorMessage} setHiddenCallback={setErrorHidden} hidden={errorHidden} />
         <form onSubmit={CreateEvent}>
             <p>Naam Evenement:</p>
             <input type="text" placeholder="Evenement naam" className="text-slate-600" ref={eventNameRef} />

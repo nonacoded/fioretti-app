@@ -40,7 +40,7 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
         return;
     }
 
-    
+
 
     let reqEvent: {
         title: string;
@@ -71,8 +71,7 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
         } as SchoolEvent;
 
     } catch (e) {
-        res.status(400).json({ message: "Invalid request body" });
-        throw e;
+        res.status(400).json({ message: `Invalid request body (${e})` });
         return;
     }
     
