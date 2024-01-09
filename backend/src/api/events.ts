@@ -13,14 +13,22 @@ import { ObjectId } from "mongodb";
  * @returns All events in the database
  */
 export async function getSchoolEvents(req: Request, res: Response, next: NextFunction) {
-    
-    const events = await EventsDao.getSchoolEvents();
+    let events: SchoolEvent[] | null;
+    try {
+        events = await EventsDao.getSchoolEvents();
+    } catch (e) {
+        res.status(500).json({ message: `Internal server error (${e})` });
+        return;
+    }
     if (!events) {
         res.status(404).json({ message: "Not found" });
         return;
     }
-    res.json(events);
+    res.json(events.reverse());
 }
+
+
+
 
 
 /**
@@ -40,7 +48,7 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
         return;
     }
 
-
+    console.log(req.body);
 
     let reqEvent: {
         title: string;
@@ -53,7 +61,8 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
     let event: SchoolEvent;
 
     try {
-        reqEvent = req.body.event as {
+        console.log(0);
+        reqEvent = req.body as {
             title: string;
             description: string;
             date: number;
@@ -61,14 +70,16 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
             price: number;
         };
 
+
         event = {
             _id: new ObjectId(),
             title: reqEvent.title,
             description: reqEvent.description,
-            date: new Date(reqEvent.date * 1000),
+            date: new Date(reqEvent.date),
             location: reqEvent.location,
             price: reqEvent.price
         } as SchoolEvent;
+
 
     } catch (e) {
         res.status(400).json({ message: `Invalid request body (${e})` });

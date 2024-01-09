@@ -14,7 +14,7 @@ export default function EventsList() {
         }).catch((e) => {
             console.log(e);
         });
-    });
+    }, []);
 
     
 

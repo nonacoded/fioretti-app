@@ -38,6 +38,15 @@ export default class EventsDao {
         }
     }
 
+    static async getSchoolEventById(id: ObjectId) {
+        try {
+            return await events.findOne({ _id: id });
+        } catch (e) {
+            log(LogLevel.Error, `Unable to issue find command in events, ${e}`);
+            return null;
+        }
+    }
+
 
     /**
      * Inserts a new event into the database

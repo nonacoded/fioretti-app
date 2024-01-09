@@ -1,11 +1,12 @@
 'use client';
 
 import CheckLogin from "@/components/checkLogin";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import axios, { AxiosError } from "axios";
 import ErrorMessage from "@/components/errorMessage";
-import Router from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import ApiError from "@/interfaces/apiError";
+
 
 export default function CreateEventPage() {
 
@@ -15,18 +16,23 @@ export default function CreateEventPage() {
     const eventLocationRef = useRef<HTMLInputElement>(null);
     const eventPriceRef = useRef<HTMLInputElement>(null);
 
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
 
     const [errorHidden, setErrorHidden] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
     const [errorTitle, setErrorTitle] = useState("");
 
+    useEffect(() => {
+        if ("edit" in searchParams) {
+            let id = searchParams.get("edit") as string;
+            
+        }
+    }, []);
+
     function CreateEvent(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        console.log(eventNameRef.current?.value);
-        console.log(eventDescriptionRef.current?.value);
-        console.log(new Date(eventDateRef.current?.value as string));
-        console.log(eventLocationRef.current?.value);
-        console.log(eventPriceRef.current?.value);
 
         let eventData: {
             title: string;
@@ -46,9 +52,8 @@ export default function CreateEventPage() {
 
 
         axios.post(`${process.env.NEXT_PUBLIC_API_URL}/events`, eventData, {withCredentials: true}).then((res) => {
-            Router.push("/");
+            router.push("/");
         }).catch((e: AxiosError) => {
-            console.log(e);
             if (e.response) {
                 if ((e.response.data as Object).hasOwnProperty("message")) {
                     setErrorMessage((e.response.data as ApiError).message);
@@ -60,7 +65,7 @@ export default function CreateEventPage() {
                     setErrorHidden(false);
                 }
             } else {
-                setErrorMessage(`Er is een onbekende fout opgetreden!`);
+                setErrorMessage(`Er is een onbekende fout opgetreden! (${e})`);
                 setErrorTitle(`Evenement aanmaken mislukt!`);
                 setErrorHidden(false);
             }
