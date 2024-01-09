@@ -33,6 +33,15 @@ export async function getSchoolEvents(req: Request, res: Response, next: NextFun
 
 export async function insertSchoolEvent(req: Request, res: Response, next: NextFunction) {
 
+    const sessionCookie = req.cookies["session"];
+
+    if (!sessionCookie) {
+        res.status(401).json({message: "Je bent niet ingelogd"});
+        return;
+    }
+
+    
+
     let reqEvent: {
         title: string;
         description: string;

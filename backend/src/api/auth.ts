@@ -233,25 +233,47 @@ export async function apiLogoutUser(req: Request, res: Response, next: NextFunct
 export async function apiVerifySession(req: Request, res: Response, next: NextFunction) {
 
     const sessionCookie = req.cookies["session"];
-
-    if (!sessionCookie) {
-        res.status(401).json({message: "Je bent niet ingelogd"});
+    let user: User;
+    try {
+        user = await getUserFromSessionCookie(sessionCookie);
+    } catch (e) {
+        const err = e as ApiFuncError;
+        res.status(err.code).json({message: err.message});
         return;
+    }
+
+    res.status(200).json(user);
+}
+
+export async function getUserFromSessionCookie(sessionCookie: any) {
+    if (!sessionCookie) {
+        let err: ApiFuncError = {
+            message: "Je bent niet ingelogd",
+            code: 401
+        }
+        throw err;
     }
 
     const session = await getValidSession(sessionCookie);
     if (!session) {
-        res.status(401).json({message: "Je bent niet ingelogd"});
-        return;
+        let err: ApiFuncError = {
+            message: "Je bent niet ingelogd",
+            code: 401
+        }
+        throw err;
     }
 
     const user = await UsersDao.getUserById(session.userId);
     if (!user) {
-        res.status(500).json({message: "Niet gelukt om in te loggen (gebruiker niet gevonden)"});
-        return;
+        let err: ApiFuncError = {
+            message: "Niet gelukt om in te loggen (gebruiker niet gevonden)",
+            code: 500
+        }
+        throw err;
     }
-    console.log("success!");
-    res.status(200).json(user);
+
+    return user;
+
 }
 
 
