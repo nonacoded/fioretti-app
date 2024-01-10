@@ -1,6 +1,9 @@
+import "package:fioretti_app/models/ticket.dart";
+import "package:fioretti_app/pages/qr_display.dart";
 import 'package:fioretti_app/pages/start_page.dart';
 import "package:fioretti_app/pages/login_handeler.dart";
 import "package:fioretti_app/pages/event_page.dart";
+import "package:fioretti_app/pages/ticket_page.dart";
 import "package:fioretti_app/pages/tickets_page.dart";
 import "package:flutter/material.dart";
 import "package:fioretti_app/pages/home.dart";
@@ -55,6 +58,20 @@ class FiorettiApp extends StatelessWidget {
               name: "tickets",
               path: "/tickets",
               builder: (context, state) => const TicketsPage(),
+            ),
+            GoRoute(
+              name: "ticket",
+              path: "/tickets/:id",
+              builder: (context, state) =>
+                  TicketPage(id: state.pathParameters["id"]!),
+            ),
+            GoRoute(
+              name: "qrcode",
+              path: "/tickets/:id/qr",
+              builder: (context, state) {
+                Ticket ticket = state.extra as Ticket;
+                return QrCodePage(ticket: ticket);
+              },
             )
           ],
         ),

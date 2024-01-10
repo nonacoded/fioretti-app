@@ -1,7 +1,7 @@
 import express from 'express';
 import { editSchoolEvent, getSchoolEvent, getSchoolEvents, insertSchoolEvent } from './api/events';
 import { apiAdminPanelLogin, apiExchangeConfirmationToken, apiLoginUser, apiLogoutUser, apiVerifySession } from './api/auth';
-import { createTicket, getTickets } from './api/tickets';
+import { createTicket, getTicketById, getTickets } from './api/tickets';
 
 
 
@@ -15,6 +15,8 @@ router.route("/events/:id").get(getSchoolEvent).put(editSchoolEvent);
 router.route("/events/:id/tickets").post(createTicket);
 
 router.route("/tickets").get(getTickets);
+
+router.route("/tickets/:id").get(getTicketById);
 
 router.route("/auth/login").post(apiLoginUser);
 

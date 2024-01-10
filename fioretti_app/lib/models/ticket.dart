@@ -40,6 +40,6 @@ Future<Ticket> fetchTicket(String id) async {
   if (response.statusCode == 200) {
     return Ticket.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to load ticket');
+    throw Exception('Failed to load ticket ${response.body}');
   }
 }
