@@ -28,6 +28,8 @@ Future<User?> checkLogin() async {
     var response =
         await Requests.post("${dotenv.get('API_URL')}/auth/verifySession");
     //await Future.delayed(const Duration(seconds: 5)); // wacht 5 seconden (voor testen)
+    print(response.body);
+
     if (response.statusCode == 200) {
       return User.fromJson(response.json());
     } else {

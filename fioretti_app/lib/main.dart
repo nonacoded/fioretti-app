@@ -10,6 +10,7 @@ import "package:fioretti_app/pages/home.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:fioretti_app/pages/qr_scanning_page.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -72,7 +73,12 @@ class FiorettiApp extends StatelessWidget {
                 Ticket ticket = state.extra as Ticket;
                 return QrCodePage(ticket: ticket);
               },
-            )
+            ),
+            GoRoute(
+              name: "qr-scanning",
+              path: "/qr-scanning",
+              builder: (context, state) => const QrScanningPage(),
+            ),
           ],
         ),
       ),

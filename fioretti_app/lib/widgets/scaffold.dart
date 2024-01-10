@@ -24,12 +24,16 @@ class AppScaffold extends StatelessWidget {
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.local_activity), label: "Tickets"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.qr_code_scanner), label: "Scan Ticket"),
         ],
         onTap: (int index) {
           if (index == 0) {
             context.go("/home");
           } else if (index == 1) {
             context.go("/tickets");
+          } else if (index == 2) {
+            context.go("/qr-scanning");
           }
         },
       ),

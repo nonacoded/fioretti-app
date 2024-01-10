@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import { ServerApiVersion, MongoClient } from 'mongodb';
 import cors from 'cors';
@@ -33,6 +33,13 @@ app.use(cookieParser());
 app.use("/fioretti-app-api", router);
 
 app.use("*", (req: Request, res: Response) => {res.status(404).json({message: `Method not found: ${req.method} to ${req.originalUrl}`})});
+
+
+// Error handling
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error(err.stack);
+  res.status(500).send(`Error (${err})`);
+});
 
 
 // Connect to MongoDB

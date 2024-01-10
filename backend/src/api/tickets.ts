@@ -133,11 +133,20 @@ export async function getTicketById(req: Request, res: Response, next: NextFunct
         return;
     }
 
-    const ticket = await TicketsDao.getTicketById(new ObjectId(ticketId));
-    if (ticket == null) {
-        res.status(500).json({message: "Niet gelukt om ticket op te halen"});
+    let ticket: Ticket;
+    try {
+        const t = await TicketsDao.getTicketById(new ObjectId(ticketId));
+        if (t == null) {
+            res.status(500).json({message: "Niet gelukt om ticket op te halen"});
+            return;
+        }
+
+        ticket = t;
+    } catch (e) {
+        res.status(500).json({message: `Niet gelukt om ticket op te halen (${e})`});
         return;
     }
+    
 
 
     if (ticket.userId.toString() != user._id.toString()) {
