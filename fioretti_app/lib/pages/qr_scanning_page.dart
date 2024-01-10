@@ -23,9 +23,6 @@ class _QrScanningPageState extends State<QrScanningPage> {
               child: const Text('Scan QR'),
               onPressed: () async {
                 final result = await BarcodeScanner.scan();
-                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ${result.type}");
-                print(
-                    "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ${result.rawContent}");
                 if (result.type == ResultType.Barcode) {
                   fetchTicket(result.rawContent).then((ticket) {
                     setState(() {

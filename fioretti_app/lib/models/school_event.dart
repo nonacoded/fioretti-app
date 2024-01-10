@@ -6,7 +6,7 @@ class SchoolEvent {
   final String id;
   final String title;
   final String description;
-  final String date;
+  final DateTime date;
   final String location;
   final double price;
 
@@ -21,7 +21,7 @@ class SchoolEvent {
         json['_id'] as String,
         json['title'] as String,
         json['description'] as String,
-        json['date'] as String,
+        DateTime(json['date']),
         json['location'] as String,
         json['price'] as double);
   }

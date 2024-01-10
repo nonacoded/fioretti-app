@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import EventsDao from "../DAO/eventsDao";
-import SchoolEvent from "../interfaces/event";
+import SchoolEvent, { SchoolEventWithIntDate } from "../interfaces/event";
 import { ObjectId } from "mongodb";
 import { getUserFromSessionCookie } from "./auth";
 import User from "../interfaces/user";
@@ -27,7 +27,19 @@ export async function getSchoolEvents(req: Request, res: Response, next: NextFun
         res.status(404).json({ message: "Not found" });
         return;
     }
-    res.json(events.reverse());
+
+    let eventsWithIntDates: SchoolEventWithIntDate[] = events.map((event) => {
+        return {
+            _id: event._id,
+            title: event.title,
+            description: event.description,
+            date: event.date.getTime(),
+            location: event.location,
+            price: event.price
+        } as SchoolEventWithIntDate;
+    });
+
+    res.json(eventsWithIntDates.reverse());
 }
 
 
@@ -44,7 +56,16 @@ export async function getSchoolEvent(req: Request, res: Response, next: NextFunc
         return;
     }
 
-    res.status(200).json(event);
+    let eventWithIntDate: SchoolEventWithIntDate = {
+        _id: event._id,
+        title: event.title,
+        description: event.description,
+        date: event.date.getTime(),
+        location: event.location,
+        price: event.price
+    } as SchoolEventWithIntDate;
+
+    res.status(200).json(eventWithIntDate);
 }
 
 

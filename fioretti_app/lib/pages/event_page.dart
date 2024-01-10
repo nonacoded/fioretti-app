@@ -60,7 +60,7 @@ class _EventPageState extends State<EventPage> {
                         fontSize: 30.0,
                       )),
                   Text(event!.description),
-                  Text(event!.date),
+                  //Text(event!.date),
                   ElevatedButton(
                     onPressed: !canClickBuyButton
                         ? null

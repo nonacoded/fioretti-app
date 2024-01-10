@@ -12,10 +12,12 @@ class QrCodePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       title: ticket.event.title,
-      body: QrImageView(
-        data: ticket.id,
-        version: QrVersions.auto,
-        size: 200.0,
+      body: Center(
+        child: QrImageView(
+          data: ticket.id,
+          version: QrVersions.auto,
+          size: 400.0,
+        ),
       ),
     );
   }

@@ -13,3 +13,13 @@ export default interface SchoolEvent {
     location: string;
     price: number;
 }
+
+
+export interface SchoolEventWithIntDate {
+    _id: ObjectId;
+    title: string;
+    description: string;
+    date: number;
+    location: string;
+    price: number;
+}
