@@ -134,6 +134,7 @@ export async function getTicketById(req: Request, res: Response, next: NextFunct
     }
 
     let ticket: Ticket;
+    console.log(ticketId);
     try {
         const t = await TicketsDao.getTicketById(new ObjectId(ticketId));
         if (t == null) {
