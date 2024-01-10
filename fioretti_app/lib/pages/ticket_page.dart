@@ -1,5 +1,5 @@
 import 'package:fioretti_app/widgets/scaffold.dart';
-import 'package:fioretti_app/widgets/ticket_display.dart';
+import 'package:fioretti_app/widgets/event_display.dart';
 import 'package:flutter/material.dart';
 import 'package:fioretti_app/models/ticket.dart';
 import 'package:go_router/go_router.dart';
@@ -39,7 +39,7 @@ class _TicketPageState extends State<TicketPage> {
                 : const Text("Geen ticket gevonden"))
             : Column(
                 children: [
-                  TicketDisplay(ticket: ticket!),
+                  EventDisplay(event: ticket!.event),
                   ElevatedButton(
                     onPressed: () {
                       context.push("/tickets/${ticket!.id}/qr", extra: ticket);

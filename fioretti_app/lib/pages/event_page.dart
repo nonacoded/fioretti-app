@@ -1,5 +1,6 @@
 import 'package:fioretti_app/models/school_event.dart';
 import 'package:fioretti_app/models/ticket.dart';
+import 'package:fioretti_app/widgets/event_display.dart';
 import 'package:fioretti_app/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -54,13 +55,7 @@ class _EventPageState extends State<EventPage> {
                 : "Evenement niet gevonden")
             : Column(
                 children: [
-                  Text(event!.title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30.0,
-                      )),
-                  Text(event!.description),
-                  //Text(event!.date),
+                  EventDisplay(event: event!),
                   ElevatedButton(
                     onPressed: !canClickBuyButton
                         ? null

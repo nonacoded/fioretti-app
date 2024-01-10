@@ -23,3 +23,15 @@ export interface SchoolEventWithIntDate {
     location: string;
     price: number;
 }
+
+
+export function schoolEventToSchoolEventWithIntDate(event: SchoolEvent) {
+    return {
+        _id: event._id,
+        title: event.title,
+        description: event.description,
+        date: event.date.getTime(),
+        location: event.location,
+        price: event.price
+    } as SchoolEventWithIntDate;
+}

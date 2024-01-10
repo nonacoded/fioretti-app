@@ -22,6 +22,7 @@ class Ticket {
 }
 
 Future<List<Ticket>> fetchTickets() async {
+  print("fetch tickets");
   final response = await Requests.get("${dotenv.env['API_URL']!}/tickets");
   if (response.statusCode == 200) {
     List<dynamic> responseJson = jsonDecode(response.body);
@@ -29,6 +30,8 @@ Future<List<Ticket>> fetchTickets() async {
     for (int i = 0; i < responseJson.length; i++) {
       tickets.add(Ticket.fromJson(responseJson[i]));
     }
+    print(tickets);
+    print("uwu");
     return tickets;
   } else {
     throw Exception('Failed to load tickets');

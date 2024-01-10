@@ -7,7 +7,8 @@ import Ticket from "../interfaces/ticket";
 import TicketsDao from "../DAO/ticketsDao";
 import SchoolEvent from "../interfaces/event";
 import EventsDao from "../DAO/eventsDao";
-import { CountQueuingStrategy } from "stream/web";
+import { TicketWithEvent, ticketToTicketWithEvent } from "../interfaces/ticket";
+
 
 
 export async function createTicket(req: Request, res: Response, next: NextFunction) {
@@ -54,32 +55,10 @@ export async function createTicket(req: Request, res: Response, next: NextFuncti
 }
 
 
-interface TicketWithEvent {
-    _id: ObjectId,
-    eventId: ObjectId,
-    userId: ObjectId,
-    event: SchoolEvent
-}
 
 
-async function ticketToTicketWithEvent(ticket: Ticket) {
 
-    const event = await EventsDao.getSchoolEventById(ticket.eventId);
-    if (event == null) {
-        const err: ApiFuncError = {
-            code: 500,
-            message: `Niet gelukt om event ${ticket.eventId} op te halen`
-        }
-        throw err;
-    }
 
-    return {
-        _id: ticket._id,
-        eventId: ticket.eventId,
-        userId: ticket.userId,
-        event: event
-    }
-}
 
 
 export async function getTickets(req: Request, res: Response, next: NextFunction) {
@@ -112,7 +91,7 @@ export async function getTickets(req: Request, res: Response, next: NextFunction
         let ticketWithEvent: TicketWithEvent;
         try {
             ticketWithEvent = await ticketToTicketWithEvent(ticket);
-
+            
             ticketsWithEvents.push(ticketWithEvent);
         } catch (err) {
             const e = err as ApiFuncError;
