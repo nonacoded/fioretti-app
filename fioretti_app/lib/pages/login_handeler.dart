@@ -12,10 +12,10 @@ import "package:requests/requests.dart";
 import "package:http/http.dart" as http;
 
 class LoginHandeler extends ConsumerStatefulWidget {
-  LoginHandeler({super.key, this.token, this.expiresString});
+  const LoginHandeler({super.key, this.token, this.expiresString});
 
-  String? token;
-  String? expiresString;
+  final String? token;
+  final String? expiresString;
 
   @override
   ConsumerState<LoginHandeler> createState() => _LoginHandelerState();

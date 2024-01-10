@@ -41,10 +41,12 @@ Future<List<SchoolEvent>> fetchEvents() async {
   }
 }
 
-Future<SchoolEvent> fetchEvent(String id) async {
+Future<SchoolEvent?> fetchEvent(String id) async {
   final response = await Requests.get("${dotenv.env['API_URL']!}/events/$id");
   if (response.statusCode == 200) {
     return SchoolEvent.fromJson(jsonDecode(response.body));
+  } else if (response.statusCode == 404) {
+    return null;
   } else {
     throw Exception('Failed to load event');
   }

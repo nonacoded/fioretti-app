@@ -14,6 +14,7 @@ class TicketPage extends StatefulWidget {
 
 class _TicketPageState extends State<TicketPage> {
   Ticket? ticket;
+  bool finishedLoading = false;
 
   @override
   void initState() {
@@ -29,20 +30,23 @@ class _TicketPageState extends State<TicketPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      title: "Ticket",
       body: Center(
         child: ticket == null
-            ? const Text("Bezig met laden...")
+            ? (!finishedLoading
+                ? const Text("Bezig met laden...")
+                : const Text("Geen ticket gevonden"))
             : Column(
                 children: [
                   Text(ticket!.event.title),
                   Text(ticket!.event.description),
                   Text(ticket!.event.date),
                   ElevatedButton(
-                      onPressed: () {
-                        context.push("/tickets/${ticket!.id}/qr",
-                            extra: ticket);
-                      },
-                      child: const Text("Toon QR code"))
+                    onPressed: () {
+                      context.push("/tickets/${ticket!.id}/qr", extra: ticket);
+                    },
+                    child: const Text("Toon QR code"),
+                  ),
                 ],
               ),
       ),

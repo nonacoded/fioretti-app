@@ -1,4 +1,5 @@
 import 'package:fioretti_app/models/school_event.dart';
+import 'package:fioretti_app/models/ticket.dart';
 import 'package:fioretti_app/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -15,6 +16,9 @@ class EventPage extends StatefulWidget {
 
 class _EventPageState extends State<EventPage> {
   SchoolEvent? event;
+  bool finishedLoading = false;
+  bool canClickBuyButton = false;
+  bool boughtTicket = false;
 
   @override
   void initState() {
@@ -23,17 +27,31 @@ class _EventPageState extends State<EventPage> {
     fetchEvent(widget.id).then((event) {
       setState(() {
         this.event = event;
+        finishedLoading = true;
       });
+
+      if (event != null) {
+        fetchOwnTicketByEventId(event.id).then((ticket) {
+          setState(() {
+            canClickBuyButton = ticket == null;
+            boughtTicket = ticket != null;
+          });
+        });
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: event == null ? "Bezig met laden..." : event!.title,
+      title: event == null
+          ? (!finishedLoading ? "Bezig met laden..." : "Evenement")
+          : event!.title,
       body: Center(
         child: event == null
-            ? const Text("Bezig met laden...")
+            ? Text(!finishedLoading
+                ? "Bezig met laden..."
+                : "Evenement niet gevonden")
             : Column(
                 children: [
                   Text(event!.title,
@@ -44,10 +62,17 @@ class _EventPageState extends State<EventPage> {
                   Text(event!.description),
                   Text(event!.date),
                   ElevatedButton(
-                    onPressed: () {
-                      buyTicket(event!.id);
-                    },
-                    child: const Text("Koop ticket"),
+                    onPressed: !canClickBuyButton
+                        ? null
+                        : () {
+                            buyTicket(event!.id);
+                            setState(() {
+                              boughtTicket = true;
+                              canClickBuyButton = false;
+                            });
+                          },
+                    child:
+                        Text(!boughtTicket ? "Koop ticket" : "Ticket gekocht"),
                   )
                 ],
               ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fioretti_app/providers.dart';
 
-class AppScaffold extends StatelessWidget {
+class AppScaffold extends ConsumerStatefulWidget {
   final String title;
   final Widget body;
 
@@ -9,14 +11,22 @@ class AppScaffold extends StatelessWidget {
       {super.key, this.title = "Fioretti App", required this.body});
 
   @override
+  ConsumerState<AppScaffold> createState() => _AppScaffoldState();
+}
+
+class _AppScaffoldState extends ConsumerState<AppScaffold> {
+  @override
   Widget build(BuildContext context) {
+    int currentIndex = ref.watch(navigationBarIndexProvider);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
         backgroundColor: Colors.blue,
       ),
-      body: body,
+      body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.event),
@@ -28,6 +38,7 @@ class AppScaffold extends StatelessWidget {
               icon: Icon(Icons.qr_code_scanner), label: "Scan Ticket"),
         ],
         onTap: (int index) {
+          ref.read(navigationBarIndexProvider.notifier).state = index;
           if (index == 0) {
             context.go("/home");
           } else if (index == 1) {

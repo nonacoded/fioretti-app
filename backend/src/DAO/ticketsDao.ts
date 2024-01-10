@@ -45,6 +45,15 @@ export default class TicketsDao {
         }
     }
 
+    static async getTicketByUserIdAndEventId(userId: ObjectId, eventId: ObjectId) {
+        try {
+            return await tickets.findOne({ userId: userId, eventId: eventId });
+        } catch (e) {
+            log(LogLevel.Error, `Unable to issue find command in events, ${e}`);
+            return null;
+        }
+    }
+
 
     /**
      * Inserts a new event into the database

@@ -35,10 +35,24 @@ Future<List<Ticket>> fetchTickets() async {
   }
 }
 
-Future<Ticket> fetchTicket(String id) async {
+Future<Ticket?> fetchTicket(String id) async {
   final response = await Requests.get("${dotenv.env['API_URL']!}/tickets/$id");
   if (response.statusCode == 200) {
     return Ticket.fromJson(jsonDecode(response.body));
+  } else if (response.statusCode == 404) {
+    return null;
+  } else {
+    throw Exception('Failed to load ticket ${response.body}');
+  }
+}
+
+Future<Ticket?> fetchOwnTicketByEventId(String eventId) async {
+  final response =
+      await Requests.get("${dotenv.env['API_URL']!}/tickets?event=$eventId");
+  if (response.statusCode == 200) {
+    return Ticket.fromJson(jsonDecode(response.body));
+  } else if (response.statusCode == 404) {
+    return null;
   } else {
     throw Exception('Failed to load ticket ${response.body}');
   }

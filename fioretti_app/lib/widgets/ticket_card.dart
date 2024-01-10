@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:fioretti_app/models/school_event.dart";
 import "package:go_router/go_router.dart";
 import "package:fioretti_app/models/ticket.dart";
 
