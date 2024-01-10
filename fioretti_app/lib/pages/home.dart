@@ -1,6 +1,7 @@
 import "package:fioretti_app/models/school_event.dart";
 import 'package:fioretti_app/widgets/event_card.dart';
 import "package:fioretti_app/widgets/logout_button.dart";
+import "package:fioretti_app/widgets/scaffold.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import 'package:fioretti_app/providers.dart';
@@ -39,11 +40,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           "Geen gebruiker gevonden, dit is een bug. Probeer de app opnieuw te starten.");
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Fioretti App"),
-        backgroundColor: Colors.blue,
-      ),
+    return AppScaffold(
       body: Center(
         child: Column(
           children: [

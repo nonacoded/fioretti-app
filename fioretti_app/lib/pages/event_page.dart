@@ -1,4 +1,5 @@
 import 'package:fioretti_app/models/school_event.dart';
+import 'package:fioretti_app/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:requests/requests.dart';
@@ -28,11 +29,8 @@ class _EventPageState extends State<EventPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(event == null ? "Bezig met laden..." : event!.title),
-        backgroundColor: Colors.blue,
-      ),
+    return AppScaffold(
+      title: event == null ? "Bezig met laden..." : event!.title,
       body: Center(
         child: event == null
             ? const Text("Bezig met laden...")

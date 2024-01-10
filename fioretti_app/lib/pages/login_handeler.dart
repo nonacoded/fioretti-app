@@ -1,4 +1,5 @@
 import "dart:convert";
+import "package:fioretti_app/widgets/scaffold.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import "package:fioretti_app/models/api_error.dart";
 import "package:fioretti_app/models/user.dart";
@@ -108,11 +109,7 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Fioretti App"),
-        backgroundColor: Colors.blue,
-      ),
+    return AppScaffold(
       body: !errorOccurred
           ? const Center(
               child: Text("Bezig met inloggen..."),
