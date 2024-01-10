@@ -18,8 +18,8 @@ export interface TicketWithEvent {
     _id: ObjectId;
     eventId: ObjectId;
     userId: ObjectId;
-    createdAt: Date;
-    expiresAt: Date;
+    createdAt: number;
+    expiresAt: number;
     event: SchoolEventWithIntDate
 }
 
@@ -39,8 +39,8 @@ export async function ticketToTicketWithEvent(ticket: Ticket) {
         _id: ticket._id,
         eventId: ticket.eventId,
         userId: ticket.userId,
-        createdAt: ticket.createdAt,
-        expiresAt: ticket.expiresAt,
+        createdAt: ticket.createdAt.getTime(),
+        expiresAt: ticket.expiresAt.getTime(),
         event: schoolEventToSchoolEventWithIntDate(event)
     } as TicketWithEvent
 }

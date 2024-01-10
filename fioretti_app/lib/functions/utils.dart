@@ -5,3 +5,7 @@ String minuteToString(int minute) {
     return "$minute";
   }
 }
+
+String dateTimeToString(DateTime dateTime) {
+  return "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${minuteToString(dateTime.minute)}";
+}

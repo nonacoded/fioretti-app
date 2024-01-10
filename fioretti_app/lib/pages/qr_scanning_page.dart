@@ -1,4 +1,6 @@
 import 'package:barcode_scan2/barcode_scan2.dart';
+import 'package:fioretti_app/functions/utils.dart';
+import 'package:fioretti_app/widgets/event_display.dart';
 import 'package:fioretti_app/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:fioretti_app/models/ticket.dart';
@@ -35,11 +37,9 @@ class _QrScanningPageState extends State<QrScanningPage> {
             if (scannedTicket != null)
               Column(
                 children: [
-                  Text(scannedTicket!.event.title),
-                  Text(scannedTicket!.event.date.toString()),
-                  Text(scannedTicket!.event.location),
-                  Text(scannedTicket!.event.description),
-                  Text(scannedTicket!.event.price.toString()),
+                  EventDisplay(event: scannedTicket!.event),
+                  Text(
+                      "Ticket gekocht op: ${dateTimeToString(scannedTicket!.createdAt)}")
                 ],
               ),
           ],
