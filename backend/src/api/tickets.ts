@@ -174,7 +174,7 @@ export async function getTicketById(req: Request, res: Response, next: NextFunct
     
 
 
-    if (ticket.userId.toString() != user._id.toString()) {
+    if (ticket.userId.toString() != user._id.toString() && !user.isAdmin) {
         res.status(403).json({message: "Je hebt geen toegang tot dit ticket"});
         return;
     }
