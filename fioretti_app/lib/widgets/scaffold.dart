@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fioretti_app/providers.dart';
+import 'package:fioretti_app/models/user.dart';
 
 class AppScaffold extends ConsumerStatefulWidget {
   final String title;
@@ -18,8 +19,34 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
   @override
   Widget build(BuildContext context) {
     int currentIndex = ref.watch(navigationBarIndexProvider);
+    User? user = ref.watch(userProvider);
 
-    return Scaffold(
+    bool isAdmin = false;
+    if (user != null) {
+      isAdmin = user.isAdmin;
+    }
+
+    List<BottomNavigationBarItem> adminItems = const [
+      BottomNavigationBarItem(
+        icon: Icon(Icons.event),
+        label: "Evenementen",
+      ),
+      BottomNavigationBarItem(
+          icon: Icon(Icons.local_activity), label: "Tickets"),
+      BottomNavigationBarItem(
+          icon: Icon(Icons.qr_code_scanner), label: "QR scannen"),
+    ];
+
+    List<BottomNavigationBarItem> normalItems = const [
+      BottomNavigationBarItem(
+        icon: Icon(Icons.event),
+        label: "Evenementen",
+      ),
+      BottomNavigationBarItem(
+          icon: Icon(Icons.local_activity), label: "Tickets"),
+    ];
+
+    Scaffold result = Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Colors.blue,
@@ -27,27 +54,20 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
       body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.event),
-            label: "Evenementen",
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.local_activity), label: "Tickets"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.qr_code_scanner), label: "Scan Ticket"),
-        ],
+        items: isAdmin ? adminItems : normalItems,
         onTap: (int index) {
           ref.read(navigationBarIndexProvider.notifier).state = index;
           if (index == 0) {
             context.go("/home");
           } else if (index == 1) {
             context.go("/tickets");
-          } else if (index == 2) {
+          } else if (index == 2 && isAdmin) {
             context.go("/qr-scanning");
           }
         },
       ),
     );
+
+    return result;
   }
 }

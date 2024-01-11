@@ -162,7 +162,7 @@ export async function getTicketById(req: Request, res: Response, next: NextFunct
     try {
         const t = await TicketsDao.getTicketById(new ObjectId(ticketId));
         if (t == null) {
-            res.status(500).json({message: "Niet gelukt om ticket op te halen"});
+            res.status(404).json({message: "Ticket niet gevonden"});
             return;
         }
 

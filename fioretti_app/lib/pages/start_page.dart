@@ -23,7 +23,6 @@ class _StartPageState extends ConsumerState<StartPage> {
       loading = true;
     });
     checkLogin().then((user) {
-      print(user);
       if (user != null) {
         ref.read(userProvider.notifier).state = user;
         context.go("/home");
