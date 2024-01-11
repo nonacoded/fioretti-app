@@ -16,6 +16,7 @@ class Ticket {
       this.expiresAt, this.isUsed, this.event);
 
   factory Ticket.fromJson(Map<String, dynamic> json) {
+    print(json['isUsed']);
     return Ticket(
       json['_id'] as String,
       json['eventId'] as String,

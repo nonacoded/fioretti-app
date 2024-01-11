@@ -37,12 +37,15 @@ export async function ticketToTicketWithEvent(ticket: Ticket) {
         throw err;
     }
 
-    return {
+    const ticketWithEvent: TicketWithEvent = {
         _id: ticket._id,
         eventId: ticket.eventId,
         userId: ticket.userId,
         createdAt: ticket.createdAt.getTime(),
         expiresAt: ticket.expiresAt.getTime(),
+        isUsed: ticket.isUsed,
         event: schoolEventToSchoolEventWithIntDate(event)
-    } as TicketWithEvent
+    }
+
+    return ticketWithEvent
 }
