@@ -57,6 +57,9 @@ class _QrScanningPageState extends State<QrScanningPage> {
                     "Ticket gekocht op: ${dateTimeToString(scannedTicket!.createdAt)} ${userThatBoughtTicket!.firstName != null ? 'door ${userThatBoughtTicket!.firstName}' : ''} ${userThatBoughtTicket!.lastName != null ? userThatBoughtTicket!.lastName : ''}",
                     style: const TextStyle(fontSize: 20),
                   ),
+                  scannedTicket != null
+                      ? MarkAsUsedButton(ticket: scannedTicket!)
+                      : Placeholder()
                 ],
               ),
           ],

@@ -56,7 +56,7 @@ export default class TicketsDao {
 
     static async updateTicket(ticket: Ticket) {
         try {
-            return await tickets.updateOne({ _id: ticket._id}, ticket);
+            return await tickets.updateOne({ _id: ticket._id}, { $set: ticket });
         } catch (e) {
             log(LogLevel.Error, `Unable to issue update command in tickets, ${e}`);
             return null;
