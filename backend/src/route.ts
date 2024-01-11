@@ -29,6 +29,6 @@ router.route("/auth/verifySession").post(apiVerifySession);
 
 router.route("/admin/auth/login").post(apiAdminPanelLogin);
 
-router.route("/user/:id").get(getUserById);
+router.route("/users/:id").get(getUserById);
 
 export default router;

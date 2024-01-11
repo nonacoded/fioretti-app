@@ -18,17 +18,24 @@ class _QrScanningPageState extends State<QrScanningPage> {
   User? userThatBoughtTicket;
 
   void onBarcodeScanned(String barcodeContent) async {
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!! BARCODE SCANNED");
     Ticket? ticket = await fetchTicket(barcodeContent);
     if (ticket == null) {
+      print("!!!!!!!!!!!!!!!!!!!!!!!!!! ticket null");
+
       return;
     }
 
     User? userThatBoughtTicket = await getUserByID(ticket.userId);
     if (userThatBoughtTicket == null) {
+      print("!!!!!!!!!!!!!!!!!!!!!!!!!! user null");
+
       return;
     }
 
     setState(() {
+      print("!!!!!!!!!!!!!!!!!!!!!!!!!! SET STATE");
+
       scannedTicket = ticket;
       this.userThatBoughtTicket = userThatBoughtTicket;
     });

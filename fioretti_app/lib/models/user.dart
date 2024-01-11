@@ -27,7 +27,7 @@ class User {
 }
 
 Future<User?> getUserByID(String id) async {
-  final response = await Requests.get("${dotenv.env['API_URL']!}/tickets/$id");
+  final response = await Requests.get("${dotenv.env['API_URL']!}/users/$id");
   if (response.statusCode == 200) {
     return User.fromJson(jsonDecode(response.body));
   } else if (response.statusCode == 404) {
