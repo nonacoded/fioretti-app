@@ -2,6 +2,7 @@ import express from 'express';
 import { editSchoolEvent, getSchoolEvent, getSchoolEvents, insertSchoolEvent } from './api/events';
 import { apiAdminPanelLogin, apiExchangeConfirmationToken, apiLoginUser, apiLogoutUser, apiVerifySession } from './api/auth';
 import { createTicket, getTicketById, getTickets } from './api/tickets';
+import { getUserById } from './api/users';
 
 
 
@@ -27,5 +28,7 @@ router.route("/auth/logout").post(apiLogoutUser);
 router.route("/auth/verifySession").post(apiVerifySession);
 
 router.route("/admin/auth/login").post(apiAdminPanelLogin);
+
+router.route("/user/:id").get(getUserById);
 
 export default router;
