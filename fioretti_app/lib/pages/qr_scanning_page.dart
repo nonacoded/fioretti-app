@@ -18,24 +18,17 @@ class _QrScanningPageState extends State<QrScanningPage> {
   User? userThatBoughtTicket;
 
   void onBarcodeScanned(String barcodeContent) async {
-    print("!!!!!!!!!!!!!!!!!!!!!!!!!! BARCODE SCANNED");
     Ticket? ticket = await fetchTicket(barcodeContent);
     if (ticket == null) {
-      print("!!!!!!!!!!!!!!!!!!!!!!!!!! ticket null");
-
       return;
     }
 
     User? userThatBoughtTicket = await getUserByID(ticket.userId);
     if (userThatBoughtTicket == null) {
-      print("!!!!!!!!!!!!!!!!!!!!!!!!!! user null");
-
       return;
     }
 
     setState(() {
-      print("!!!!!!!!!!!!!!!!!!!!!!!!!! SET STATE");
-
       scannedTicket = ticket;
       this.userThatBoughtTicket = userThatBoughtTicket;
     });
@@ -61,7 +54,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
                 children: [
                   EventDisplay(event: scannedTicket!.event),
                   Text(
-                    "Ticket gekocht op: ${dateTimeToString(scannedTicket!.createdAt)} door ${userThatBoughtTicket!.firstName} ${userThatBoughtTicket!.lastName}",
+                    "Ticket gekocht op: ${dateTimeToString(scannedTicket!.createdAt)} ${userThatBoughtTicket!.firstName != null ? 'door ${userThatBoughtTicket!.firstName}' : ''} ${userThatBoughtTicket!.lastName != null ? userThatBoughtTicket!.lastName : ''}",
                     style: const TextStyle(fontSize: 20),
                   ),
                 ],
@@ -70,5 +63,50 @@ class _QrScanningPageState extends State<QrScanningPage> {
         ),
       ),
     );
+  }
+}
+
+class MarkAsUsedButton extends StatefulWidget {
+  final Ticket ticket;
+  const MarkAsUsedButton({super.key, required this.ticket});
+
+  @override
+  State<MarkAsUsedButton> createState() => _MarkAsUsedButtonState();
+}
+
+class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
+  bool isLoading = false;
+  bool isMarkedAsUsed = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    isMarkedAsUsed = widget.ticket.isUsed;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        onPressed: isLoading
+            ? null
+            : () {
+                setState(() {
+                  isLoading = true;
+                });
+                markTicketAsUsed(widget.ticket.id).then((success) {
+                  setState(() {
+                    if (success) {
+                      isMarkedAsUsed = !isMarkedAsUsed;
+                      isLoading = false;
+                    }
+                  });
+                });
+              },
+        child: Text(isLoading
+            ? "Laden..."
+            : (isMarkedAsUsed
+                ? "Markeer als ongebruikt"
+                : "Markeer als gebruikt")));
   }
 }

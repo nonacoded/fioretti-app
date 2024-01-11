@@ -42,7 +42,8 @@ export async function createTicket(req: Request, res: Response, next: NextFuncti
         eventId: new ObjectId(eventId),
         userId: user._id,
         createdAt: new Date(),
-        expiresAt: new Date(event.date.getTime() + 1000 * 60 * 60 * 24 * 2) // expires after 2 days
+        expiresAt: new Date(event.date.getTime() + 1000 * 60 * 60 * 24 * 2), // expires after 2 days
+        isUsed: false
     };
 
     const result = await TicketsDao.insertTicket(ticket);
@@ -189,4 +190,48 @@ export async function getTicketById(req: Request, res: Response, next: NextFunct
     }
 
     res.status(200).json(ticketWithEvent);
+}
+
+
+export async function apiMarkTicketAsUsed(req: Request, res: Response, next: NextFunction) {
+    let sessionCookie = req.cookies["session"];
+
+    let user: User;
+    try {
+        user = await getUserFromSessionCookie(sessionCookie);
+    } catch (err) {
+        const e = err as ApiFuncError;
+        res.status(e.code).json({message: e.message});
+        return;
+    }
+
+    if (!user.isAdmin) {
+        res.status(403).json({ message: "Je bent geen admin" });
+        return;
+    }
+
+    const ticketId = req.params.id;
+
+    if (req.body.value == null || typeof req.body.value != "boolean") {
+        res.status(400).json({message: "body.value is geen boolean"})
+    }
+
+    const value = req.body.value as boolean;
+
+    let ticket = await TicketsDao.getTicketById(new ObjectId(ticketId));
+    if (ticket == null) {
+        res.status(404).json({message: "Ticket niet gevonden"});
+        return;
+    }
+
+    ticket.isUsed = value;
+
+    const updateResult = TicketsDao.updateTicket(ticket);
+
+    if (updateResult == null) {
+        res.status(500).json({message: "Failed to update ticket"});
+        return;
+    }
+
+    res.status(200).json({message: "Updated ticket"});
 }

@@ -10,6 +10,7 @@ export default interface Ticket {
     userId: ObjectId;
     createdAt: Date;
     expiresAt: Date;
+    isUsed: boolean
 }
 
 
@@ -20,6 +21,7 @@ export interface TicketWithEvent {
     userId: ObjectId;
     createdAt: number;
     expiresAt: number;
+    isUsed: boolean;
     event: SchoolEventWithIntDate
 }
 

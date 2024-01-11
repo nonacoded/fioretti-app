@@ -9,10 +9,11 @@ class Ticket {
   final String userId;
   final DateTime createdAt;
   final DateTime expiresAt;
+  final bool isUsed;
   final SchoolEvent event;
 
   const Ticket(this.id, this.eventId, this.userId, this.createdAt,
-      this.expiresAt, this.event);
+      this.expiresAt, this.isUsed, this.event);
 
   factory Ticket.fromJson(Map<String, dynamic> json) {
     return Ticket(
@@ -21,6 +22,7 @@ class Ticket {
       json['userId'] as String,
       DateTime.fromMillisecondsSinceEpoch(json['createdAt']),
       DateTime.fromMillisecondsSinceEpoch(json['expiresAt']),
+      json['isUsed'] as bool,
       SchoolEvent.fromJson(json['event'] as Map<String, dynamic>),
     );
   }
@@ -60,5 +62,16 @@ Future<Ticket?> fetchOwnTicketByEventId(String eventId) async {
     return null;
   } else {
     throw Exception('Failed to load ticket ${response.body}');
+  }
+}
+
+Future<bool> markTicketAsUsed(String ticketId) async {
+  final response = await Requests.put(
+      "${dotenv.env['API_URL']!}/tickets/$ticketId/markUsed");
+
+  if (response.statusCode == 200) {
+    return true;
+  } else {
+    return false;
   }
 }

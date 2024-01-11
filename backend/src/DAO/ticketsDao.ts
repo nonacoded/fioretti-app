@@ -40,7 +40,7 @@ export default class TicketsDao {
         try {
             return await tickets.find({ userId: userId }).toArray();
         } catch (e) {
-            log(LogLevel.Error, `Unable to issue find command in events, ${e}`);
+            log(LogLevel.Error, `Unable to issue find command in tickets, ${e}`);
             return null;
         }
     }
@@ -49,7 +49,16 @@ export default class TicketsDao {
         try {
             return await tickets.findOne({ userId: userId, eventId: eventId });
         } catch (e) {
-            log(LogLevel.Error, `Unable to issue find command in events, ${e}`);
+            log(LogLevel.Error, `Unable to issue find command in tickets, ${e}`);
+            return null;
+        }
+    }
+
+    static async updateTicket(ticket: Ticket) {
+        try {
+            return await tickets.updateOne({ _id: ticket._id}, ticket);
+        } catch (e) {
+            log(LogLevel.Error, `Unable to issue update command in tickets, ${e}`);
             return null;
         }
     }
