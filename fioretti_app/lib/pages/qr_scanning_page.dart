@@ -97,7 +97,8 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                 setState(() {
                   isLoading = true;
                 });
-                markTicketAsUsed(widget.ticket.id).then((success) {
+                markTicketAsUsed(widget.ticket.id, !widget.ticket.isUsed)
+                    .then((success) {
                   setState(() {
                     if (success) {
                       isMarkedAsUsed = !isMarkedAsUsed;

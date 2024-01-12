@@ -11,6 +11,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fioretti_app/pages/qr_scanning_page.dart';
+import 'package:flutter_snackbox/flutter_snackbox.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");

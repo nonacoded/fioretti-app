@@ -1,4 +1,6 @@
 import "dart:convert";
+import "package:fioretti_app/widgets/scaffold.dart";
+import "package:flutter/material.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:requests/requests.dart";
 
@@ -48,6 +50,7 @@ Future<SchoolEvent?> fetchEvent(String id) async {
   } else if (response.statusCode == 404) {
     return null;
   } else {
+    scaffoldKey.currentState!.showSnackBar(const SnackBar(content: Text("gi")));
     throw Exception('Failed to load event');
   }
 }

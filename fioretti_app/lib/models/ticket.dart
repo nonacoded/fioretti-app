@@ -66,9 +66,10 @@ Future<Ticket?> fetchOwnTicketByEventId(String eventId) async {
   }
 }
 
-Future<bool> markTicketAsUsed(String ticketId) async {
+Future<bool> markTicketAsUsed(String ticketId, bool v) async {
   final response = await Requests.put(
-      "${dotenv.env['API_URL']!}/tickets/$ticketId/markUsed");
+      "${dotenv.env['API_URL']!}/tickets/$ticketId/markUsed",
+      body: {"value": v});
 
   if (response.statusCode == 200) {
     return true;

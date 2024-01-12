@@ -233,5 +233,5 @@ export async function apiMarkTicketAsUsed(req: Request, res: Response, next: Nex
         return;
     }
 
-    res.status(200).json({message: "Updated ticket"});
+    res.status(200).json();
 }

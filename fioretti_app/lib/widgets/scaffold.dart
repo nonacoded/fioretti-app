@@ -4,6 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fioretti_app/providers.dart';
 import 'package:fioretti_app/models/user.dart';
 
+final GlobalKey<ScaffoldMessengerState> scaffoldKey =
+    GlobalKey<ScaffoldMessengerState>();
+
 class AppScaffold extends ConsumerStatefulWidget {
   final String title;
   final Widget body;
@@ -12,10 +15,10 @@ class AppScaffold extends ConsumerStatefulWidget {
       {super.key, this.title = "Fioretti App", required this.body});
 
   @override
-  ConsumerState<AppScaffold> createState() => _AppScaffoldState();
+  ConsumerState<AppScaffold> createState() => AppScaffoldState();
 }
 
-class _AppScaffoldState extends ConsumerState<AppScaffold> {
+class AppScaffoldState extends ConsumerState<AppScaffold> {
   @override
   Widget build(BuildContext context) {
     int currentIndex = ref.watch(navigationBarIndexProvider);
@@ -47,6 +50,7 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
     ];
 
     Scaffold result = Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Colors.blue,
