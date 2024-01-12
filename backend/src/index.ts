@@ -21,7 +21,7 @@ const port = process.env.PORT;
 
 // Express configuration
 app.use(cors({
-  origin: process.env.ADMIN_PANEL_URL,
+  origin:process.env.ENV !== "dev" ? process.env.ADMIN_PANEL_URL : "http://localhost:3002",
   credentials: true
 }));
 app.use(express.json());
