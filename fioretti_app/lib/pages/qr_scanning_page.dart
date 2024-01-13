@@ -91,26 +91,29 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: isLoading
-            ? null
-            : () {
+      onPressed: /*isLoading*/ true
+          ? null
+          : () {
+              setState(() {
+                isLoading = true;
+              });
+              markTicketAsUsed(widget.ticket.id, !widget.ticket.isUsed)
+                  .then((success) {
                 setState(() {
-                  isLoading = true;
+                  if (success) {
+                    isMarkedAsUsed = !isMarkedAsUsed;
+                    isLoading = false;
+                  }
                 });
-                markTicketAsUsed(widget.ticket.id, !widget.ticket.isUsed)
-                    .then((success) {
-                  setState(() {
-                    if (success) {
-                      isMarkedAsUsed = !isMarkedAsUsed;
-                      isLoading = false;
-                    }
-                  });
-                });
-              },
-        child: Text(isLoading
+              });
+            },
+      child: Text(
+        isLoading
             ? "Laden..."
             : (isMarkedAsUsed
                 ? "Markeer als ongebruikt"
-                : "Markeer als gebruikt")));
+                : "Markeer als gebruikt"),
+      ),
+    );
   }
 }

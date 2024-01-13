@@ -1,4 +1,5 @@
 import "dart:convert";
+import "package:fioretti_app/functions/utils.dart";
 import "package:fioretti_app/widgets/scaffold.dart";
 import "package:flutter/material.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
@@ -39,7 +40,10 @@ Future<List<SchoolEvent>> fetchEvents() async {
     }
     return events;
   } else {
-    throw Exception('Failed to load events');
+    var error =
+        'Failed to load events: ${getErrorMessageFromBody(response.body)}';
+    showSnackBar(error);
+    throw Exception(error);
   }
 }
 
@@ -50,7 +54,9 @@ Future<SchoolEvent?> fetchEvent(String id) async {
   } else if (response.statusCode == 404) {
     return null;
   } else {
-    scaffoldKey.currentState!.showSnackBar(const SnackBar(content: Text("gi")));
-    throw Exception('Failed to load event');
+    var error =
+        "Failed to load event: ${getErrorMessageFromBody(response.body)}}";
+    showSnackBar(error);
+    throw Exception(error);
   }
 }

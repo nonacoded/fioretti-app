@@ -4,9 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fioretti_app/providers.dart';
 import 'package:fioretti_app/models/user.dart';
 
-final GlobalKey<ScaffoldMessengerState> scaffoldKey =
-    GlobalKey<ScaffoldMessengerState>();
-
 class AppScaffold extends ConsumerStatefulWidget {
   final String title;
   final Widget body;
@@ -50,7 +47,6 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
     ];
 
     Scaffold result = Scaffold(
-      key: scaffoldKey,
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Colors.blue,

@@ -7,6 +7,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import 'package:fioretti_app/providers.dart';
 import "package:go_router/go_router.dart";
 import "package:fioretti_app/models/user.dart";
+import "package:fioretti_app/functions/utils.dart";
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -46,24 +47,25 @@ class _HomePageState extends ConsumerState<HomePage> {
           children: [
             const LogoutButton(),
             Text("Welkom ${user.firstName}!"),
-            const Spacer(flex: 10),
-            FutureBuilder<List<SchoolEvent>>(
-              future: futureEvents,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  List<SchoolEvent> events = snapshot.data!;
-                  return ListView.builder(
-                    itemCount: events.length,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      return SchoolEventWidget(event: events[index]);
-                    },
-                  );
-                } else {
-                  return Text("${snapshot.error}");
-                }
-              },
+            Expanded(
+              child: FutureBuilder<List<SchoolEvent>>(
+                future: futureEvents,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<SchoolEvent> events = snapshot.data!;
+                    return ListView.builder(
+                      itemCount: events.length,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        return SchoolEventWidget(event: events[index]);
+                      },
+                    );
+                  } else {
+                    return Text("${snapshot.error}");
+                  }
+                },
+              ),
             ),
           ],
         ),

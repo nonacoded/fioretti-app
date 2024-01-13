@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:fioretti_app/functions/utils.dart';
 import 'package:requests/requests.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -33,6 +34,9 @@ Future<User?> getUserByID(String id) async {
   } else if (response.statusCode == 404) {
     return null;
   } else {
-    throw Exception('Failed to load ticket ${response.body}');
+    showSnackBar(
+        'Failed to load user: ${getErrorMessageFromBody(response.body)}');
+    throw Exception(
+        'Failed to load user: ${getErrorMessageFromBody(response.body)}');
   }
 }

@@ -6,6 +6,7 @@ import "package:fioretti_app/models/user.dart";
 import 'package:fioretti_app/providers.dart';
 import "package:flutter/material.dart";
 import "package:flutter_secure_storage/flutter_secure_storage.dart";
+import "package:fioretti_app/functions/utils.dart";
 import "package:go_router/go_router.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:requests/requests.dart";
@@ -43,6 +44,7 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
           errorMessage =
               "Er is iets fout gegaan bij het inloggen: kon de vervaldatum niet parsen ($e)";
         });
+        showSnackBar(errorMessage);
         return;
       }
 
@@ -51,6 +53,7 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
           errorOccurred = true;
           errorMessage =
               "Er is iets fout gegaan bij het inloggen: de login token is verlopen";
+          showSnackBar(errorMessage);
         });
         return;
       }
@@ -72,6 +75,7 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
           errorOccurred = true;
           errorMessage =
               "Er is iets fout gegaan bij het inloggen: de server heeft geen sessie cookie gestuurd";
+          showSnackBar(errorMessage);
         });
         return;
       }
@@ -96,6 +100,7 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
           errorOccurred = true;
           errorMessage =
               "Er is iets fout gegaan bij het inloggen: [${res.statusCode}] ${error.message}";
+          showSnackBar(errorMessage);
         });
       }
     } else {
@@ -103,6 +108,7 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
         errorOccurred = true;
         errorMessage =
             "Er is iets fout gegaan bij het inloggen: token of vervaldatum is null";
+        showSnackBar(errorMessage);
       });
     }
   }

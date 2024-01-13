@@ -1,4 +1,5 @@
 import "dart:convert";
+import "package:fioretti_app/functions/utils.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:requests/requests.dart";
 import "package:fioretti_app/models/school_event.dart";
@@ -16,7 +17,7 @@ class Ticket {
       this.expiresAt, this.isUsed, this.event);
 
   factory Ticket.fromJson(Map<String, dynamic> json) {
-    print(json['isUsed']);
+    //print(json['isUsed']);
     return Ticket(
       json['_id'] as String,
       json['eventId'] as String,
@@ -39,7 +40,10 @@ Future<List<Ticket>> fetchTickets() async {
     }
     return tickets;
   } else {
-    throw Exception('Failed to load tickets');
+    var error =
+        'Niet gelukt om tickets te laden: ${getErrorMessageFromBody(response.body)}';
+    showSnackBar(error);
+    throw Exception(error);
   }
 }
 
@@ -50,7 +54,10 @@ Future<Ticket?> fetchTicket(String id) async {
   } else if (response.statusCode == 404) {
     return null;
   } else {
-    throw Exception('Failed to load ticket ${response.body}');
+    var error =
+        'Niet gelukt om ticket te laden: ${getErrorMessageFromBody(response.body)}';
+    showSnackBar(error);
+    throw Exception(error);
   }
 }
 
@@ -62,7 +69,10 @@ Future<Ticket?> fetchOwnTicketByEventId(String eventId) async {
   } else if (response.statusCode == 404) {
     return null;
   } else {
-    throw Exception('Failed to load ticket ${response.body}');
+    var error =
+        'Niet gelukt om ticket te laden: ${getErrorMessageFromBody(response.body)}';
+    showSnackBar(error);
+    throw Exception(error);
   }
 }
 
@@ -74,6 +84,9 @@ Future<bool> markTicketAsUsed(String ticketId, bool v) async {
   if (response.statusCode == 200) {
     return true;
   } else {
+    var error =
+        'Niet gelukt om ticket als gebruikt te markeren: ${getErrorMessageFromBody(response.body)}';
+    showSnackBar(error);
     return false;
   }
 }

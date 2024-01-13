@@ -46,7 +46,6 @@ dependencies:
   qr_flutter: ^4.1.0
   barcode_scan2: ^4.3.0
   flutter_svg: ^2.0.9
-  flutter_snackbox: ^2.0.0
 
 
 dev_dependencies:
