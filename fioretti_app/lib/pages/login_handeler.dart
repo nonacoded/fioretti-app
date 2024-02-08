@@ -59,11 +59,21 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
       }
 
       // login confirmation token is correct, now try to exchange it for a session token cookie
-
-      http.Response res = await Requests.post(
-          "${dotenv.env['API_URL']!}/auth/exchangeToken",
-          body: {"confirmationToken": widget.token!},
-          bodyEncoding: RequestBodyEncoding.JSON);
+      http.Response res;
+      String reqUrl = "${dotenv.env['API_URL']!}/auth/exchangeToken";
+      try {
+        res = await Requests.post(reqUrl,
+            body: {"confirmationToken": widget.token!},
+            bodyEncoding: RequestBodyEncoding.JSON);
+      } catch (e) {
+        setState(() {
+          errorOccurred = true;
+          errorMessage =
+              "Er is iets fout gegaan bij het inloggen: kon geen verbinding maken met de server ($e) ($reqUrl)";
+          showSnackBar(errorMessage);
+        });
+        rethrow;
+      }
 
       var hostname = Requests.getHostname(dotenv.env['API_URL']!);
 
@@ -95,6 +105,7 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
         // redirect to home page, but wait until the next frame to prevent a crash
         Future.delayed(Duration.zero, () => context.go("/home"));
       } else {
+        print("Er is iets fout gegaan");
         ApiError error = ApiError.fromJson(jsonDecode(res.body));
         setState(() {
           errorOccurred = true;

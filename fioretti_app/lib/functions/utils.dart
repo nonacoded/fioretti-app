@@ -30,7 +30,9 @@ String getErrorMessageFromBody(dynamic body) {
 
 void showSnackBar(String message) {
   if (scaffoldMessengerKey.currentState != null) {
-    scaffoldMessengerKey.currentState!
-        .showSnackBar(SnackBar(content: Text(message)));
+    scaffoldMessengerKey.currentState!.showSnackBar(SnackBar(
+      content: Text(message),
+      duration: const Duration(seconds: 10),
+    ));
   }
 }
