@@ -83,6 +83,11 @@ class FiorettiApp extends StatelessWidget {
               path: "/qr-scanning",
               builder: (context, state) => const QrScanningPage(),
             ),
+            /*
+            GoRoute(
+              name: "kopen",
+              path: "/kopen",
+              builder: (context, state) => const TicketsKopenPage(),),*/
           ],
         ),
       ),

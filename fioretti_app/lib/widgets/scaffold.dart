@@ -43,7 +43,16 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
         label: "Evenementen",
       ),
       BottomNavigationBarItem(
-          icon: Icon(Icons.local_activity), label: "Tickets"),
+          icon: Icon(Icons.local_activity), label: "Tickets"),        
+      BottomNavigationBarItem(
+        icon: Icon(Icons.shopping_cart), 
+        label: "Kopen"),
+        BottomNavigationBarItem(
+        icon: Icon(Icons.home), 
+        label: "Home"),
+        BottomNavigationBarItem(
+        icon: Icon(Icons.account_circle), 
+        label: "Profiel"),
     ];
 
     Scaffold result = Scaffold(
@@ -52,6 +61,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
         backgroundColor: Colors.lightBlue[900],
       ),
       body: widget.body,
+      backgroundColor: Colors.lightBlue[900],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         items: isAdmin ? adminItems : normalItems,
