@@ -218,6 +218,8 @@ export async function apiMarkTicketAsUsed(req: Request, res: Response, next: Nex
 
     const value = req.body.value as boolean;
 
+    console.log(value);
+
     let ticket = await TicketsDao.getTicketById(new ObjectId(ticketId));
     if (ticket == null) {
         res.status(404).json({message: "Ticket niet gevonden"});
