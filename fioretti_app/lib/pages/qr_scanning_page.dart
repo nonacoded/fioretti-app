@@ -62,6 +62,11 @@ class _QrScanningPageState extends State<QrScanningPage> {
                       : Placeholder()
                 ],
               ),
+            ElevatedButton(
+                onPressed: () {
+                  onBarcodeScanned("659feca27e5a22c34c37c99e");
+                },
+                child: const Text("test"))
           ],
         ),
       ),
@@ -91,7 +96,7 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: /*isLoading*/ true
+      onPressed: isLoading
           ? null
           : () {
               setState(() {

@@ -65,7 +65,7 @@ export default function LoginButton({onFail, onSuccess} : {onFail?: (status: num
 
     return (
         <>
-            <GoogleOAuthProvider clientId="379540512490-857rr1dc48s6kq4tp0ubedeej0166151.apps.googleusercontent.com">
+            <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
                 <GoogleLogin onSuccess={loginUser} onError={googleLoginError} />
             </GoogleOAuthProvider>
         </>
