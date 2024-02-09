@@ -39,7 +39,7 @@ class _StartPageState extends ConsumerState<StartPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Fioretti App"),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.lightBlue[900],
       ),
       body: Center(
         child: loading

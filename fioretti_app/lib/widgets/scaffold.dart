@@ -49,7 +49,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
     Scaffold result = Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.lightBlue[900],
       ),
       body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
