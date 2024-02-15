@@ -63,6 +63,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
       ),
       body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.lightBlue [900],
         currentIndex: currentIndex,
         items: isAdmin ? adminItems : normalItems,
         onTap: (int index) {
@@ -75,7 +76,6 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
             context.go("/qr-scanning");
           }
         },
-        backgroundColor: Colors.blue[900],
       ),
     );
 
