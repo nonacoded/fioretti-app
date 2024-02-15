@@ -77,12 +77,10 @@ Future<Ticket?> fetchOwnTicketByEventId(String eventId) async {
 }
 
 Future<bool> markTicketAsUsed(String ticketId, bool v) async {
-  print("!!!! Marking Ticket As Used/Unused");
   final response = await Requests.put(
       "${dotenv.env['API_URL']!}/tickets/$ticketId/markUsed",
       body: {"value": v},
       bodyEncoding: RequestBodyEncoding.JSON);
-  print({"value": v});
 
   if (response.statusCode == 200) {
     return true;
