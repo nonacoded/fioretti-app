@@ -24,6 +24,7 @@ class _TicketsKopenPageState extends State<TicketsKopenPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      title: "Tickets kopen",
       body: Center(
         child: FutureBuilder<List<Ticket>>(
           future: futureTickets,
