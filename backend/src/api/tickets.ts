@@ -196,6 +196,8 @@ export async function getTicketById(req: Request, res: Response, next: NextFunct
 export async function apiMarkTicketAsUsed(req: Request, res: Response, next: NextFunction) {
     let sessionCookie = req.cookies["session"];
 
+    console.log(req.body);
+
     let user: User;
     try {
         user = await getUserFromSessionCookie(sessionCookie);
@@ -218,7 +220,10 @@ export async function apiMarkTicketAsUsed(req: Request, res: Response, next: Nex
 
     const value = req.body.value as boolean;
 
-    console.log(value);
+    if (value == undefined) {
+        res.status(400).json({message: "value is undefined"});
+        return;
+    }
 
     let ticket = await TicketsDao.getTicketById(new ObjectId(ticketId));
     if (ticket == null) {
