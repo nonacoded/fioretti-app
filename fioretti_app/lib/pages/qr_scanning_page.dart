@@ -17,8 +17,8 @@ class _QrScanningPageState extends State<QrScanningPage> {
   Ticket? scannedTicket;
   User? userThatBoughtTicket;
 
-  void onBarcodeScanned(String barcodeContent) async {
-    Ticket? ticket = await fetchTicket(barcodeContent);
+  void setTicket(String ticketId) async {
+    Ticket? ticket = await fetchTicket(ticketId);
     if (ticket == null) {
       return;
     }
@@ -34,6 +34,10 @@ class _QrScanningPageState extends State<QrScanningPage> {
     });
   }
 
+  void refreshTicket() {
+    setTicket(scannedTicket!.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -45,7 +49,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
               onPressed: () async {
                 final result = await BarcodeScanner.scan();
                 if (result.type == ResultType.Barcode) {
-                  onBarcodeScanned(result.rawContent);
+                  setTicket(result.rawContent);
                 }
               },
             ),
@@ -57,14 +61,26 @@ class _QrScanningPageState extends State<QrScanningPage> {
                     "Ticket gekocht op: ${dateTimeToString(scannedTicket!.createdAt)} ${userThatBoughtTicket!.firstName != null ? 'door ${userThatBoughtTicket!.firstName}' : ''} ${userThatBoughtTicket!.lastName != null ? userThatBoughtTicket!.lastName : ''}",
                     style: const TextStyle(fontSize: 20),
                   ),
+                  scannedTicket!.isUsed
+                      ? const Text(
+                          "Deze ticket is al gebruikt",
+                          style: TextStyle(color: Colors.red, fontSize: 25),
+                        )
+                      : const Text(
+                          "Niet gebruikt",
+                          style: TextStyle(fontSize: 25),
+                        ),
                   scannedTicket != null
-                      ? MarkAsUsedButton(ticket: scannedTicket!)
+                      ? MarkAsUsedButton(
+                          ticket: scannedTicket!,
+                          refreshTicketCallback: refreshTicket,
+                        )
                       : Placeholder()
                 ],
               ),
             ElevatedButton(
                 onPressed: () {
-                  onBarcodeScanned("659feca27e5a22c34c37c99e");
+                  setTicket("659feca27e5a22c34c37c99e");
                 },
                 child: const Text("test"))
           ],
@@ -76,7 +92,9 @@ class _QrScanningPageState extends State<QrScanningPage> {
 
 class MarkAsUsedButton extends StatefulWidget {
   final Ticket ticket;
-  const MarkAsUsedButton({super.key, required this.ticket});
+  final Function refreshTicketCallback;
+  const MarkAsUsedButton(
+      {super.key, required this.ticket, required this.refreshTicketCallback});
 
   @override
   State<MarkAsUsedButton> createState() => _MarkAsUsedButtonState();
@@ -108,6 +126,7 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                   if (success) {
                     isMarkedAsUsed = !isMarkedAsUsed;
                     isLoading = false;
+                    widget.refreshTicketCallback();
                   }
                 });
               });
