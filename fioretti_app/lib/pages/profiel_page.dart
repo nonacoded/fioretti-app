@@ -1,7 +1,5 @@
 import 'package:fioretti_app/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
-import 'package:fioretti_app/models/ticket.dart';
-import 'package:fioretti_app/widgets/ticket_card.dart';
 
 class ProfielPage extends StatefulWidget {
   const ProfielPage({super.key});

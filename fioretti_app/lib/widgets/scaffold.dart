@@ -78,7 +78,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
         },
       ),
     );
-
+/*let op index navigationbar*/
     return result;
   }
 }
