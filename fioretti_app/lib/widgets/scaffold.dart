@@ -40,6 +40,9 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
 
     List<BottomNavigationBarItem> normalItems = const [
       BottomNavigationBarItem(
+        icon: Icon(Icons.home), 
+        label: "Home"),
+      BottomNavigationBarItem(
         icon: Icon(Icons.event),
         label: "Evenementen",
       ),
@@ -48,9 +51,6 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
       BottomNavigationBarItem(
         icon: Icon(Icons.shopping_cart), 
         label: "Kopen"),
-        BottomNavigationBarItem(
-        icon: Icon(Icons.home), 
-        label: "Home"),
         BottomNavigationBarItem(
         icon: Icon(Icons.account_circle), 
         label: "Profiel"),
