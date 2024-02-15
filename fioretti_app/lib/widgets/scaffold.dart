@@ -35,6 +35,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
           icon: Icon(Icons.local_activity), label: "Tickets"),
       BottomNavigationBarItem(
           icon: Icon(Icons.qr_code_scanner), label: "QR scannen"),
+      BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Kopen"),
     ];
 
     List<BottomNavigationBarItem> normalItems = const [
