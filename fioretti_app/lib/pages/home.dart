@@ -45,8 +45,6 @@ class _HomePageState extends ConsumerState<HomePage> {
       body: Center(
         child: Column(
           children: [
-            const LogoutButton(),
-            Text("Welkom ${user.firstName}!"),
             Expanded(
               child: FutureBuilder<List<SchoolEvent>>(
                 future: futureEvents,
