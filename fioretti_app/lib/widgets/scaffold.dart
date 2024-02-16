@@ -27,15 +27,15 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
     }
 
     List<BottomNavigationBarItem> normalItems = const [
-      BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+      BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.white,), label: "Home"),
       BottomNavigationBarItem(
-          icon: Icon(Icons.local_activity), label: "Tickets"),
+          icon: Icon(Icons.local_activity, color: Colors.white,), label: "Tickets"),
       BottomNavigationBarItem(
         icon: Icon(Icons.event, color: Colors.white,),
         label: "Kalender",
       ),
       BottomNavigationBarItem(
-          icon: Icon(Icons.account_circle), label: "Profiel"),
+          icon: Icon(Icons.account_circle, color: Colors.white,), label: "Profiel"),
     ];
 
     List<BottomNavigationBarItem> adminItems =
