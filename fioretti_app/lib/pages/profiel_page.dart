@@ -1,4 +1,5 @@
 import 'package:fioretti_app/widgets/scaffold.dart';
+import "package:fioretti_app/widgets/logout_button.dart";
 import 'package:flutter/material.dart';
 
 class ProfielPage extends StatefulWidget {
@@ -17,6 +18,7 @@ class _ProfielPageState extends State<ProfielPage> {
       title: "Profiel",
       body: Column(
         children: [
+          const LogoutButton(),
                 // title
                 Text("Profiel",
                     style: const TextStyle(
