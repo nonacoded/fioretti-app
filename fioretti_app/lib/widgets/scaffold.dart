@@ -63,7 +63,6 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
       ),
       body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.lightBlue [900],
         currentIndex: currentIndex,
         items: isAdmin ? adminItems : normalItems,
         onTap: (int index) {
@@ -74,8 +73,13 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
             context.go("/tickets");
           } else if (index == 2 && isAdmin) {
             context.go("/qr-scanning");
+          } else if ( index == 3){
+            context.go("/evenement");
+          } else if ( index == 4){
+            context.go("/profiel")
           }
         },
+        backgroundColor: Colors.lightBlue [900],
       ),
     );
 /*let op index navigationbar*/
