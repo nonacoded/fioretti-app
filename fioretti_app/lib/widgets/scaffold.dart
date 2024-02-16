@@ -49,21 +49,20 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
       appBar: AppBar(
         backgroundColor: Colors.lightBlue[900],
           title: Text(
-            "Home",
+            widget.title,
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
           leading: GestureDetector(
-            onTap: () {
+            /*onTap: () {
               Navigator.pushReplacementNamed(context, '/');
-            },
+            },*/
             child: Padding(
               padding: EdgeInsets.all(8.0),
               child: Image.asset(
                 'assets/logo.png',
                 width: 90, // Adjust the width to your desired size
-                height: 90, // Adjust the height to your desired size
-                semanticLabel: 'Home', // Added semantic label for accessibility
+                height: 90, // Adjust the height to your desired size// Added semantic label for accessibility
               ),
             ),
           ),
