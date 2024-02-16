@@ -10,12 +10,15 @@ class ProfielPage extends StatefulWidget {
 }
 
 class _ProfielPageState extends State<ProfielPage> {
+ 
+
   @override
   Widget build(BuildContext context) {
-    return const AppScaffold(
+    return AppScaffold(
       title: "Profiel",
       body: Column(
         children: [
+          const LogoutButton(),
                 // title
                 Text("Profiel",
                     style: const TextStyle(
@@ -23,16 +26,16 @@ class _ProfielPageState extends State<ProfielPage> {
                       fontSize: 30.0,
                     )),
 
-          Row(
-            children: [
-              Icon(Icons.person),
-              Text("gegevens",
-                  style:
-                      TextStyle(fontSize: 13.0, fontStyle: FontStyle.italic)),
-            ],
-          ),
+        Row(
+                  children: [
+                    const Icon(Icons.person),
+                    Text("gegevens",
+                        style: const TextStyle(
+                            fontSize: 13.0, fontStyle: FontStyle.italic)),
+                  ],
+                ),
         ],
       ),
-    );
+    ),
   }
 }

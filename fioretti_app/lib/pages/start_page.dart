@@ -38,7 +38,21 @@ class _StartPageState extends ConsumerState<StartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Fioretti App"),
+        title: const Text("Fioretti App", style: TextStyle(color: Colors.white),),
+        centerTitle: true,
+          leading: GestureDetector(
+            /*onTap: () {
+              Navigator.pushReplacementNamed(context, '/');
+            },*/
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Image.asset(
+                'assets/logo.png',
+                width: 60, // Adjust the width to your desired size
+                height: 60, // Adjust the height to your desired size// Added semantic label for accessibility
+              ),
+            ),
+          ),
         backgroundColor: Colors.lightBlue[900],
       ),
       body: Center(
