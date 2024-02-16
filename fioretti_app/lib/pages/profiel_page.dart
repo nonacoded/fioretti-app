@@ -25,11 +25,10 @@ class _ProfielPageState extends State<ProfielPage> {
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0,
                     )),
-
-        Row(
+                    Row(
                   children: [
                     const Icon(Icons.person),
-                    Text("gegevens",
+                    Text("gegevens", 
                         style: const TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic)),
                   ],
@@ -39,3 +38,4 @@ class _ProfielPageState extends State<ProfielPage> {
     ),
   }
 }
+/*${user.firstName}*/
