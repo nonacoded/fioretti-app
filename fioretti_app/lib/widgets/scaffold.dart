@@ -31,8 +31,8 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
       BottomNavigationBarItem(
           icon: Icon(Icons.local_activity), label: "Tickets"),
       BottomNavigationBarItem(
-        icon: Icon(Icons.event),
-        label: "Evenementen",
+        icon: Icon(Icons.event, color: Colors.white,),
+        label: "Kalender",
       ),
       BottomNavigationBarItem(
           icon: Icon(Icons.account_circle), label: "Profiel"),
