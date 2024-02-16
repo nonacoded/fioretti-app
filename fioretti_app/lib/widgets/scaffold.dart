@@ -65,7 +65,6 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         items: isAdmin ? adminItems : normalItems,
-        backgroundColor: Colors.lightBlue [900],
         onTap: (int index) {
           ref.read(navigationBarIndexProvider.notifier).state = index;
           if (index == 0) {
