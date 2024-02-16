@@ -47,9 +47,27 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
 
     Scaffold result = Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
         backgroundColor: Colors.lightBlue[900],
-      ),
+          title: Text(
+            "Home",
+            style: TextStyle(color: Colors.white),
+          ),
+          centerTitle: true,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, '/');
+            },
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Image.asset(
+                'assets/logo.png',
+                width: 90, // Adjust the width to your desired size
+                height: 90, // Adjust the height to your desired size
+                semanticLabel: 'Home', // Added semantic label for accessibility
+              ),
+            ),
+          ),
+        ),
       body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.grey,
