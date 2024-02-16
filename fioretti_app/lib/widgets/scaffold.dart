@@ -76,7 +76,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
           } else if ( index == 3){
             context.go("/evenement");
           } else if ( index == 4){
-            context.go("/profiel")
+            context.go("/profiel");
           }
         },
         backgroundColor: Colors.lightBlue [900],
