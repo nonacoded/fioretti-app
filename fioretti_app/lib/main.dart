@@ -1,4 +1,5 @@
 import "package:fioretti_app/models/ticket.dart";
+import "package:fioretti_app/pages/profiel_page.dart";
 import "package:fioretti_app/pages/qr_display.dart";
 import 'package:fioretti_app/pages/start_page.dart';
 import "package:fioretti_app/pages/login_handeler.dart";
@@ -83,11 +84,11 @@ class FiorettiApp extends StatelessWidget {
               path: "/qr-scanning",
               builder: (context, state) => const QrScanningPage(),
             ),
-            /*
             GoRoute(
-              name: "kopen",
-              path: "/kopen",
-              builder: (context, state) => const TicketsKopenPage(),),*/
+              name: "profiel",
+              path: "/profile",
+              builder: (context, state) => const ProfielPage(),
+            ),
           ],
         ),
       ),

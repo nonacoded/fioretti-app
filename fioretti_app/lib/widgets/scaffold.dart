@@ -26,35 +26,24 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
       isAdmin = user.isAdmin;
     }
 
-    List<BottomNavigationBarItem> adminItems = const [
-      BottomNavigationBarItem(
-        icon: Icon(Icons.event),
-        label: "Evenementen",
-      ),
+    List<BottomNavigationBarItem> normalItems = const [
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
       BottomNavigationBarItem(
           icon: Icon(Icons.local_activity), label: "Tickets"),
       BottomNavigationBarItem(
-          icon: Icon(Icons.qr_code_scanner), label: "QR scannen"),
-      BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Kopen"),
-    ];
-
-    List<BottomNavigationBarItem> normalItems = const [
-      BottomNavigationBarItem(
-        icon: Icon(Icons.home), 
-        label: "Home"),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.local_activity), label: "Tickets"),        
-      BottomNavigationBarItem(
-        icon: Icon(Icons.shopping_cart), 
-        label: "Kopen"),
-        BottomNavigationBarItem(
         icon: Icon(Icons.event),
         label: "Evenementen",
       ),
-        BottomNavigationBarItem(
-        icon: Icon(Icons.account_circle), 
-        label: "Profiel"),
+      BottomNavigationBarItem(
+          icon: Icon(Icons.account_circle), label: "Profiel"),
     ];
+
+    List<BottomNavigationBarItem> adminItems =
+        List<BottomNavigationBarItem>.from(normalItems)
+          ..addAll([
+            const BottomNavigationBarItem(
+                icon: Icon(Icons.qr_code_scanner), label: "QR scannen"),
+          ]);
 
     Scaffold result = Scaffold(
       appBar: AppBar(
@@ -65,21 +54,22 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         items: isAdmin ? adminItems : normalItems,
+        type: BottomNavigationBarType.fixed,
         onTap: (int index) {
           ref.read(navigationBarIndexProvider.notifier).state = index;
           if (index == 0) {
             context.go("/home");
           } else if (index == 1) {
             context.go("/tickets");
-          } else if (index == 2 && isAdmin) {
+          } else if (index == 2) {
+            context.go("/events");
+          } else if (index == 3) {
+            context.go("/profile");
+          } else if (index == 4 && isAdmin) {
             context.go("/qr-scanning");
-          } else if ( index == 3){
-            context.go("/evenement");
-          } else if ( index == 4){
-            context.go("/profiel")
           }
         },
-        backgroundColor: Colors.lightBlue [900],
+        backgroundColor: Colors.lightBlue[900],
       ),
     );
 /*let op index navigationbar*/
