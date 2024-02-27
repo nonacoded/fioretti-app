@@ -13,9 +13,6 @@ class ProfielPage extends ConsumerStatefulWidget {
   ConsumerState<ProfielPage> createState() => _ProfielPageState();
 }
 
-class _ProfielPageState extends State<ProfielPage> {
- 
-
 class _ProfielPageState extends ConsumerState<ProfielPage> {
   @override
   void initState() {
@@ -31,7 +28,6 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
     final User? user = ref.watch(userProvider);
 
     if (user == null) {
@@ -43,12 +39,14 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
       title: "Profiel",
       body: Column(
         children: [
-                // title
-                Text("Profiel",
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30.0,
-                    )),
+          // title
+          const Text("Profiel",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30.0,
+              )),
+          const LogoutButton(),
+          Text("Welkom ${user.firstName}!"),
 
           Row(
             children: [
