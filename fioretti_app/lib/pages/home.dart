@@ -1,6 +1,6 @@
 import "package:fioretti_app/models/school_event.dart";
 import 'package:fioretti_app/widgets/event_card.dart';
-import "package:fioretti_app/widgets/logout_button.dart";
+/*import "package:fioretti_app/widgets/logout_button.dart";*/
 import "package:fioretti_app/widgets/scaffold.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
@@ -45,8 +45,6 @@ class _HomePageState extends ConsumerState<HomePage> {
       body: Center(
         child: Column(
           children: [
-            const LogoutButton(),
-            Text("Welkom ${user.firstName}!"),
             Expanded(
               child: FutureBuilder<List<SchoolEvent>>(
                 future: futureEvents,
