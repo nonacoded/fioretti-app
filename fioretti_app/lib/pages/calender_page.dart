@@ -36,17 +36,17 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
 
     return AppScaffold(
       title: "Kalender",
-      body: Column(
-        children: [
-          // title
-          const Text("Kalender",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30.0,
-              )),
-          Text("Welkom ${user.firstName}!"),
-        ],
+        body: ListView(
+        children: List.generate(10, (index) {
+          // Hier maak je een EventItemWidget voor elk evenement
+          /*return EventItemWidget(
+            month: 'Maand',
+            day: 'Dag',
+            title: 'Evenement ${index + 1}',
+            description: 'Beschrijving van evenement ${index + 1}',
+          );*/
+        }),
       ),
-    );
+      );
   }
 }
