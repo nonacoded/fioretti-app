@@ -1,4 +1,5 @@
 import "package:fioretti_app/models/ticket.dart";
+import "package:fioretti_app/pages/calender_page.dart";
 import "package:fioretti_app/pages/profiel_page.dart";
 import "package:fioretti_app/pages/qr_display.dart";
 import 'package:fioretti_app/pages/start_page.dart';
@@ -89,6 +90,11 @@ class FiorettiApp extends StatelessWidget {
               name: "profiel",
               path: "/profile",
               builder: (context, state) => const ProfielPage(),
+            ),
+            GoRoute(
+              name: "kalender",
+              path: "/calender",
+              builder: (context, state) => const CalenderPage(),
             ),
           ],
         ),
