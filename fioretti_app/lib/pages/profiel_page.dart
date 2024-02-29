@@ -39,6 +39,10 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
       title: "Profiel",
       body: Column(
         children: [
+         const Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: Text('Mijn gegevens:'),
+            ),
           // title
           const Text("Mijn gegevens", textAlign: TextAlign.left, style: TextStyle(
                 fontWeight: FontWeight.bold,
