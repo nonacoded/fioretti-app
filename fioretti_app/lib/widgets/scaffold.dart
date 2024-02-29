@@ -54,17 +54,24 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
           ),
           centerTitle: true,
           leading: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-          /*leading: GestureDetector(
-            onTap: () {
-              Navigator.pushReplacementNamed(context, '/');
-            },*/
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Image.asset(
-                'assets/logo.png',
-                width: 2000, // Adjust the width to your desired size
-                height: 2000, // Adjust the height to your desired size// Added semantic label for accessibility
+            padding: const EdgeInsets.only(left: 8.0), // Padding from left
+            child: SizedBox(
+              width: 80.0, // Width of the SizedBox, adjust as needed
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, '/');
+                    },
+                    child: Image.asset(
+                      'assets/logo.png',
+                      width: 70, // Adjust the width to your desired size
+                      height: 70, // Adjust the height to your desired size
+                      semanticLabel:
+                          'Home', // Added semantic label for accessibility
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
