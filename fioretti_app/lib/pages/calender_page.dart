@@ -38,6 +38,7 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
       title: "Kalender",
         body: ListView(
         children: List.generate(10, (index) {
+          return Placeholder();
           // Hier maak je een EventItemWidget voor elk evenement
           /*return EventItemWidget(
             month: 'Maand',
