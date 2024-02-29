@@ -65,8 +65,8 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
                     },
                     child: Image.asset(
                       'assets/logo.png',
-                      width: 70, // Adjust the width to your desired size
-                      height: 70, // Adjust the height to your desired size
+                      width: 40, // Adjust the width to your desired size
+                      height: 40, // Adjust the height to your desired size
                       semanticLabel:
                           'Home', // Added semantic label for accessibility
                     ),
