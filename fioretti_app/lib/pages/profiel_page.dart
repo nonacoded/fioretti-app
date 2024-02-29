@@ -47,15 +47,6 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
               )),
           const LogoutButton(),
           Text("Welkom ${user.firstName}!"),
-
-          Row(
-            children: [
-              Icon(Icons.person),
-              Text("gegevens",
-                  style:
-                      TextStyle(fontSize: 13.0, fontStyle: FontStyle.italic)),
-            ],
-          ),
         ],
       ),
     );

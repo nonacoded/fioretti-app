@@ -87,7 +87,7 @@ class FiorettiApp extends StatelessWidget {
             ),
             GoRoute(
               name: "profiel",
-              path: "/profiel",
+              path: "/profile",
               builder: (context, state) => const ProfielPage(),
             ),
           ],
