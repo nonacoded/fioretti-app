@@ -35,7 +35,7 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
     }
 
     return AppScaffold(
-      title: "Calender",
+      title: "Kalender",
       body: Column(
         children: [
           // title
