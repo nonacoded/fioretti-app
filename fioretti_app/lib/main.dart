@@ -8,6 +8,7 @@ import "package:fioretti_app/pages/event_page.dart";
 import "package:fioretti_app/pages/ticket_page.dart";
 import "package:fioretti_app/pages/tickets_page.dart";
 import "package:fioretti_app/pages/profiel_page.dart";
+import "package:fioretti_app/pages/calender_page.dart";
 import "package:flutter/material.dart";
 import "package:fioretti_app/pages/home.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
