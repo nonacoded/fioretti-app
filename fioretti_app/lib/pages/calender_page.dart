@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fioretti_app/providers.dart';
 import "package:go_router/go_router.dart";
 import "package:fioretti_app/models/user.dart";
+import 'package:fioretti_app/functions/utils.dart';
+import 'package:fioretti_app/models/school_event.dart';
 
 class CalenderPage extends ConsumerStatefulWidget {
   const CalenderPage({super.key});
@@ -38,19 +40,9 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
       title: "Kalender",
         body: ListView(
         children: List.generate(10, (index) {
-          /*return GestureDetector(
+          return GestureDetector(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => EvenementDetailsPage(
-                details: EvenementDetails(
-                  title: title,
-                  description: description,
-                ),
-              ),
-            ),
-          );
+          
         },
         child: Card(
           margin: EdgeInsets.all(8.0),
@@ -63,42 +55,36 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      month,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text(day),
-                  ],
+                  // Text("${dateTimeToString(event.date)} verdere info"),
+                   Text(
+                event.title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
                 ),
-                SizedBox(
-                    width:
-                        10), // Spatie tussen Maand/Dag en de titel/beschrijving
+              ),
+              const SizedBox(height: 8.0),
+              Text(
+                event.description,
+                style: const TextStyle(fontSize: 16.0),
+              ),
+               // Spatie tussen Maand/Dag en de titel/beschrijving
                 // Titel en beschrijving
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                      SizedBox(
-                          height: 5), // Spatie tussen titel en beschrijving
-                      Text(description),
+                
                     ],
                   ),
-                ),
               ],
+                ),
             ),
+        ),
+          );
+        }
           ),
-        ));*/
-        String dateTimeToString(DateTime dateTime) {
-  return "${dateTime.day}/${dateTime.month}/${dateTime.year}";
-}
-         // return Placeholder();
+        ));
+       
+  //return "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${minuteToString(dateTime.minute)}";
+
+          //return Placeholder();
           // Hier maak je een EventItemWidget voor elk evenement
           /*return EventItemWidget(
             month: 'Maand',
