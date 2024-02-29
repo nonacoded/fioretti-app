@@ -86,7 +86,9 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
             context.go("/profile");
           } else if (index == 4 && isAdmin) {
             context.go("/qr-scanning");
-          }
+          }else if (index == 4 && isAdmin) {
+            context.go("/calender"); 
+          }         
         },
         backgroundColor: Colors.lightBlue[900],
       ),
