@@ -40,9 +40,11 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
       body: Column(
         children: [
           // title
-          const Text("Profiel",),
+          const Text("Profiel"),
           Text("Welkom ${user.firstName}!"),
-          const Text("Gegevens"),
+          const Text("Gegevens:", style: TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
           const LogoutButton(),
         ],
       ),
