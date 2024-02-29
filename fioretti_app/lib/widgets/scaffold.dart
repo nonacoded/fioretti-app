@@ -53,8 +53,10 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
-          leading: GestureDetector(
-            /*onTap: () {
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+          /*leading: GestureDetector(
+            onTap: () {
               Navigator.pushReplacementNamed(context, '/');
             },*/
             child: Padding(
