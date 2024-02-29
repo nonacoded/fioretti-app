@@ -43,8 +43,10 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
           const Text("Mijn gegevens", textAlign: TextAlign.left, style: TextStyle(
                 fontWeight: FontWeight.bold,
               )),
-          Text("E-mailadres: ${user.email}"),
-          Text("Gebruikersnaam: ${user.firstName} ${user.lastName}", textAlign: TextAlign.left,),
+          const  Text("E-mailadres:"),
+          Text("${user.email}"),
+          const Text("Gebruikersnaam:", textAlign: TextAlign.left,),
+          Text("${user.firstName} ${user.lastName}"),
           const LogoutButton(),
         ],
       ),
