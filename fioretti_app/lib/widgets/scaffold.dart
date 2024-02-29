@@ -80,8 +80,8 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
             context.go("/home");
           } else if (index == 1) {
             context.go("/tickets");
-          } else if (index == 2) {
-            context.go("/events");
+          /*} else if (index == 2) {
+            context.go("/events");*/
           } else if (index == 3) {
             context.go("/profile");
           } else if (index == 4 && isAdmin) {
