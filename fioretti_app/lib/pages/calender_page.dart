@@ -5,7 +5,6 @@ import 'package:fioretti_app/providers.dart';
 import "package:go_router/go_router.dart";
 import "package:fioretti_app/models/user.dart";
 import 'package:fioretti_app/functions/utils.dart';
-import 'package:fioretti_app/models/school_event.dart';
 
 class CalenderPage extends ConsumerStatefulWidget {
   const CalenderPage({super.key});
