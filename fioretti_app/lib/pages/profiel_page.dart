@@ -42,9 +42,10 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
           // title
           const Text("Profiel"),
           Text("Welkom ${user.firstName}!"),
-          const Text("Gegevens:", style: TextStyle(
+          const Text("Mijn gegevens:", style: TextStyle(
                 fontWeight: FontWeight.bold,
               )),
+          Text("Gebruikersnaam: ${user.firstName}"),
           const LogoutButton(),
         ],
       ),

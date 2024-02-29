@@ -29,7 +29,7 @@ class LogoutButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
       onPressed: () => logout(context, ref),
-      child: const Text("Logout"),
+      child: const Text("Uitloggen"),
     );
   }
 }
