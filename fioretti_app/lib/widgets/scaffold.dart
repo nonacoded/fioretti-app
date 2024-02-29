@@ -60,7 +60,9 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
             child: Padding(
               padding: EdgeInsets.all(8.0),
               child: Image.asset(
-                'assets/logo.png',// Adjust the height to your desired size// Added semantic label for accessibility
+                'assets/logo.png',
+                width: 2000, // Adjust the width to your desired size
+                height: 2000, // Adjust the height to your desired size// Added semantic label for accessibility
               ),
             ),
           ),
