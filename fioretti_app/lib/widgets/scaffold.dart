@@ -78,8 +78,8 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
         ),
       body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.grey,
         currentIndex: currentIndex,
         items: isAdmin ? adminItems : normalItems,
         type: BottomNavigationBarType.fixed,
