@@ -41,6 +41,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      title: "Scan QR",
       body: Center(
         child: Column(
           children: [
