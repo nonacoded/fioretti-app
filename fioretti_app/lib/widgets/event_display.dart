@@ -31,17 +31,21 @@ class EventDisplay extends StatelessWidget {
                   children: [
                     Row(
                       children:[
-                    const Icon(Icons.calendar_today),
-                    Text("Datum: ${dateTimeToString(event.date)}",
-                        style: const TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic)),]),
-                    const Icon(Icons.euro),
-                    Text("${event.price}",
-                        style: const TextStyle(fontSize: 13.0)),
-                    const Icon(Icons.location_on),
-                    Text(event.location,
-                        style: const TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic)),
+                        const Icon(Icons.calendar_today),
+                        Text("Datum: ${dateTimeToString(event.date)}",
+                          style: const TextStyle(
+                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
+                    Row( 
+                      children:[ 
+                        const Icon(Icons.euro),
+                        Text("${event.price}",
+                          style: const TextStyle(fontSize: 13.0))]),
+                    Row(
+                      children: [
+                        const Icon(Icons.location_on),
+                        Text(event.location,
+                          style: const TextStyle(
+                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
                   ],
                 ),
                 Text(event.description, style: const TextStyle(fontSize: 16.0)),
