@@ -29,10 +29,12 @@ class EventDisplay extends StatelessWidget {
 
                 Column(
                   children: [
+                    Row(
+                      children:[
                     const Icon(Icons.calendar_today),
                     Text("Datum: ${dateTimeToString(event.date)}",
                         style: const TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic)),
+                            fontSize: 13.0, fontStyle: FontStyle.italic)),]),
                     const Icon(Icons.euro),
                     Text("${event.price}",
                         style: const TextStyle(fontSize: 13.0)),
