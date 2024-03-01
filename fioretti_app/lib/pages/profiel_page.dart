@@ -39,47 +39,19 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
       title: "Profiel",
       body: Column(
         children: [
-          const Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-            child: Text('Mijn gegevens:', textAlign: TextAlign.left, style: TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
-          ),
-          ProfileTile(
-            icon: Icons.account_circle, // Standaard profielfoto-icoon
-            text: "${user.firstName} ${user.lastName}",
-          ),
-          ProfileTile(
-            icon: Icons.email,
-            text: "${user.email}",
-          ),
-          
+         const Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+              child: Text('Mijn gegevens:', textAlign: TextAlign.left, style: TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+            ),
+          const  Text("E-mailadres:"),
+          Text("${user.email}"),
+          const Text("Gebruikersnaam:", textAlign: TextAlign.left,),
+          Text("${user.firstName} ${user.lastName}"),
+          const LogoutButton(),
         ],
       ),
-    );
-  }
-}
-
-class ProfileTile extends StatelessWidget {
-  final IconData icon;
-  final String text;
-
-  const ProfileTile({
-    required this.icon,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: Colors.white, // achtergrondkleur van de cirkelavatar
-        child: Icon(
-          icon,
-          color: Colors.lightBlue[900], // kleur van het pictogram in de cirkelavatar
-        ),
-      ),
-      title: Text(text),
     );
   }
 }
