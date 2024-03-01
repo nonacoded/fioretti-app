@@ -82,7 +82,6 @@ class ProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: Colors.white, // achtergrondkleur van de cirkelavatar
         child: Icon(
           icon,
           color: Colors.lightBlue[900], // kleur van het pictogram in de cirkelavatar
