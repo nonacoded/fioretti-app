@@ -45,16 +45,37 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
               fontWeight: FontWeight.bold,
             )),
           ),
-          ListTile(
-            leading: CircleAvatar(
-              child: Icon(Icons.account_circle), // Standaard profielfoto-icoon
-            ),
-            title: Text("${user.firstName} ${user.lastName}"),
-            subtitle: Text("${user.email}"),
+          ProfileTile(
+            icon: Icons.account_circle, // Standaard profielfoto-icoon
+            text: "${user.firstName} ${user.lastName}",
+          ),
+          ProfileTile(
+            icon: Icons.email,
+            text: "${user.email}",
           ),
           const LogoutButton(),
         ],
       ),
+    );
+  }
+}
+
+class ProfileTile extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  const ProfileTile({
+    required this.icon,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: CircleAvatar(
+        child: Icon(icon),
+      ),
+      title: Text(text),
     );
   }
 }
