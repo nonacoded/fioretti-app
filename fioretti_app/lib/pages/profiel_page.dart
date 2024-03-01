@@ -39,16 +39,19 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
       title: "Profiel",
       body: Column(
         children: [
-         const Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-              child: Text('Mijn gegevens:', textAlign: TextAlign.left, style: TextStyle(
-                fontWeight: FontWeight.bold,
-              )),
+          const Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+            child: Text('Mijn gegevens:', textAlign: TextAlign.left, style: TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Icon(Icons.account_circle), // Standaard profielfoto-icoon
             ),
-          const  Text("E-mailadres:"),
-          Text("${user.email}"),
-          const Text("Gebruikersnaam:", textAlign: TextAlign.left,),
-          Text("${user.firstName} ${user.lastName}"),
+            title: Text("${user.firstName} ${user.lastName}"),
+            subtitle: Text("${user.email}"),
+          ),
           const LogoutButton(),
         ],
       ),
