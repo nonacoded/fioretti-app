@@ -31,7 +31,7 @@ class LogoutButton extends ConsumerWidget {
       onPressed: () => logout(context, ref),
       child: const Text("Uitloggen"),
       style: ElevatedButton.styleFrom(
-              primary: Colors.blue, // achtergrondkleur van de knop
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
               onPrimary: Colors.white, // tekstkleur van de knop
       )
     );
