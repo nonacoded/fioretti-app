@@ -53,7 +53,16 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
             icon: Icons.email,
             text: "${user.email}",
           ),
-          const LogoutButton(),
+          ElevatedButton(
+            onPressed: () {
+              // Voeg hier de functionaliteit toe voor uitloggen
+            },
+            child: Text('Uitloggen'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue, // achtergrondkleur van de knop
+              onPrimary: Colors.white, // tekstkleur van de knop
+            ),
+          ),
         ],
       ),
     );
@@ -73,7 +82,11 @@ class ProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        child: Icon(icon),
+        backgroundColor: Colors.blue, // achtergrondkleur van de cirkelavatar
+        child: Icon(
+          icon,
+          color: Colors.white, // kleur van het pictogram in de cirkelavatar
+        ),
       ),
       title: Text(text),
     );
