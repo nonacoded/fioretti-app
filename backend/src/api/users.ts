@@ -6,7 +6,7 @@ import { getUserFromSessionCookie } from "./auth";
 
 
 
-export async function getUserById(req: Request, res: Response, next: NextFunction) {
+export async function apiGetUserById(req: Request, res: Response, next: NextFunction) {
     const sessionCookie = req.cookies["session"];
     let requester: User;
     try {

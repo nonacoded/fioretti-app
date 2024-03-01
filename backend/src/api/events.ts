@@ -15,7 +15,7 @@ import ApiFuncError from "../interfaces/apiFuncError";
  * @param next Next function
  * @returns All events in the database
  */
-export async function getSchoolEvents(req: Request, res: Response, next: NextFunction) {
+export async function apiGetSchoolEvents(req: Request, res: Response, next: NextFunction) {
     let events: SchoolEvent[] | null;
     try {
         events = await EventsDao.getSchoolEvents();
@@ -34,7 +34,7 @@ export async function getSchoolEvents(req: Request, res: Response, next: NextFun
 }
 
 
-export async function getSchoolEvent(req: Request, res: Response, next: NextFunction) {
+export async function apiGetSchoolEvent(req: Request, res: Response, next: NextFunction) {
     let event: SchoolEvent | null;
     try {
         event = await EventsDao.getSchoolEventById(new ObjectId(req.params.id));
@@ -62,7 +62,7 @@ export async function getSchoolEvent(req: Request, res: Response, next: NextFunc
  * @returns 201 code if the event was inserted successfully, 400 code if the request body was invalid, 500 code if an error occured
  */
 
-export async function insertSchoolEvent(req: Request, res: Response, next: NextFunction) {
+export async function apiInsertSchoolEvent(req: Request, res: Response, next: NextFunction) {
     try {
         const sessionCookie = req.cookies["session"];
 
@@ -131,7 +131,7 @@ export async function insertSchoolEvent(req: Request, res: Response, next: NextF
 }
 
 
-export async function editSchoolEvent(req: Request, res: Response, next: NextFunction) {
+export async function apiEditSchoolEvent(req: Request, res: Response, next: NextFunction) {
     try {
         const sessionCookie = req.cookies["session"];
 

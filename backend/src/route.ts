@@ -1,23 +1,23 @@
 import express from 'express';
-import { editSchoolEvent, getSchoolEvent, getSchoolEvents, insertSchoolEvent } from './api/events';
+import { apiEditSchoolEvent, apiGetSchoolEvent, apiGetSchoolEvents, apiInsertSchoolEvent } from './api/events';
 import { apiAdminPanelLogin, apiExchangeConfirmationToken, apiLoginUser, apiLogoutUser, apiVerifySession } from './api/auth';
-import { apiMarkTicketAsUsed, createTicket, getTicketById, getTickets } from './api/tickets';
-import { getUserById } from './api/users';
+import { apiMarkTicketAsUsed, apiClaimFreeTicket, apiGetTicketById, apiGetTickets } from './api/tickets';
+import { apiGetUserById } from './api/users';
 
 
 
 const router = express.Router();
 
 
-router.route("/events").get(getSchoolEvents).post(insertSchoolEvent);
+router.route("/events").get(apiGetSchoolEvents).post(apiInsertSchoolEvent);
 
-router.route("/events/:id").get(getSchoolEvent).put(editSchoolEvent);
+router.route("/events/:id").get(apiGetSchoolEvent).put(apiEditSchoolEvent);
 
-router.route("/events/:id/tickets").post(createTicket);
+router.route("/events/:id/tickets").post(apiClaimFreeTicket);
 
-router.route("/tickets").get(getTickets);
+router.route("/tickets").get(apiGetTickets);
 
-router.route("/tickets/:id").get(getTicketById);
+router.route("/tickets/:id").get(apiGetTicketById);
 
 router.route("/tickets/:id/markUsed").put(apiMarkTicketAsUsed);
 
@@ -31,6 +31,6 @@ router.route("/auth/verifySession").post(apiVerifySession);
 
 router.route("/admin/auth/login").post(apiAdminPanelLogin);
 
-router.route("/users/:id").get(getUserById);
+router.route("/users/:id").get(apiGetUserById);
 
 export default router;

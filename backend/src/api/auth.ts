@@ -250,7 +250,7 @@ export async function getUserFromSessionCookie(sessionCookie: any) {
         let err: ApiFuncError = {
             message: "Je bent niet ingelogd",
             code: 401
-        }
+        };
         throw err;
     }
 

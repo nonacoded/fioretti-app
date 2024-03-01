@@ -11,7 +11,8 @@ import { TicketWithEvent, ticketToTicketWithEvent } from "../interfaces/ticket";
 
 
 
-export async function createTicket(req: Request, res: Response, next: NextFunction) {
+
+export async function apiClaimFreeTicket(req: Request, res: Response, next: NextFunction) {
     let sessionCookie = req.cookies["session"];
 
     let user: User;
@@ -36,10 +37,31 @@ export async function createTicket(req: Request, res: Response, next: NextFuncti
         return;
     }
 
+    if (event.price >= 0.1 && !user.isAdmin) {
+        res.status(400).json({message: "Dit evenement is niet gratis"});
+        return;
+    }
 
+    let ticket: Ticket;
+    try {
+        ticket = await createTicket(event, user);
+    } catch (err) {
+        const e = err as ApiFuncError;
+        res.status(e.code).json({message: e.message});
+        return;
+    }
+    
+   
+
+    res.status(200).json({message: "Ticket inserted"});
+}
+
+
+
+export async function createTicket(event: SchoolEvent, user: User) {
     const ticket: Ticket = {
         _id: new ObjectId(),
-        eventId: new ObjectId(eventId),
+        eventId: event._id,
         userId: user._id,
         createdAt: new Date(),
         expiresAt: new Date(event.date.getTime() + 1000 * 60 * 60 * 24 * 2), // expires after 2 days
@@ -48,21 +70,20 @@ export async function createTicket(req: Request, res: Response, next: NextFuncti
 
     const result = await TicketsDao.insertTicket(ticket);
     if (result == null) {
-        res.status(500).json({message: "Niet gelukt om ticket toe te voegen"});
-        return;
+        let err: ApiFuncError = {
+            message: "Niet gelukt om ticket toe te voegen", 
+            code: 500
+        };
+        throw err;
     }
+    return ticket;
 
-    res.status(200).json({message: "Ticket inserted"});
 }
 
 
 
 
-
-
-
-
-export async function getTickets(req: Request, res: Response, next: NextFunction) {
+export async function apiGetTickets(req: Request, res: Response, next: NextFunction) {
     let sessionCookie = req.cookies["session"];
 
     let user: User;
@@ -81,7 +102,7 @@ export async function getTickets(req: Request, res: Response, next: NextFunction
 
 
     if (req.query.event) {
-        getTicketByUserIdAndEventId(req, res, next, user);
+        apiGetTicketByUserIdAndEventId(req, res, next, user);
         return;
     }
     
@@ -107,7 +128,7 @@ export async function getTickets(req: Request, res: Response, next: NextFunction
 }
 
 
-async function getTicketByUserIdAndEventId(req: Request, res: Response, next: NextFunction, user: User) {
+async function apiGetTicketByUserIdAndEventId(req: Request, res: Response, next: NextFunction, user: User) {
 
     let eventId = req.query.event;
 
@@ -139,7 +160,7 @@ async function getTicketByUserIdAndEventId(req: Request, res: Response, next: Ne
 
 
 
-export async function getTicketById(req: Request, res: Response, next: NextFunction) {
+export async function apiGetTicketById(req: Request, res: Response, next: NextFunction) {
     let sessionCookie = req.cookies["session"];
 
     let user: User;
