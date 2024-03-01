@@ -22,7 +22,7 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
 
     if (user == null) {
       context.go("/");
-      return;
+      return Placeholder;
     }
   }
 
@@ -34,7 +34,7 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
       return const Text(
           "Geen gebruiker gevonden, dit is een bug. Probeer de app opnieuw te starten.");
     }
-    else return  Placeholder();
+   
 
   /* return AppScaffold(
       title: "Kalender",
