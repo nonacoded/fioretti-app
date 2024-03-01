@@ -34,8 +34,9 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
       return const Text(
           "Geen gebruiker gevonden, dit is een bug. Probeer de app opnieuw te starten.");
     }
+    return const Placeholder();
 
-    return AppScaffold(
+  /* return AppScaffold(
       title: "Kalender",
         body: ListView(
         children: List.generate(10, (index) {
@@ -54,7 +55,7 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                  // Text("${dateTimeToString(event.date)} verdere info"),
+                  Text("${dateTimeToString(event.date)} verdere info"),
                    Text(
                 event.title,
                 style: const TextStyle(
@@ -79,11 +80,11 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
           );
         }
           ),
-        ));
+        ));*/
        
   //return "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${minuteToString(dateTime.minute)}";
 
-          //return Placeholder();
+    
           // Hier maak je een EventItemWidget voor elk evenement
           /*return EventItemWidget(
             month: 'Maand',
@@ -91,8 +92,8 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
             title: 'Evenement ${index + 1}',
             description: 'Beschrijving van evenement ${index + 1}',
           );*/
-        }),
-      ),
-      );
+      //  }),
+    //  ),
+  //    );
   }
 }
