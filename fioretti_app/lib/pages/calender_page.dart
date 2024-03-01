@@ -52,7 +52,7 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
           margin: EdgeInsets.all(8.0),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
+            child: Row( 
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Maand en Dag labels
