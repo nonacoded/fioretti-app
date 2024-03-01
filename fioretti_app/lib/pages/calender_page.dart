@@ -22,7 +22,7 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
 
     if (user == null) {
       context.go("/");
-      return Placeholder;
+      return;
     }
   }
 
@@ -34,17 +34,21 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
       return const Text(
           "Geen gebruiker gevonden, dit is een bug. Probeer de app opnieuw te starten.");
     }
-   
 
-  /* return AppScaffold(
+   return AppScaffold(
       title: "Kalender",
         body: ListView(
         children: List.generate(10, (index) {
-          return GestureDetector(
+          /*return GestureDetector(
         onTap: () {
           
-        },
-        child: Card(
+       },
+          );*/
+          return const Placeholder();
+  })
+        )
+   );
+       /* child: Card(
           margin: EdgeInsets.all(8.0),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -80,11 +84,11 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
           );
         }
           ),
-        ));*/
+        ));
        
   //return "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${minuteToString(dateTime.minute)}";
 
-    
+          //return Placeholder();
           // Hier maak je een EventItemWidget voor elk evenement
           /*return EventItemWidget(
             month: 'Maand',
@@ -92,8 +96,8 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
             title: 'Evenement ${index + 1}',
             description: 'Beschrijving van evenement ${index + 1}',
           );*/
-      //  }),
-    //  ),
-  //    );
+        }),
+      ),
+      );
   }
 }
