@@ -31,7 +31,7 @@ class _TicketPageState extends State<TicketPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: "Ticket",
+      title: "Gekochte ticket",
       body: Center(
         child: ticket == null
             ? (!finishedLoading
