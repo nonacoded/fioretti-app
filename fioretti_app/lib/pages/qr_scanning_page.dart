@@ -86,7 +86,11 @@ class _QrScanningPageState extends State<QrScanningPage> {
                 onPressed: () {
                   setTicket("659feca27e5a22c34c37c99e");
                 },
-                child: const Text("test"))
+                child: const Text("test"),
+                style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
+              onPrimary: Colors.white, // tekstkleur van de knop
+            ),)
           ],
         ),
       ),
@@ -142,6 +146,7 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                 ? "Markeer als ongebruikt"
                 : "Markeer als gebruikt"),
       ),
+      
     );
   }
 }
