@@ -146,6 +146,10 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                 ? "Markeer als ongebruikt"
                 : "Markeer als gebruikt"),
       ),
+      style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
+              onPrimary: Colors.white, // tekstkleur van de knop
+            ),
       
     );
   }
