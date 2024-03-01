@@ -31,7 +31,7 @@ class EventDisplay extends StatelessWidget {
                   children: [
                     Row(
                       children:[
-                        const Icon(Icons.calendar_today),
+                        const Icon(Icons.calendar_month),
                         Text("Datum: ${dateTimeToString(event.date)}",
                           style: const TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
