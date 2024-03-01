@@ -47,7 +47,7 @@ class _EventPageState extends State<EventPage> {
     return AppScaffold(
       title: event == null
           ? (!finishedLoading ? "Bezig met laden..." : "Evenement")
-          : event!.title,
+          : event!.title, //hier eigenlijk titel "Ticket kopen"
       body: Center(
         child: event == null
             ? Text(!finishedLoading
