@@ -37,7 +37,7 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
 
     return AppScaffold(
       title: "Profiel",
-      body: Row(
+      body: Column(
         children: [
          const Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
