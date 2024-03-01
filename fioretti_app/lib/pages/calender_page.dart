@@ -34,7 +34,7 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
       return const Text(
           "Geen gebruiker gevonden, dit is een bug. Probeer de app opnieuw te starten.");
     }
-    return  Placeholder();
+    else return  Placeholder();
 
   /* return AppScaffold(
       title: "Kalender",
