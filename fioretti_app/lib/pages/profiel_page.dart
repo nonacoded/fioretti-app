@@ -59,7 +59,7 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
             },
             child: Text('Uitloggen'),
             style: ElevatedButton.styleFrom(
-              primary: Colors.blue, // achtergrondkleur van de knop
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
               onPrimary: Colors.white, // tekstkleur van de knop
             ),
           ),
@@ -82,7 +82,7 @@ class ProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: Colors.blue, // achtergrondkleur van de cirkelavatar
+        backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de cirkelavatar
         child: Icon(
           icon,
           color: Colors.white, // kleur van het pictogram in de cirkelavatar
