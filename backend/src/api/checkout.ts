@@ -37,7 +37,7 @@ export async function apiCreateCheckoutSession(req: Request, res: Response, next
         return;
     }
 
-    const session = await 
+    //const session = await 
 
 
 
