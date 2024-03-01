@@ -46,6 +46,10 @@ class _QrScanningPageState extends State<QrScanningPage> {
           children: [
             ElevatedButton(
               child: const Text('Scan QR'),
+              style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
+              onPrimary: Colors.white, // tekstkleur van de knop
+            ),
               onPressed: () async {
                 final result = await BarcodeScanner.scan();
                 if (result.type == ResultType.Barcode) {
