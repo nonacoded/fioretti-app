@@ -6,14 +6,14 @@ import "package:go_router/go_router.dart";
 import "package:fioretti_app/models/user.dart";
 import 'package:fioretti_app/functions/utils.dart';
 
-class CalenderPage extends ConsumerStatefulWidget {
-  const CalenderPage({super.key});
+class CalendarPage extends ConsumerStatefulWidget {
+  const CalendarPage({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<CalenderPage> createState() => _CalenderPageState();
+  ConsumerState<CalendarPage> createState() => _CalendarPageState();
 }
 
-class _CalenderPageState extends ConsumerState<CalenderPage> {
+class _CalendarPageState extends ConsumerState<CalendarPage> {
   @override
   void initState() {
     super.initState();
@@ -21,7 +21,7 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
     User? user = ref.read(userProvider);
 
     if (user == null) {
-      context.go("/");
+      Navigator.pushNamed(context, "/");
       return;
     }
   }
@@ -35,69 +35,49 @@ class _CalenderPageState extends ConsumerState<CalenderPage> {
           "Geen gebruiker gevonden, dit is een bug. Probeer de app opnieuw te starten.");
     }
 
-   return AppScaffold(
+    // Voorbeeldlijst van evenementen
+    List<Event> events = [...]; // Vervang dit met je eigen evenementgegevens
+
+    return AppScaffold(
       title: "Kalender",
-        body: ListView(
-        children: List.generate(10, (index) {
-          /*return GestureDetector(
-        onTap: () {
-          
-       },
-          );*/
-          return const Placeholder();
-  })
-        )
-   );
-       /* child: Card(
-          margin: EdgeInsets.all(8.0),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row( 
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Maand en Dag labels
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                  Text("${dateTimeToString(event.date)} verdere info"),
-                   Text(
-                event.title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                ),
-              ),
-              const SizedBox(height: 8.0),
-              Text(
-                event.description,
-                style: const TextStyle(fontSize: 16.0),
-              ),
-               // Spatie tussen Maand/Dag en de titel/beschrijving
-                // Titel en beschrijving
-                
+      body: ListView.builder(
+        itemCount: events.length,
+        itemBuilder: (context, index) {
+          Event event = events[index];
+          return Card(
+            margin: EdgeInsets.all(8.0),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Maand en Dag labels
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${event.date.day}/${event.date.month}/${event.date.year} ${event.date.hour}:${minuteToString(event.date.minute)}"),
+                      // Meer informatie over het evenement
+                      Text(
+                        event.title,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                      const SizedBox(height: 8.0),
+                      Text(
+                        event.description,
+                        style: const TextStyle(fontSize: 16.0),
+                      ),
                     ],
                   ),
-              ],
-                ),
+                ],
+              ),
             ),
-        ),
           );
-        }
-          ),
-        ));
-       
-  //return "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${minuteToString(dateTime.minute)}";
-
-          //return Placeholder();
-          // Hier maak je een EventItemWidget voor elk evenement
-          /*return EventItemWidget(
-            month: 'Maand',
-            day: 'Dag',
-            title: 'Evenement ${index + 1}',
-            description: 'Beschrijving van evenement ${index + 1}',
-          );*/
-        }),
+        },
       ),
-      );*/
+    );
   }
 }
