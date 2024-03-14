@@ -37,7 +37,7 @@ export async function apiCreateCheckoutSession(req: Request, res: Response, next
     }
 
     const price = event.price;
-    if (price < 0.1) {
+    if (price < 0.10) {
         res.status(400).json({ message: "Evenement is gratis, er is een request naar de verkeerde endpoint gestuurt. Herstart de app en probeer het opnieuw" });
         return;
     }
