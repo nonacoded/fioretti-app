@@ -31,6 +31,7 @@ export function schoolEventToSchoolEventWithIntDate(event: SchoolEvent) {
         title: event.title,
         description: event.description,
         date: event.date.getTime(),
+        time: event.time.getTime(),
         location: event.location,
         price: event.price
     } as SchoolEventWithIntDate;
