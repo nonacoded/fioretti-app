@@ -10,6 +10,7 @@ export default interface SchoolEvent {
     title: string;
     description: string;
     date: Date;
+    time: Time;
     location: string;
     price: number;
 }
@@ -20,6 +21,7 @@ export interface SchoolEventWithIntDate {
     title: string;
     description: string;
     date: number;
+    time: number;
     location: string;
     price: number;
 }
