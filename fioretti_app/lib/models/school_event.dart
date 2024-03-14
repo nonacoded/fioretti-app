@@ -10,10 +10,11 @@ class SchoolEvent {
   final String title;
   final String description;
   final DateTime date;
+  final DateTime time;
   final String location;
   final double price;
 
-  const SchoolEvent(this.id, this.title, this.description, this.date,
+  const SchoolEvent(this.id, this.title, this.description, this.date, this.time,
       this.location, this.price);
 
   factory SchoolEvent.fromJson(Map<String, dynamic> json) {
@@ -25,6 +26,7 @@ class SchoolEvent {
         json['title'] as String,
         json['description'] as String,
         DateTime.fromMillisecondsSinceEpoch(json['date']),
+        DateTime.fromMillisecondsSinceEpoch(json['time']),
         json['location'] as String,
         json['price'] as double);
   }

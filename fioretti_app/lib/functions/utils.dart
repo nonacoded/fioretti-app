@@ -15,7 +15,11 @@ String dateTimeToString(DateTime dateTime) {
 }
 
 String dateToString(DateTime date) {
-  return "${date.day}/${date.month}/${date.year}}";
+  return "${date.day}/${date.month}/${date.year}";
+}
+
+String timeToString(DateTime time) {
+  return "${time.hour}:${minuteToString(time.minute)}";
 }
 
 String getErrorMessageFromBody(dynamic body) {
