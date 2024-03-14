@@ -19,6 +19,7 @@ class EventDisplay extends StatelessWidget {
             width: width * 0.8,
             height: height * 0.4,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // title
                 Text(event.title,
@@ -26,7 +27,6 @@ class EventDisplay extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0,
                     )),
-
                 Column(
                   children: [
                     Row(
