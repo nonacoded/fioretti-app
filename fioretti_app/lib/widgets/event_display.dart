@@ -22,11 +22,11 @@ class EventDisplay extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // title
-                /*Text(event.title,
+                Text(event.title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0,
-                    )),*/
+                    )),
                 Column(
                   children: [
                     Row(
@@ -35,12 +35,12 @@ class EventDisplay extends StatelessWidget {
                         Text("Datum: ${dateToString(event.date)}",
                           style: const TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
-                    /*Row(
+                    Row(
                       children:[
                         const Icon(Icons.schedule),
-                        Text("Tijd: ${dateTimeToString(event.date)}",
+                        const Text("Tijd: ...",
                           style: const TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic))]),*/
+                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     Row( 
                       children:[ 
                         const Icon(Icons.euro),
