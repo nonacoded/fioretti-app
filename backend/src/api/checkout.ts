@@ -8,10 +8,15 @@ import TicketsDao from "../DAO/ticketsDao";
 import SchoolEvent from "../interfaces/event";
 import EventsDao from "../DAO/eventsDao";
 import { TicketWithEvent, ticketToTicketWithEvent } from "../interfaces/ticket";
+import GlobalVars from "../globalVars";
 
 
 
 export async function apiCreateCheckoutSession(req: Request, res: Response, next: NextFunction) {
+
+    const stripe = GlobalVars.stripeObject;
+
+
     const sessionCookie = req.cookies["session"];
 
     let user: User;
@@ -37,7 +42,21 @@ export async function apiCreateCheckoutSession(req: Request, res: Response, next
         return;
     }
 
-    //const session = await 
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['ideal'],
+        line_items: [
+            {
+                price_data: {
+                    currency: 'eur',
+                    product_data: {
+                        name: event.name,
+                    },
+                    unit_amount: price * 100,
+                },
+                quantity: 1,
+            },
+        ],
+    });
 
 
 
