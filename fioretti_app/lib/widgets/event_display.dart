@@ -42,11 +42,13 @@ class EventDisplay extends StatelessWidget {
                          Text("Tijd: ..:..",
                           style:  TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
+                    const SizedBox(height: 100),
                     Row( 
                       children:[ 
                         const Icon(Icons.euro),
                         Text("${event.price}",
                           style: const TextStyle(fontSize: 13.0))]),
+                    const SizedBox(height: 100),
                     Row(
                       children: [
                         const Icon(Icons.location_on),
