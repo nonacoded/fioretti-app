@@ -53,20 +53,10 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
             icon: Icons.email,
             text: "${user.email}",
           ),
-          ElevatedButton(
-            onPressed: () {
-              // Voeg hier de functionaliteit toe voor uitloggen
-            },
-            child: Text('Uitloggen'),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
-              onPrimary: Colors.white, // tekstkleur van de knop
-            ),
-          ),
-        ],
+          const LogoutButton(),
+        ]
       ),
-    );
-  }
+  );}
 }
 
 class ProfileTile extends StatelessWidget {

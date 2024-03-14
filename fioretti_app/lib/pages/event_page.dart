@@ -68,6 +68,10 @@ class _EventPageState extends State<EventPage> {
                           },
                     child:
                         Text(!boughtTicket ? "Koop ticket" : "Ticket gekocht"),
+                        style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
+              onPrimary: Colors.white, // tekstkleur van de knop
+            ),
                   )
                 ],
               ),

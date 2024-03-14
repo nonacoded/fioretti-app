@@ -41,11 +41,16 @@ class _QrScanningPageState extends State<QrScanningPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      title: "Scan QR",
       body: Center(
         child: Column(
           children: [
             ElevatedButton(
               child: const Text('Scan QR'),
+              style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
+              onPrimary: Colors.white, // tekstkleur van de knop
+            ),
               onPressed: () async {
                 final result = await BarcodeScanner.scan();
                 if (result.type == ResultType.Barcode) {
@@ -82,7 +87,11 @@ class _QrScanningPageState extends State<QrScanningPage> {
                 onPressed: () {
                   setTicket("659feca27e5a22c34c37c99e");
                 },
-                child: const Text("test"))
+                child: const Text("test"),
+                style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
+              onPrimary: Colors.white, // tekstkleur van de knop
+            ),)
           ],
         ),
       ),
@@ -138,6 +147,11 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                 ? "Markeer als ongebruikt"
                 : "Markeer als gebruikt"),
       ),
+      style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
+              onPrimary: Colors.white, // tekstkleur van de knop
+            ),
+      
     );
   }
 }
