@@ -54,7 +54,7 @@ class _EventPageState extends State<EventPage> {
                 ? "Bezig met laden..."
                 : "Evenement niet gevonden")
             : Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   EventDisplay(event: event!),
                   ElevatedButton(
