@@ -48,7 +48,7 @@ class _EventPageState extends State<EventPage> {
       title: event == null
           ? (!finishedLoading ? "Bezig met laden..." : "Evenement")
           : event!.title, //hier eigenlijk titel "Ticket kopen"
-      body: Center(
+      body: /*Center(*/
         child: event == null
             ? Text(!finishedLoading
                 ? "Bezig met laden..."
@@ -76,7 +76,7 @@ class _EventPageState extends State<EventPage> {
                 ],
               ),
       ),
-    );
+   /* );*/
   }
 }
 
