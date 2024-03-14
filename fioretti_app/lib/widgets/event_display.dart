@@ -22,11 +22,11 @@ class EventDisplay extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // title
-                Text(event.title,
+                /*Text(event.title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0,
-                    )),
+                    )),*/
                 Column(
                   children: [
                     Row(
