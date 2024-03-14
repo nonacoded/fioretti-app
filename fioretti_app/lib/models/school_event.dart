@@ -26,7 +26,7 @@ class SchoolEvent {
         json['title'] as String,
         json['description'] as String,
         DateTime.fromMillisecondsSinceEpoch(json['date']),
-        DateTime.fromMillisecondsSinceEpoch(json['time']),
+        DateTime.fromMillisecondsSinceEpoch(json['date']),
         json['location'] as String,
         json['price'] as double);
   }
