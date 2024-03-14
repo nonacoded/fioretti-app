@@ -9,6 +9,8 @@ import UsersDao from './DAO/usersDao';
 import LoginConfirmationsDao from './DAO/loginConfirmationsDao';
 import SessionsDao from './DAO/sessionsDao';
 import TicketsDao from './DAO/ticketsDao';
+import Stripe from 'stripe';
+import GlobalVars from './globalVars';
 
 
 // Load environment variables from .env file, where API keys and passwords are configured
@@ -40,6 +42,10 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
   res.status(500).send(`Error (${err})`);
 });
+
+
+// stripe setup
+GlobalVars.stripeObject = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 
 // Connect to MongoDB

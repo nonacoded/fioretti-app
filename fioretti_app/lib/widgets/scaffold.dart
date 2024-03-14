@@ -65,8 +65,8 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
                     },
                     child: Image.asset(
                       'assets/logo.png',
-                      width: 60, // Adjust the width to your desired size
-                      height: 60, // Adjust the height to your desired size
+                      width: 42, // Adjust the width to your desired size
+                      height: 42, // Adjust the height to your desired size
                       semanticLabel:
                           'Home', // Added semantic label for accessibility
                     ),
@@ -96,7 +96,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
           } else if (index == 4 && isAdmin) {
             context.go("/qr-scanning");
           }else if (index == 2) {
-            context.go("/calender"); 
+            context.go("/calendar"); 
           }         
         },
         backgroundColor: Colors.lightBlue[900],

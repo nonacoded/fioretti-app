@@ -94,8 +94,8 @@ class FiorettiApp extends StatelessWidget {
             ),
             GoRoute(
               name: "kalender",
-              path: "/calender",
-              builder: (context, state) => const CalenderPage(),
+              path: "/calendar",
+              builder: (context, state) => const CalendarPage(),
             ),
           ],
         ),
