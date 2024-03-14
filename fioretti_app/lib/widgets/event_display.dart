@@ -36,12 +36,12 @@ class EventDisplay extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     
-                   /* Row(
+                    Row(
                       children:[
                         const Icon(Icons.schedule),
-                        Text("Tijd: ${timeToString(event.time)}",
+                        Text("Tijd: ${timeToString(event.date)}",
                           style: const TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic))]),*/
+                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     Row( 
                       children:[ 
                         const Icon(Icons.euro),
