@@ -24,7 +24,7 @@ class EventDisplay extends StatelessWidget {
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
-                    )),
+                    ), textAlign: TextAlign.left,),
                     const SizedBox(height: 10),
                 Column(
                   children: [
