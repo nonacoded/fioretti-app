@@ -18,7 +18,6 @@ class EventDisplay extends StatelessWidget {
             width: width * 0.8,
             height: height * 0.4,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // title
                 Text(event.title,
