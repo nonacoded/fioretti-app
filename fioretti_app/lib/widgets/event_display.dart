@@ -15,7 +15,6 @@ class EventDisplay extends StatelessWidget {
     return Stack(
       children: [
         Container(
-            alignment: Alignment.center,
             width: width * 0.8,
             height: height * 0.4,
             child: Column(
@@ -27,6 +26,7 @@ class EventDisplay extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0,
                     )),
+                    const SizedBox(height: 10),
                 Column(
                   children: [
                     Row(
