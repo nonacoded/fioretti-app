@@ -16,7 +16,7 @@ class EventDisplay extends StatelessWidget {
       children: [
         Container(
             width: width * 0.9,
-            height: height * 0.4,
+            height: height * 0.9,
             child: Column(
               children: [
                 // title
