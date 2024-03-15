@@ -1,46 +1,44 @@
 import 'dart:convert';
-import 'package:fioretti_app/main.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:fioretti_app/main.dart';
 
-String minuteToString(int minute) {
-  if (minute < 10) {
-    return "0$minute";
-  } else {
-    return "$minute";
-  }
+String minuutNaarString(int minuut) {
+  return minuut < 10 ? "0$minuut" : "$minuut";
 }
 
-String dateTimeToString(DateTime dateTime) {
-  return "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${minuteToString(dateTime.minute)}";
+String datumTijdNaarString(DateTime datumTijd) {
+  final format = DateFormat('EEEE, d MMMM y', 'nl_NL'); // Voor Nederlandse datums
+  return "${format.format(datumTijd)} ${datumTijd.hour}:${minuutNaarString(datumTijd.minute)}";
 }
 
-String dateToString(DateTime date) {
-  return "${date.day}/${date.month}/${date.year}";
+String datumNaarString(DateTime datum) {
+  final format = DateFormat('EEEE, d MMMM y', 'nl_NL'); // Voor Nederlandse datums
+  return format.format(datum);
 }
 
-String timeToString(DateTime time) {
-  return "${time.hour}:${minuteToString(time.minute)}";
+String tijdNaarString(DateTime tijd) {
+  return "${tijd.hour}:${minuutNaarString(tijd.minute)}";
 }
 
-String getErrorMessageFromBody(dynamic body) {
+String foutMeldingUitBody(dynamic body) {
   try {
-    Map<String, dynamic> json = jsonDecode(body);
-    if (json.containsKey("message") && json["message"] is String) {
-      return json["message"];
+    final json = jsonDecode(body) as Map<String, dynamic>;
+    if (json.containsKey('message') && json['message'] is String) {
+      return json['message'];
     }
-  } finally {}
-
-  if (body is String) {
-    return body;
-  }
-  return "";
+  } catch (_) {}
+  return body is String ? body : '';
 }
 
-void showSnackBar(String message) {
-  if (scaffoldMessengerKey.currentState != null) {
-    scaffoldMessengerKey.currentState!.showSnackBar(SnackBar(
-      content: Text(message),
-      duration: const Duration(seconds: 10),
-    ));
-  }
+void toonSnackBar(String bericht) {
+  final snackBar = SnackBar(
+    content: Text(bericht),
+    duration: const Duration(seconds: 10),
+  );
+
+  scaffoldMessengerKey.currentState?.showSnackBar(snackBar);
 }
+
+
+
