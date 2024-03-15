@@ -20,18 +20,19 @@ class EventDisplay extends StatelessWidget {
             child: Column(
               children: [
                 // title
-                Text(event.title,
+                Align(alignment: Alignment.centerLeft,
+                child: Container(child: Text(event.title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
-                    ), textAlign: TextAlign.left,),
+                    ), textAlign: TextAlign.left,),)),
                     const SizedBox(height: 10),
                 Column(
                   children: [
                     
-    Align(
-      alignment: Alignment.centerLeft,
-      child: Container(
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
                     child: Text(event.description, style: const TextStyle(fontSize: 16.0),),
                     height: 20)),
                     SizedBox(height: 10),
