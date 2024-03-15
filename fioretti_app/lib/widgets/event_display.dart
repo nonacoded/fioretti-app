@@ -33,7 +33,7 @@ class EventDisplay extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
-                    color: const Color(0xffa0cbfd),
+                    color: const Color.fromRGBO(134, 195, 235, 100),
                    child: Row(
                     children: [
                       Flexible(
