@@ -29,6 +29,7 @@ class EventDisplay extends StatelessWidget {
                 Column(
                   children: [
                     Text(event.description, style: const TextStyle(fontSize: 16.0)),
+                    const SizedBox(height: 20),
                     Row(
                       children:[
                         const Icon(Icons.calendar_month),
