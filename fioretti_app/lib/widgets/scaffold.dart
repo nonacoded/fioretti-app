@@ -99,7 +99,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
             context.go("/calendar"); 
           }         
         },
-        backgroundColor: Colors.lightBlue[900],
+        backgroundColor: const Color.fromRGBO(37, 53, 125, 100),
       ),
     );
 /*let op index navigationbar*/
