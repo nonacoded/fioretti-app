@@ -47,7 +47,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
 
     Scaffold result = Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue[900],
+        backgroundColor: const Color.fromRGBO(37, 53, 125, 100),
           title: Text(
             widget.title,
             style: TextStyle(color: Colors.white),
