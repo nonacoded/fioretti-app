@@ -23,7 +23,7 @@ class EventDisplay extends StatelessWidget {
                 Text(event.title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 30.0,
+                      fontSize: 20.0,
                     )),
                     const SizedBox(height: 10),
                 Column(
