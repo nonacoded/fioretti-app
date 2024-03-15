@@ -19,17 +19,19 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
   @override
   void initState() {
     super.initState();
-    _eventsFuture = fetchEvents(); // Vervang fetchEvents() met de methode om je evenementen op te halen
+    _eventsFuture = fetchEvents();
   }
 
   Future<List<Event>> fetchEvents() async {
-    // Plaats hier de code om je evenementgegevens op te halen
-    // Voor dit voorbeeld gebruiken we fictieve evenementgegevens
-    await Future.delayed(Duration(seconds: 2)); // Simuleer een vertraging van 2 seconden
+    await Future.delayed(Duration(seconds: 2));
     return [
       Event(date: DateTime.now(), title: 'Evenement 1', description: 'Beschrijving van Evenement 1'),
       Event(date: DateTime.now().add(Duration(days: 1)), title: 'Evenement 2', description: 'Beschrijving van Evenement 2'),
     ];
+  }
+
+  String formatDateTime(DateTime dateTime) {
+    return "${dateTime.day}-${dateTime.month}-${dateTime.year}";
   }
 
   @override
@@ -45,34 +47,25 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
             return Center(child: Text('Fout bij het ophalen van evenementen'));
           } else {
             List<Event> events = snapshot.data ?? [];
+            events.sort((a, b) => a.date.compareTo(b.date));
             return ListView.builder(
               itemCount: events.length,
               itemBuilder: (context, index) {
                 Event event = events[index];
-                return Column(
-                  children: [
-                    // Divider tussen evenementen
-                    Divider(),
-                    // Maand (titel)
-                    ListTile(
-                      title: Text(
-                        '${event.date.month}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                return Card(
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: Text(formatDateTime(event.date),
+                                  style: TextStyle(fontWeight: FontWeight.bold)),
+                        subtitle: Text(event.title),
                       ),
-                    ),
-                    // Evenementinformatie
-                    ListTile(
-                      title: Text(
-                        '${event.date.day}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(event.description),
                       ),
-                      subtitle: Text(event.title),
-                    ),
-                    // Beschrijving evenement
-                    ListTile(
-                      title: Text(event.description),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               },
             );
@@ -83,7 +76,6 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
   }
 }
 
-// Definieer de Event-klasse
 class Event {
   final DateTime date;
   final String title;
@@ -91,3 +83,6 @@ class Event {
 
   Event({required this.date, required this.title, required this.description});
 }
+
+
+
