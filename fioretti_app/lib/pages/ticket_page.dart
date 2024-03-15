@@ -46,8 +46,8 @@ class _TicketPageState extends State<TicketPage> {
                     },
                     child: const Text("Toon QR code"),
                     style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
-              onPrimary: Colors.white, // tekstkleur van de knop
+              backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
+              foregroundColor: Colors.white, // tekstkleur van de knop
             ),
                   ),
                 ],
