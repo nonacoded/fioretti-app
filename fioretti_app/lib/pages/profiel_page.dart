@@ -41,9 +41,14 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
         children: [
           const Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-            child: Text('Mijn gegevens:', textAlign: TextAlign.left, style: TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
+            child: Text(
+              'Mijn gegevens',
+              textAlign: TextAlign.center, // Hier wordt de tekst in het midden uitgelijnd
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
           ),
           ProfileTile(
             icon: Icons.account_circle, // Standaard profielfoto-icoon
