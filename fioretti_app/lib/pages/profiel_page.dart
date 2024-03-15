@@ -39,18 +39,6 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
       title: "Profiel",
       body: Column(
         children: [
-          const Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-            child: Text(
-              'Mijn gegevens',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Color(0xFF0277BD), // Bijvoorbeeld: Donkerblauw (RGB-waarde: 0xFF0277BD)
-              ),
-            ),
-          ),
           ProfileTile(
             icon: Icons.account_circle, // Standaard profielfoto-icoon
             text: "${user.firstName} ${user.lastName}",
