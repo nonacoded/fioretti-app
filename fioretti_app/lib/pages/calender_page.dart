@@ -30,6 +30,10 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
     ];
   }
 
+  String formatDateTime(DateTime dateTime) {
+    return "${dateTime.day}-${dateTime.month}-${dateTime.year}";
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -42,43 +46,32 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
           } else if (snapshot.hasError) {
             return Center(child: Text('Fout bij het ophalen van evenementen'));
           } else {
-            return ListView(
-              children: snapshot.data!.map((event) => EventWidget(event: event)).toList(),
+            List<Event> events = snapshot.data ?? [];
+            events.sort((a, b) => a.date.compareTo(b.date));
+            return ListView.builder(
+              itemCount: events.length,
+              itemBuilder: (context, index) {
+                Event event = events[index];
+                return Card(
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: Text(formatDateTime(event.date),
+                                  style: TextStyle(fontWeight: FontWeight.bold)),
+                        subtitle: Text(event.title),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(event.description),
+                      ),
+                    ],
+                  ),
+                );
+              },
             );
           }
         },
       ),
-    );
-  }
-}
-
-class EventWidget extends StatelessWidget {
-  final Event event;
-
-  const EventWidget({Key? key, required this.event}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Divider(),
-        ListTile(
-          title: Text(
-            '${event.date.month}',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-        ListTile(
-          title: Text(
-            '${event.date.day}',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text(event.title),
-        ),
-        ListTile(
-          title: Text(event.description),
-        ),
-      ],
     );
   }
 }
@@ -90,5 +83,6 @@ class Event {
 
   Event({required this.date, required this.title, required this.description});
 }
+
 
 
