@@ -1,5 +1,4 @@
 import 'package:fioretti_app/functions/utils.dart';
-import 'package:fioretti_app/widgets/scaffold.dart';
 import 'package:fioretti_app/models/school_event.dart';
 import 'package:flutter/material.dart';
 
@@ -10,13 +9,12 @@ class EventDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
- double height = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return AppScaffold(
-      title: "Info ticket",
-      body: Container(
+    return Stack(
+      children: [
+        Container(
             width: width * 0.9,
             height: height * 0.6,
             child: Column(
@@ -67,5 +65,7 @@ class EventDisplay extends StatelessWidget {
                 ),
               ],
             ))
-    );}
+      ],
+    );
   }
+}
