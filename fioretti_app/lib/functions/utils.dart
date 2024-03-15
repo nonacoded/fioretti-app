@@ -1,25 +1,25 @@
 import 'dart:convert';
 import 'package:fioretti_app/main.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // Importeer de intl library
 
-String minuteToString(int minuut) {
-  return minuut < 10 ? "0$minuut" : "$minuut";
+String minuteToString(int minute) {
+  if (minute < 10) {
+    return "0$minute";
+  } else {
+    return "$minute";
+  }
 }
 
 String dateTimeToString(DateTime dateTime) {
-  // Gebruik DateFormat van intl om de datum inclusief weekdag te formatteren
-  final formatter = DateFormat('EEEE, d MMMM y', 'nl_NL'); // Voor Nederlandse format, pas 'nl_NL' aan naar je locale indien nodig
-  return formatter.format(dateTime) + " ${dateTime.hour}:${minuteToString(dateTime.minute)}";
+  return "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${minuteToString(dateTime.minute)}";
 }
 
-String dateToString(DateTime datum) {
-  final formatter = DateFormat('EEEE, d MMMM y', 'nl_NL'); // Voor Nederlandse format
-  return formatter.format(datum);
+String dateToString(DateTime date) {
+  return "${date.day}/${date.month}/${date.year}";
 }
 
-String timeToString(DateTime tijd) {
-  return "${tijd.hour}:${minuteToString(tijd.minute)}";
+String timeToString(DateTime time) {
+  return "${time.hour}:${minuteToString(time.minute)}";
 }
 
 String getErrorMessageFromBody(dynamic body) {
@@ -28,10 +28,7 @@ String getErrorMessageFromBody(dynamic body) {
     if (json.containsKey("message") && json["message"] is String) {
       return json["message"];
     }
-  } catch (e) {
-    // Voeg een catch block toe voor het geval jsonDecode faalt
-    print("Error parsing JSON: $e");
-  }
+  } finally {}
 
   if (body is String) {
     return body;
@@ -39,17 +36,11 @@ String getErrorMessageFromBody(dynamic body) {
   return "";
 }
 
-void showSnackBar(String bericht) {
-  final currentState = scaffoldMessengerKey.currentState;
-  if (currentState != null) {
-    currentState.showSnackBar(SnackBar(
-      content: Text(bericht),
+void showSnackBar(String message) {
+  if (scaffoldMessengerKey.currentState != null) {
+    scaffoldMessengerKey.currentState!.showSnackBar(SnackBar(
+      content: Text(message),
       duration: const Duration(seconds: 10),
     ));
   }
 }
-
-
-
-
-
