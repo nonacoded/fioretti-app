@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:fioretti_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // Importeer de intl library
 
@@ -38,15 +39,17 @@ String getErrorMessageFromBody(dynamic body) {
   return "";
 }
 
-// void showSnackBar(String bericht) {
-//   final currentState = scaffoldMessengerKey.currentState;
-//   if (currentState != null) {
-//     currentState.showSnackBar(SnackBar(
-//       content: Text(bericht),
-//       duration: const Duration(seconds: 10),
-//     ));
-//   }
-// }
+void showSnackBar(String bericht) {
+  final currentState = scaffoldMessengerKey.currentState;
+  if (currentState != null) {
+    currentState.showSnackBar(SnackBar(
+      content: Text(bericht),
+      duration: const Duration(seconds: 10),
+    ));
+  }
+}
+
+
 
 
 
