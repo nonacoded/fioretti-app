@@ -37,7 +37,7 @@ export async function apiClaimFreeTicket(req: Request, res: Response, next: Next
         return;
     }
 
-    if (event.price >= 0.1 && !user.isAdmin) {
+    if (event.price >= 0.10 && !user.isAdmin) {
         res.status(400).json({message: "Dit evenement is niet gratis"});
         return;
     }

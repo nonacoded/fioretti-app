@@ -14,6 +14,14 @@ String dateTimeToString(DateTime dateTime) {
   return "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${minuteToString(dateTime.minute)}";
 }
 
+String dateToString(DateTime date) {
+  return "${date.day}/${date.month}/${date.year}";
+}
+
+String timeToString(DateTime time) {
+  return "${time.hour}:${minuteToString(time.minute)}";
+}
+
 String getErrorMessageFromBody(dynamic body) {
   try {
     Map<String, dynamic> json = jsonDecode(body);

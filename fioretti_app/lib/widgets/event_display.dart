@@ -15,9 +15,8 @@ class EventDisplay extends StatelessWidget {
     return Stack(
       children: [
         Container(
-            alignment: Alignment.center,
-            width: width * 0.8,
-            height: height * 0.4,
+            width: width * 0.9,
+            height: height * 0.9,
             child: Column(
               children: [
                 // title
@@ -26,20 +25,31 @@ class EventDisplay extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0,
                     )),
-
+                    const SizedBox(height: 10),
                 Column(
                   children: [
+                    Text(event.description, style: const TextStyle(fontSize: 16.0)),
+                    const SizedBox(height: 20),
                     Row(
                       children:[
                         const Icon(Icons.calendar_month),
-                        Text("Datum: ${dateTimeToString(event.date)}",
+                        Text("Datum: ${dateToString(event.date)}",
                           style: const TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
+                    const SizedBox(height: 10),
+                    const Row(
+                      children:[
+                         Icon(Icons.schedule),
+                         Text("Tijd: ..:..",
+                          style:  TextStyle(
+                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
+                    const SizedBox(height: 10),
                     Row( 
                       children:[ 
                         const Icon(Icons.euro),
                         Text("${event.price}",
                           style: const TextStyle(fontSize: 13.0))]),
+                    const SizedBox(height: 10),
                     Row(
                       children: [
                         const Icon(Icons.location_on),
@@ -48,7 +58,6 @@ class EventDisplay extends StatelessWidget {
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
                   ],
                 ),
-                Text(event.description, style: const TextStyle(fontSize: 16.0)),
               ],
             ))
       ],
