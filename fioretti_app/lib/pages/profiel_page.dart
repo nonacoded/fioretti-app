@@ -43,10 +43,11 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             child: Text(
               'Mijn gegevens',
-              textAlign: TextAlign.center, // Hier wordt de tekst in het midden uitgelijnd
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 30,
+                fontSize: 20,
+                color: Color(0xFF0277BD), // Bijvoorbeeld: Donkerblauw (RGB-waarde: 0xFF0277BD)
               ),
             ),
           ),
