@@ -33,6 +33,7 @@ class EventDisplay extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
+                    color: Colors.blue,
                    child: Row(
                     children: [
                       Flexible(
@@ -55,7 +56,7 @@ class EventDisplay extends StatelessWidget {
                     const Row(
                       children:[
                          Icon(Icons.schedule),
-                         Text("Tijd: ..:..",
+                         Text("Tijd: ..:.. - ..:..",
                           style:  TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     const SizedBox(height: 10),
