@@ -28,6 +28,7 @@ class EventDisplay extends StatelessWidget {
                     const SizedBox(height: 10),
                 Column(
                   children: [
+                    Text(event.description, style: const TextStyle(fontSize: 16.0)),
                     Row(
                       children:[
                         const Icon(Icons.calendar_month),
@@ -56,7 +57,6 @@ class EventDisplay extends StatelessWidget {
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
                   ],
                 ),
-                Text(event.description, style: const TextStyle(fontSize: 16.0)),
               ],
             ))
       ],
