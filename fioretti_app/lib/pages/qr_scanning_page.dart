@@ -63,6 +63,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
             ),
             if (scannedTicket != null && userThatBoughtTicket != null)
               Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   EventDisplay(event: scannedTicket!.event),
                   Text(
