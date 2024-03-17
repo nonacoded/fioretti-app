@@ -28,15 +28,21 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
     return [
       Event(date: DateTime.now(), title: 'Evenement 1', description: 'Beschrijving van Evenement 1'),
       Event(date: DateTime.now().add(Duration(days: 1)), title: 'Evenement 2', description: 'Beschrijving van Evenement 2'),
-      Event(date: DateTime.now().add(Duration(days: 2)), title: 'Evenement 3', description: 'Beschrijving van Evenement 3: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 10)), title: 'Evenement 4', description: 'Beschrijving van Evenement 4: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 4)), title: 'Evenement 5', description: 'Beschrijving van Evenement 5: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 56)), title: 'Evenement 6', description: 'Beschrijving van Evenement 6: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 6)), title: 'Evenement 7', description: 'Beschrijving van Evenement 7: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 66)), title: 'Evenement 8', description: 'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 8)), title: 'Evenement 9', description: 'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 99)), title: 'Evenement 10', description: 'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 255)), title: 'Evenement 11', description: 'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 31)), title: 'Evenement 3', description: 'Beschrijving van Evenement 3: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 62)), title: 'Evenement 4', description: 'Beschrijving van Evenement 4: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 93)), title: 'Evenement 5', description: 'Beschrijving van Evenement 5: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 124)), title: 'Evenement 6', description: 'Beschrijving van Evenement 6: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 155)), title: 'Evenement 7', description: 'Beschrijving van Evenement 7: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 186)), title: 'Evenement 8', description: 'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 217)), title: 'Evenement 9', description: 'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 248)), title: 'Evenement 10', description: 'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 279)), title: 'Evenement 6', description: 'Beschrijving van Evenement 6: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 310)), title: 'Evenement 7', description: 'Beschrijving van Evenement 7: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 341)), title: 'Evenement 8', description: 'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 372)), title: 'Evenement 9', description: 'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 403)), title: 'Evenement 10', description: 'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 434)), title: 'Evenement 11', description: 'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 465)), title: 'Evenement 11', description: 'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
     ];
   }
 
@@ -63,7 +69,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
               itemBuilder: (context, index) {
                 Event event = events[index];
                 // Extraheer de maand en dag uit de datum
-                String month = Utils.getMonthInLetters(event.date.month);
+                String month = Utils.getMonthInLetters(event.date.month).substring(0, 3).toUpperCase();
                 String day = event.date.day.toString();
                 // Beperk de beschrijving tot één regel met puntjes indien nodig
                 String description =
@@ -78,7 +84,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                       children: [
                         // Linkerdeel: Maand en dag
                         SizedBox(
-                          width: 100, // Vaste breedte voor linkerdeel
+                          width: 35, // Verkleinde breedte voor linkerdeel
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -95,7 +101,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                             ],
                           ),
                         ),
-                        SizedBox(width: 5), // Ruimte tussen linker- en rechterdeel
+                        SizedBox(width: 16), // Ruimte tussen linker- en rechterdeel
                         // Rechterdeel: Titel van het evenement en beschrijving
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,29 +146,29 @@ class Utils {
   static String getMonthInLetters(int month) {
     switch (month) {
       case 1:
-        return 'Januari';
+        return 'JAN';
       case 2:
-        return 'Februari';
+        return 'FEB';
       case 3:
-        return 'Maart';
+        return 'MAR';
       case 4:
-        return 'April';
+        return 'APR';
       case 5:
-        return 'Mei';
+        return 'MAY';
       case 6:
-        return 'Juni';
+        return 'JUN';
       case 7:
-        return 'Juli';
+        return 'JUL';
       case 8:
-        return 'Augustus';
+        return 'AUG';
       case 9:
-        return 'September';
+        return 'SEP';
       case 10:
-        return 'Oktober';
+        return 'OCT';
       case 11:
-        return 'November';
+        return 'NOV';
       case 12:
-        return 'December';
+        return 'DEC';
       default:
         return '';
     }
