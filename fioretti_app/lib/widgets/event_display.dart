@@ -55,11 +55,11 @@ class EventDisplay extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     const SizedBox(height: 10),
-                     Row(
+                   const  Row(
                       children:[
-                         const Icon(Icons.schedule),
-                         Text("..:.. - ..:..${timeToString(event.time)}",
-                          style:  const TextStyle(
+                         Icon(Icons.schedule),
+                         Text("..:.. - ..:..",//"${timeToString(event.time)}",
+                          style:   TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     const SizedBox(height: 10),
                     Row( 
