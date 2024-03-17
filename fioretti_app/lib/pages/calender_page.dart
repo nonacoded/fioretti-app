@@ -68,7 +68,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                       children: [
                         // Linkerdeel: Maand en dag
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               month,
