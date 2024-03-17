@@ -60,7 +60,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),));
           } else if (snapshot.hasError) {
-            return Center(child: Text('Fout bij het ophalen van evenementen'));
+            return const Center(child: Text('Fout bij het ophalen van evenementen'));
           } else {
             List<Event> events = snapshot.data ?? [];
             events.sort((a, b) => a.date.compareTo(b.date));
