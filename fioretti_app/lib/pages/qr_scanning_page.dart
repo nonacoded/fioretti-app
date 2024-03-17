@@ -67,16 +67,16 @@ class _QrScanningPageState extends State<QrScanningPage> {
                   EventDisplay(event: scannedTicket!.event),
                   Text(
                     "Ticket gekocht op: ${dateTimeToString(scannedTicket!.createdAt)} ${userThatBoughtTicket!.firstName != null ? 'door ${userThatBoughtTicket!.firstName}' : ''} ${userThatBoughtTicket!.lastName != null ? userThatBoughtTicket!.lastName : ''}",
-                    style: const TextStyle(fontSize: 13),
+                    style: const TextStyle(fontSize: 15),
                   ),
                   scannedTicket!.isUsed
                       ? const Text(
                           "Deze ticket is al gebruikt",
-                          style: TextStyle(color: Colors.red, fontSize: 15),
+                          style: TextStyle(color: Colors.red, fontSize: 18),
                         )
                       : const Text(
                           "Niet gebruikt",
-                          style: TextStyle(fontSize: 15),
+                          style: TextStyle(fontSize: 18),
                         ),
                   scannedTicket != null
                       ? MarkAsUsedButton(

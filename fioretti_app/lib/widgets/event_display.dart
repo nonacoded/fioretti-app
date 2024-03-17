@@ -72,7 +72,7 @@ class EventDisplay extends StatelessWidget {
                         const Icon(Icons.location_on),
                         Text(event.location,
                           style: const TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
+                            : 13.0, fontStyle: FontStyle.italic))]),
                   ],
                 ),
               ],
