@@ -95,7 +95,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                             ],
                           ),
                         ),
-                        SizedBox(width: 16), // Ruimte tussen linker- en rechterdeel
+                        SizedBox(width: 12), // Ruimte tussen linker- en rechterdeel
                         // Rechterdeel: Titel van het evenement en beschrijving
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
