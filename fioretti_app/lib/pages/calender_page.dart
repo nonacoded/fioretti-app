@@ -69,7 +69,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
               itemBuilder: (context, index) {
                 Event event = events[index];
                 // Extraheer de maand en dag uit de datum
-                String month = Utils.getMonthInLetters(event.date.month);
+                String month = Utils.getMonthInLetters(event.date.month).substring(0, 3).toUpperCase();
                 String day = event.date.day.toString();
                 // Beperk de beschrijving tot één regel met puntjes indien nodig
                 String description =
@@ -146,29 +146,29 @@ class Utils {
   static String getMonthInLetters(int month) {
     switch (month) {
       case 1:
-        return 'Januari';
+        return 'JAN';
       case 2:
-        return 'Februari';
+        return 'FEB';
       case 3:
-        return 'Maart';
+        return 'MAR';
       case 4:
-        return 'April';
+        return 'APR';
       case 5:
-        return 'Mei';
+        return 'MAY';
       case 6:
-        return 'Juni';
+        return 'JUN';
       case 7:
-        return 'Juli';
+        return 'JUL';
       case 8:
-        return 'Augustus';
+        return 'AUG';
       case 9:
-        return 'September';
+        return 'SEP';
       case 10:
-        return 'Oktober';
+        return 'OCT';
       case 11:
-        return 'November';
+        return 'NOV';
       case 12:
-        return 'December';
+        return 'DEC';
       default:
         return '';
     }
