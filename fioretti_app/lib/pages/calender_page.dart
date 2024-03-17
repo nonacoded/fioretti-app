@@ -90,6 +90,9 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                             children: [
                               Text(
                                 month,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               SizedBox(height: 8), // Ruimte tussen maand en dag
                               Text(
@@ -151,7 +154,7 @@ class Utils {
       case 4:
         return 'APR';
       case 5:
-        return 'MEI';
+        return 'MAY';
       case 6:
         return 'JUN';
       case 7:
