@@ -77,20 +77,23 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Linkerdeel: Maand en dag
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              month,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                        SizedBox(
+                          width: 100, // Vaste breedte voor linkerdeel
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                month,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 8), // Ruimte tussen maand en dag
-                            Text(
-                              day,
-                            ),
-                          ],
+                              SizedBox(height: 8), // Ruimte tussen maand en dag
+                              Text(
+                                day,
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(width: 16), // Ruimte tussen linker- en rechterdeel
                         // Rechterdeel: Titel van het evenement en beschrijving
