@@ -52,8 +52,6 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
               itemCount: events.length,
               itemBuilder: (context, index) {
                 Event event = events[index];
-                // Formatteer de datum naar de gewenste representatie
-                String formattedDate = formatDateTime(event.date);
                 // Extraheer de maand en dag uit de datum
                 String month = Utils.getMonthInLetters(event.date.month);
                 String day = event.date.day.toString();
@@ -65,11 +63,12 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                 return Card(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Column(
+                    child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Maand en dag
-                        Row(
+                        // Linkerdeel: Maand en dag
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               month,
@@ -77,7 +76,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(width: 8), // Ruimte tussen maand en dag
+                            SizedBox(height: 8), // Ruimte tussen maand en dag
                             Text(
                               day,
                               style: TextStyle(
@@ -86,19 +85,25 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 8), // Ruimte tussen maand/dag en titel
-                        // Titel van het evenement
-                        Text(
-                          event.title,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 4), // Ruimte tussen titel en beschrijving
-                        // Beschrijving van het evenement
-                        Text(
-                          description,
-                          overflow: TextOverflow.ellipsis,
+                        SizedBox(width: 16), // Ruimte tussen linker- en rechterdeel
+                        // Rechterdeel: Titel van het evenement en beschrijving
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Titel van het evenement
+                            Text(
+                              event.title,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 4), // Ruimte tussen titel en beschrijving
+                            // Beschrijving van het evenement
+                            Text(
+                              description,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
                         ),
                       ],
                     ),
