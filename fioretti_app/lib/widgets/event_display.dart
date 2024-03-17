@@ -34,7 +34,7 @@ class EventDisplay extends StatelessWidget {
                     
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Container(
+                  //child: Container(
                     //color: const Color.fromRGBO(134, 195, 235, 100),
                    child: Row(
                     children: [
@@ -45,15 +45,15 @@ class EventDisplay extends StatelessWidget {
                       ),
       )
     ],
-  ),), ),  
+  ),), //),  
                     const SizedBox(height: 20),
                    
                     Row(
                       children:[
                         const Icon(Icons.calendar_month),
-                        Text("${dateToString(event.date)}",
-                          style: const TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
+                       // Text("${dateToString(event.date)}",
+                          //style: const TextStyle(
+                           // fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     const SizedBox(height: 10),
                      Row(
                       children:[
