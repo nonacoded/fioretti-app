@@ -42,7 +42,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
         List<BottomNavigationBarItem>.from(normalItems)
           ..addAll([
             const BottomNavigationBarItem(
-                icon: Icon(Icons.qr_code_scanner), label: "QR scannen"),
+                icon: Icon(Icons.qr_code_scanner), label: "QR scan"),
           ]);
 
     Scaffold result = Scaffold(
