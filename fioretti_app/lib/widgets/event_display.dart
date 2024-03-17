@@ -1,15 +1,11 @@
 import 'package:fioretti_app/functions/utils.dart';
 import 'package:fioretti_app/models/school_event.dart';
 import 'package:flutter/material.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-import 'package:fioretti_app/models/ticket.dart';
-import 'package:fioretti_app/widgets/scaffold.dart';
 
 class EventDisplay extends StatelessWidget {
   final SchoolEvent event;
-  final Ticket ticket;
 
-  const EventDisplay({super.key, required this.event, required this.ticket});
+  const EventDisplay({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +73,7 @@ class EventDisplay extends StatelessWidget {
                         Text(event.location,
                           style: const TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
-                            const SizedBox(height: 10),
-                  Row(
-                    children:[  
-                      QrImageView(
-          data: ticket.id,
-          version: QrVersions.auto,
-          size: 100.0,
-        ),],),],
+                  ],
                 ),
               ],
             ))
