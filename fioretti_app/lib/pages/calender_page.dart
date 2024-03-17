@@ -36,7 +36,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
       Event(date: DateTime.now().add(Duration(days: 66)), title: 'Evenement 8', description: 'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
       Event(date: DateTime.now().add(Duration(days: 8)), title: 'Evenement 9', description: 'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
       Event(date: DateTime.now().add(Duration(days: 99)), title: 'Evenement 10', description: 'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 255)), title: 'Evenement 11', description: 'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 269)), title: 'Evenement 11', description: 'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
     ];
   }
 
@@ -78,7 +78,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                       children: [
                         // Linkerdeel: Maand en dag
                         SizedBox(
-                          width: 100, // Vaste breedte voor linkerdeel
+                          width: 80, // Verkleinde breedte voor linkerdeel
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -95,7 +95,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                             ],
                           ),
                         ),
-                        SizedBox(width: 5), // Ruimte tussen linker- en rechterdeel
+                        SizedBox(width: 16), // Ruimte tussen linker- en rechterdeel
                         // Rechterdeel: Titel van het evenement en beschrijving
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
