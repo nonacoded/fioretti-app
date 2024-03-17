@@ -45,7 +45,7 @@ class EventDisplay extends StatelessWidget {
                       ),
       )
     ],
-  ), ), ),  
+  ),), ),  
                     const SizedBox(height: 20),
                    
                     Row(
@@ -77,8 +77,8 @@ class EventDisplay extends StatelessWidget {
                   ],
                 ),
               ],
-            ))
-      ],
-    );
+            )]),
+        ),
+      ]);
   }
 }
