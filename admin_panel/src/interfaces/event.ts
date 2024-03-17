@@ -10,7 +10,7 @@ export default interface SchoolEvent {
     title: string;
     description: string;
     date: Date;
-    time: TimeRanges;
+   // time: TimeRanges;
     location: string;
     price: number;
 }
