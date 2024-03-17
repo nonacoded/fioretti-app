@@ -29,7 +29,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
     List<BottomNavigationBarItem> normalItems = const [
       BottomNavigationBarItem(icon: Icon(Icons.home, ), label: "Home"),
       BottomNavigationBarItem(
-          icon: Icon(Icons.local_activity, ), label: "Tickets"),
+          icon: Icon(Icons.local_activity, ), label: "Mijn tickets"),
       BottomNavigationBarItem(
         icon: Icon(Icons.event),
         label: "Kalender",
