@@ -84,15 +84,12 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                       children: [
                         // Linkerdeel: Maand en dag
                         SizedBox(
-                          width: 70, // Verkleinde breedte voor linkerdeel
+                          width: 30, // Verkleinde breedte voor linkerdeel
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 month,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
                               ),
                               SizedBox(height: 8), // Ruimte tussen maand en dag
                               Text(
