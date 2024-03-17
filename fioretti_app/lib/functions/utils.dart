@@ -12,7 +12,7 @@ String minuteToString(int minute) {
 }
 
 String dateTimeToString(DateTime dateTime) {
-  return "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour}:${minuteToString(dateTime.minute)}";
+  return "${dateTime.hour}:${minuteToString(dateTime.minute)}";
 }
 
 
