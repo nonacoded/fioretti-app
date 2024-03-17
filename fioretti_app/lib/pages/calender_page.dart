@@ -5,6 +5,7 @@ import 'package:fioretti_app/providers.dart';
 import "package:go_router/go_router.dart";
 import "package:fioretti_app/models/user.dart";
 import 'package:fioretti_app/functions/utils.dart';
+import 'dart:math';
 
 class CalendarPage extends ConsumerStatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
@@ -27,6 +28,15 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
     return [
       Event(date: DateTime.now(), title: 'Evenement 1', description: 'Beschrijving van Evenement 1'),
       Event(date: DateTime.now().add(Duration(days: 1)), title: 'Evenement 2', description: 'Beschrijving van Evenement 2'),
+      Event(date: DateTime.now().add(Duration(days: 2)), title: 'Evenement 3', description: 'Beschrijving van Evenement 3: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 10)), title: 'Evenement 4', description: 'Beschrijving van Evenement 4: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 4)), title: 'Evenement 5', description: 'Beschrijving van Evenement 5: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 56)), title: 'Evenement 6', description: 'Beschrijving van Evenement 6: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 6)), title: 'Evenement 7', description: 'Beschrijving van Evenement 7: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 66)), title: 'Evenement 8', description: 'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 8)), title: 'Evenement 9', description: 'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 99)), title: 'Evenement 10', description: 'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 255)), title: 'Evenement 11', description: 'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
     ];
   }
 
@@ -52,19 +62,61 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
               itemCount: events.length,
               itemBuilder: (context, index) {
                 Event event = events[index];
+                // Extraheer de maand en dag uit de datum
+                String month = Utils.getMonthInLetters(event.date.month);
+                String day = event.date.day.toString();
+                // Beperk de beschrijving tot één regel met puntjes indien nodig
+                String description =
+                    event.description.length > 30
+                        ? event.description.substring(0, 30) + "..."
+                        : event.description;
                 return Card(
-                  child: Column(
-                    children: [
-                      ListTile(
-                        title: Text(formatDateTime(event.date),
-                                  style: TextStyle(fontWeight: FontWeight.bold)),
-                        subtitle: Text(event.title),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(event.description),
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Linkerdeel: Maand en dag
+                        SizedBox(
+                          width: 100, // Vaste breedte voor linkerdeel
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                month,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 8), // Ruimte tussen maand en dag
+                              Text(
+                                day,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 5), // Ruimte tussen linker- en rechterdeel
+                        // Rechterdeel: Titel van het evenement en beschrijving
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Titel van het evenement
+                            Text(
+                              event.title,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 4), // Ruimte tussen titel en beschrijving
+                            // Beschrijving van het evenement
+                            Text(
+                              description,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
@@ -84,5 +136,41 @@ class Event {
   Event({required this.date, required this.title, required this.description});
 }
 
+class Utils {
+  static String getMonthInLetters(int month) {
+    switch (month) {
+      case 1:
+        return 'Januari';
+      case 2:
+        return 'Februari';
+      case 3:
+        return 'Maart';
+      case 4:
+        return 'April';
+      case 5:
+        return 'Mei';
+      case 6:
+        return 'Juni';
+      case 7:
+        return 'Juli';
+      case 8:
+        return 'Augustus';
+      case 9:
+        return 'September';
+      case 10:
+        return 'Oktober';
+      case 11:
+        return 'November';
+      case 12:
+        return 'December';
+      default:
+        return '';
+    }
+  }
+}
 
-
+void main() {
+  runApp(MaterialApp(
+    home: CalendarPage(),
+  ));
+}
