@@ -51,7 +51,6 @@ export default function CreateEventPage() {
                     title: event.title,
                     description: event.description,
                     date: new Date(event.date).getTime(),
-                    time: new Date(event.time).getTime(),
                     location: event.location,
                     price: event.price
                 };
