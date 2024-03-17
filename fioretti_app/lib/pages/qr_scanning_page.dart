@@ -43,10 +43,11 @@ class _QrScanningPageState extends State<QrScanningPage> {
     return AppScaffold(
       title: "Scan QR",
       body: Center(
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //const SizedBox(height:10,),
+            const SizedBox(height:10,),
             ElevatedButton(
               child: const Text('Scan QR'),
               style: ElevatedButton.styleFrom(
@@ -66,16 +67,16 @@ class _QrScanningPageState extends State<QrScanningPage> {
                   EventDisplay(event: scannedTicket!.event),
                   Text(
                     "Ticket gekocht op: ${dateTimeToString(scannedTicket!.createdAt)} ${userThatBoughtTicket!.firstName != null ? 'door ${userThatBoughtTicket!.firstName}' : ''} ${userThatBoughtTicket!.lastName != null ? userThatBoughtTicket!.lastName : ''}",
-                    style: const TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 13),
                   ),
                   scannedTicket!.isUsed
                       ? const Text(
                           "Deze ticket is al gebruikt",
-                          style: TextStyle(color: Colors.red, fontSize: 20),
+                          style: TextStyle(color: Colors.red, fontSize: 15),
                         )
                       : const Text(
                           "Niet gebruikt",
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 15),
                         ),
                   scannedTicket != null
                       ? MarkAsUsedButton(

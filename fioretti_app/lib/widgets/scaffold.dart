@@ -54,7 +54,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
           ),
           centerTitle: true,
           leading: Padding(
-            padding: const EdgeInsets.only(left: 8.0), // Padding from left
+            padding: const EdgeInsets.only(left: 10.0), // Padding from left
             child: SizedBox(
               width: 80.0, // Width of the SizedBox, adjust as needed
               child: Row(
