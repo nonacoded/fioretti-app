@@ -20,13 +20,14 @@ class EventDisplay extends StatelessWidget {
             child: Column(
               children: [
                 // title
+                const SizedBox(height: 10),
                 Align(alignment: Alignment.centerLeft,
                 child: Container(child: Text(event.title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
                     ), textAlign: TextAlign.left,),)),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
                 Column(
                   children: [
                     
@@ -49,14 +50,14 @@ class EventDisplay extends StatelessWidget {
                     Row(
                       children:[
                         const Icon(Icons.calendar_month),
-                        Text("Datum: ${dateToString(event.date)}",
+                        Text("${dateToString(event.date)}",
                           style: const TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     const SizedBox(height: 10),
                     const Row(
                       children:[
                          Icon(Icons.schedule),
-                         Text("Tijd: ..:.. - ..:..",
+                         Text("..:.. - ..:..",
                           style:  TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     const SizedBox(height: 10),
