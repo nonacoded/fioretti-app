@@ -25,6 +25,7 @@ class _TicketsPageState extends State<TicketsPage> {
     return AppScaffold(
       title: "Mijn tickets",
       body: Center(
+        child: Column(children: [Expanded(
         child: FutureBuilder<List<Ticket>>(
           future: futureTickets,
           builder: (context, snapshot) {
@@ -43,6 +44,9 @@ class _TicketsPageState extends State<TicketsPage> {
             }
           },
         ),
+        )
+        ],
+        )
       ),
     );
   }
