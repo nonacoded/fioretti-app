@@ -52,19 +52,56 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
               itemCount: events.length,
               itemBuilder: (context, index) {
                 Event event = events[index];
+                // Formatteer de datum naar de gewenste representatie
+                String formattedDate = formatDateTime(event.date);
+                // Extraheer de maand en dag uit de datum
+                String month = Utils.getMonthInLetters(event.date.month);
+                String day = event.date.day.toString();
+                // Beperk de beschrijving tot één regel met puntjes indien nodig
+                String description =
+                    event.description.length > 30
+                        ? event.description.substring(0, 30) + "..."
+                        : event.description;
                 return Card(
-                  child: Column(
-                    children: [
-                      ListTile(
-                        title: Text(formatDateTime(event.date),
-                                  style: TextStyle(fontWeight: FontWeight.bold)),
-                        subtitle: Text(event.title),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(event.description),
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Maand en dag
+                        Row(
+                          children: [
+                            Text(
+                              month,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(width: 8), // Ruimte tussen maand en dag
+                            Text(
+                              day,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 8), // Ruimte tussen maand/dag en titel
+                        // Titel van het evenement
+                        Text(
+                          event.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 4), // Ruimte tussen titel en beschrijving
+                        // Beschrijving van het evenement
+                        Text(
+                          description,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
@@ -84,5 +121,41 @@ class Event {
   Event({required this.date, required this.title, required this.description});
 }
 
+class Utils {
+  static String getMonthInLetters(int month) {
+    switch (month) {
+      case 1:
+        return 'Januari';
+      case 2:
+        return 'Februari';
+      case 3:
+        return 'Maart';
+      case 4:
+        return 'April';
+      case 5:
+        return 'Mei';
+      case 6:
+        return 'Juni';
+      case 7:
+        return 'Juli';
+      case 8:
+        return 'Augustus';
+      case 9:
+        return 'September';
+      case 10:
+        return 'Oktober';
+      case 11:
+        return 'November';
+      case 12:
+        return 'December';
+      default:
+        return '';
+    }
+  }
+}
 
-
+void main() {
+  runApp(MaterialApp(
+    home: CalendarPage(),
+  ));
+}
