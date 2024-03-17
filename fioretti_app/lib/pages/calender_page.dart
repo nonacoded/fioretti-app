@@ -42,7 +42,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
         future: _eventsFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),));
           } else if (snapshot.hasError) {
             return Center(child: Text('Fout bij het ophalen van evenementen'));
           } else {
