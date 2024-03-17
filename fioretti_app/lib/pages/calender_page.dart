@@ -84,7 +84,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                       children: [
                         // Linkerdeel: Maand en dag
                         SizedBox(
-                          width: 30, // Verkleinde breedte voor linkerdeel
+                          width: 35, // Verkleinde breedte voor linkerdeel
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -151,7 +151,7 @@ class Utils {
       case 4:
         return 'APR';
       case 5:
-        return 'MAY';
+        return 'MEI';
       case 6:
         return 'JUN';
       case 7:
