@@ -5,6 +5,7 @@ import 'package:fioretti_app/providers.dart';
 import "package:go_router/go_router.dart";
 import "package:fioretti_app/models/user.dart";
 import 'package:fioretti_app/functions/utils.dart';
+import 'dart:math';
 
 class CalendarPage extends ConsumerStatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
@@ -27,6 +28,15 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
     return [
       Event(date: DateTime.now(), title: 'Evenement 1', description: 'Beschrijving van Evenement 1'),
       Event(date: DateTime.now().add(Duration(days: 1)), title: 'Evenement 2', description: 'Beschrijving van Evenement 2'),
+      Event(date: DateTime.now().add(Duration(days: 2)), title: 'Evenement 3', description: 'Beschrijving van Evenement 3: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 3)), title: 'Evenement 4', description: 'Beschrijving van Evenement 4: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 4)), title: 'Evenement 5', description: 'Beschrijving van Evenement 5: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 5)), title: 'Evenement 6', description: 'Beschrijving van Evenement 6: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 6)), title: 'Evenement 7', description: 'Beschrijving van Evenement 7: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 7)), title: 'Evenement 8', description: 'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 8)), title: 'Evenement 9', description: 'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 9)), title: 'Evenement 10', description: 'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(date: DateTime.now().add(Duration(days: 10)), title: 'Evenement 11', description: 'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
     ];
   }
 
@@ -79,9 +89,6 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                             SizedBox(height: 8), // Ruimte tussen maand en dag
                             Text(
                               day,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
                             ),
                           ],
                         ),
