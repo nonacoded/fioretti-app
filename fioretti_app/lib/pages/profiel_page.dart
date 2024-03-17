@@ -39,6 +39,7 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
       title: "Profiel",
       body: Column(
         children: [
+          const SizedBox(height: 10),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             child: Text('Mijn gegevens:', textAlign: TextAlign.left, style: TextStyle(
@@ -46,6 +47,7 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
               fontSize: 18.0,
             )),
           ),
+          const SizedBox(height: 10),
           ProfileTile(
             icon: Icons.account_circle, // Standaard profielfoto-icoon
             text: "${user.firstName} ${user.lastName}",
@@ -55,6 +57,7 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
             icon: Icons.email,
             text: "${user.email}",
           ),
+          const SizedBox(height: 10),
           const LogoutButton(),
         ]
       ),
