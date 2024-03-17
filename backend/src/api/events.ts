@@ -85,6 +85,7 @@ export async function apiInsertSchoolEvent(req: Request, res: Response, next: Ne
             title: string;
             description: string;
             date: number;
+            time: number;
             location: string;
             price: number;
         };
@@ -96,6 +97,7 @@ export async function apiInsertSchoolEvent(req: Request, res: Response, next: Ne
                 title: string;
                 description: string;
                 date: number;
+                time:number;
                 location: string;
                 price: number;
             };
@@ -105,6 +107,7 @@ export async function apiInsertSchoolEvent(req: Request, res: Response, next: Ne
                 title: reqEvent.title,
                 description: reqEvent.description,
                 date: new Date(reqEvent.date),
+                time: new Date(reqEvent.time),
                 location: reqEvent.location,
                 price: reqEvent.price
             } as SchoolEvent;

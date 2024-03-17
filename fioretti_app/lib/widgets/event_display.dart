@@ -1,6 +1,7 @@
 import 'package:fioretti_app/functions/utils.dart';
 import 'package:fioretti_app/models/school_event.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventDisplay extends StatelessWidget {
   final SchoolEvent event;
@@ -57,7 +58,7 @@ class EventDisplay extends StatelessWidget {
                     const Row(
                       children:[
                          Icon(Icons.schedule),
-                         Text("..:.. - ..:..",
+                         Text("${timeToString(event.time)}",
                           style:  TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
                     const SizedBox(height: 10),

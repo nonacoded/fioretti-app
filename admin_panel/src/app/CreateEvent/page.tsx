@@ -14,6 +14,7 @@ interface EventData {
     title: string;
     description: string;
     date: number;
+    time: number;
     location: string;
     price: number;
 } 
@@ -92,6 +93,7 @@ export default function CreateEventPage() {
             title: eventNameRef.current?.value as string,
             description: eventDescriptionRef.current?.value as string,
             date: new Date(eventDateRef.current?.value as string).getTime(),
+            time: new Date(eventDateRef.current?.value as string).getTime(),
             location: eventLocationRef.current?.value as string,
             price: parseFloat(eventPriceRef.current?.value as string)
         };
