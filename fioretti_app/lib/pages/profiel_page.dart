@@ -42,11 +42,11 @@ double height = MediaQuery.of(context).size.height;
             width: width * 0.9,
             height: height * 0.6,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // title
                 const SizedBox(height: 20),
-                Align(alignment: Alignment.center,
+                Align(alignment: Alignment.centerLeft,
                 child: Container(child: Text("Mijn gegevens",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
@@ -61,13 +61,14 @@ double height = MediaQuery.of(context).size.height;
           ), ),
           
           
-          ProfileTile(
+          Align(alignment: Alignment.centerLeft,
+          child: ProfileTile(
             icon: Icons.email,
             text: "${user.email}",
-          ),
+            ),),
           const SizedBox(height: 10),
           Container(
-            margin: const EdgeInsets.all(30.0),
+            //margin: const EdgeInsets.all(30.0),
             child: const LogoutButton(),)
         ]
       ),
