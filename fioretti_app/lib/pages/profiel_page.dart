@@ -66,7 +66,9 @@ double height = MediaQuery.of(context).size.height;
             text: "${user.email}",
           ),
           const SizedBox(height: 10),
-          const LogoutButton(),
+          Container(
+            margin: const EdgeInsets.only(left: 10.0),
+            child: const LogoutButton(),)
         ]
       ),
   ));}
