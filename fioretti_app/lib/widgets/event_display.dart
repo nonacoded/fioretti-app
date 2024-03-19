@@ -1,6 +1,7 @@
 import 'package:fioretti_app/functions/utils.dart';
 import 'package:fioretti_app/models/school_event.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventDisplay extends StatelessWidget {
   final SchoolEvent event;

@@ -49,7 +49,7 @@ export async function apiCreateCheckoutSession(req: Request, res: Response, next
                 price_data: {
                     currency: 'eur',
                     product_data: {
-                        name: event.name,
+                        name: event.title,
                     },
                     unit_amount: price * 100,
                 },
