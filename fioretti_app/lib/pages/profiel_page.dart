@@ -45,7 +45,7 @@ double height = MediaQuery.of(context).size.height;
               children: [
                 // title
                 const SizedBox(height: 20),
-                Align(alignment: Alignment.centerLeft,
+                Align(alignment: Alignment.center,
                 child: Container(child: Text("Mijn gegevens",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
