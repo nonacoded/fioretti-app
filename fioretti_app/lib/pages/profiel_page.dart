@@ -49,7 +49,6 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
               fontSize: 18.0,
             ),textAlign: TextAlign.left, ), 
           ),],),),
-          const SizedBox(height: 10),
           ProfileTile(
             icon: Icons.account_circle, // Standaard profielfoto-icoon
             text: "${user.firstName} ${user.lastName}",
