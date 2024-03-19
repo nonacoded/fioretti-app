@@ -29,7 +29,8 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
   @override
   Widget build(BuildContext context) {
     final User? user = ref.watch(userProvider);
-
+double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     if (user == null) {
       return const Text(
           "Geen gebruiker gevonden, dit is een bug. Probeer de app opnieuw te starten.");
@@ -37,31 +38,42 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
 
     return AppScaffold(
       title: "Profiel",
-      body: Column(
-        children: [
-          const SizedBox(height: 10),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-            child: Text('Mijn gegevens:', textAlign: TextAlign.left, style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18.0,
-            )),
-          ),
-          const SizedBox(height: 10),
-          ProfileTile(
+      body: Container(
+            width: width * 0.9,
+            height: height * 0.6,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                // title
+                const SizedBox(height: 20),
+                Align(alignment: Alignment.centerLeft,
+                child: Container(child: Text("Mijn gegevens",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ), textAlign: TextAlign.left,
+                    ),margin: EdgeInsets.only(left: 25),)),
+                    const SizedBox(height: 10),
+                    Align(alignment: Alignment.centerLeft,
+                    child: ProfileTile(
             icon: Icons.account_circle, // Standaard profielfoto-icoon
             text: "${user.firstName} ${user.lastName}",
-          ),
+          ), ),
           
-          ProfileTile(
+          
+          Align(alignment: Alignment.centerLeft,
+          child: ProfileTile(
             icon: Icons.email,
             text: "${user.email}",
-          ),
+            ),),
           const SizedBox(height: 10),
-          const LogoutButton(),
+          Container(
+            margin: const EdgeInsets.only(left: 40.0),
+            child: const LogoutButton(),)
         ]
       ),
-  );}
+  ));}
 }
 
 class ProfileTile extends StatelessWidget {
