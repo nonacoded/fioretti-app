@@ -1,4 +1,3 @@
-import 'package:fioretti_app/functions/utils.dart';
 import 'package:fioretti_app/models/school_event.dart';
 import 'package:fioretti_app/models/ticket.dart';
 import 'package:fioretti_app/widgets/event_display.dart';
@@ -85,7 +84,6 @@ void buyTicket(String eventId) async {
       await Requests.post("${dotenv.env['API_URL']!}/events/$eventId/tickets");
   if (response.statusCode == 200) {
     print("Ticket gekocht!");
-    showSnackBar("Bedankt voor je aankoop!");
   } else {
     print("Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
   }
