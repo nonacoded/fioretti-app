@@ -40,7 +40,7 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
       body: Column(
         children: [
           const SizedBox(height: 10),
-          Padding(padding:  const EdgeInsets.all(8.0),
+          Padding(padding:  const EdgeInsets.all(10.0),
            child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children:[ Container(child: Text('Mijn gegevens:',
