@@ -1,5 +1,6 @@
 import 'package:fioretti_app/functions/utils.dart';
 import 'package:fioretti_app/models/school_event.dart';
+import 'package:fioretti_app/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -14,9 +15,26 @@ class EventDisplay extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return Stack(
-      children: [
-        Container(
+    return AppScaffold(
+      appBar: AppBar(
+        title: const Text("Ticket info", style: TextStyle(color: Colors.white),),
+        centerTitle: true,
+          leading: GestureDetector(
+            /*onTap: () {
+              Navigator.pushReplacementNamed(context, '/');
+            },*/
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Image.asset(
+                'assets/logo.png',
+                width: 60, // Adjust the width to your desired size
+                height: 60, // Adjust the height to your desired size// Added semantic label for accessibility
+              ),
+            ),
+          ),
+        backgroundColor: Colors.lightBlue[900],
+      ),
+      body: Container(
             width: width * 0.9,
             height: height * 0.6,
             child: Column(
