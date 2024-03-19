@@ -20,6 +20,15 @@ String dateToString(DateTime date) {
   return "${date.day} ${date.month} ${date.year}";
 }
 
+String monthToString(DateTime date) {
+  return "${date.day} ${date.month} ${date.year}";
+}
+//String month = Utils.getMonthInLetters(date.month).substring(0, 3).toUpperCase();
+
+String formatDateTime(DateTime dateTime) {
+    return "${dateTime.day}-${dateTime.month}-${dateTime.year}";
+  }
+
 class Utils {
   static String getMonthInLetters(int month) {
     switch (month) {
