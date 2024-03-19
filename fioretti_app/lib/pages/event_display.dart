@@ -24,7 +24,7 @@ class EventDisplay extends StatelessWidget {
                 // title
                 const SizedBox(height: 20),
                 Align(alignment: Alignment.centerLeft,
-                child: Container(child: Text(event.title,
+                child: Container(child: Text("Ticket info",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
