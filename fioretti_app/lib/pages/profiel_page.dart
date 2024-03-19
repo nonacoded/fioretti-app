@@ -42,7 +42,7 @@ double height = MediaQuery.of(context).size.height;
             width: width * 0.9,
             height: height * 0.6,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // title
                 const SizedBox(height: 20),
