@@ -72,7 +72,7 @@ class _EventPageState extends State<EventPage> {
                         style: ElevatedButton.styleFrom(
               backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
               foregroundColor: Colors.white, // tekstkleur van de knop
-            ),
+                    ),
                   )
                 ],
               ),

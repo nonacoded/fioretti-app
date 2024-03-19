@@ -93,8 +93,8 @@ class _QrScanningPageState extends State<QrScanningPage> {
                 },
                 child: const Text("Test"),
                 style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
-              onPrimary: Colors.white, // tekstkleur van de knop
+              backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
+              foregroundColor: Colors.white, // tekstkleur van de knop
             ),)
           ],
         ),
@@ -152,10 +152,9 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                 : "Markeer als gebruikt"),
       ),
       style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
-              onPrimary: Colors.white, // tekstkleur van de knop
+              backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
+              foregroundColor: Colors.white, // tekstkleur van de knop
             ),
-      
     );
   }
 }
