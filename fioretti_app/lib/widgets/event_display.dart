@@ -75,11 +75,7 @@ class EventDisplay extends StatelessWidget {
                         Text(event.location,
                           style: const TextStyle(
                             fontSize: 13.0, fontStyle: FontStyle.italic))]),
-                            QrImageView(
-          data: event.id,
-          version: QrVersions.auto,
-          size: 400.0,
-        ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ],
