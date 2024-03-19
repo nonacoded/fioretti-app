@@ -53,6 +53,10 @@ double height = MediaQuery.of(context).size.height;
                     ), textAlign: TextAlign.left,
                     ),)),
                     const SizedBox(height: 10),
+          ProfileTile(
+            icon: Icons.account_circle, // Standaard profielfoto-icoon
+            text: "${user.firstName} ${user.lastName}",
+          ),
           
           ProfileTile(
             icon: Icons.email,
