@@ -84,7 +84,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
                           ticket: scannedTicket!,
                           refreshTicketCallback: refreshTicket,
                         )
-                      : Placeholder()
+                      : const SizedBox(height: 10)
                 ],
               ),
             ElevatedButton(
