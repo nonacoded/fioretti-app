@@ -45,7 +45,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
       body: Center(
         
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height:10),
             ElevatedButton(
@@ -84,10 +84,8 @@ class _QrScanningPageState extends State<QrScanningPage> {
                           ticket: scannedTicket!,
                           refreshTicketCallback: refreshTicket,
                         )
-                      : const SizedBox(height: 10)
-                ],
-              ),
-            ElevatedButton(
+                      : const SizedBox(height: 10),
+                      ElevatedButton(
                 onPressed: () {
                   setTicket("659feca27e5a22c34c37c99e");
                 },
@@ -96,6 +94,8 @@ class _QrScanningPageState extends State<QrScanningPage> {
               backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
               foregroundColor: Colors.white, // tekstkleur van de knop
             ),)
+                ],
+              ),
           ],
         ),
       ),
