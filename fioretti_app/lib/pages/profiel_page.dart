@@ -67,8 +67,7 @@ double height = MediaQuery.of(context).size.height;
           ),
           const SizedBox(height: 10),
           Container(
-            color: Colors.blue,
-            margin: const EdgeInsets.only(left: 30.0),
+            margin: const EdgeInsets.all(30.0),
             child: const LogoutButton(),)
         ]
       ),
