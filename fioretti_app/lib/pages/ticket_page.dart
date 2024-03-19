@@ -38,6 +38,7 @@ class _TicketPageState extends State<TicketPage> {
                 ? const Text("Bezig met laden...")
                 : const Text("Geen ticket gevonden"))
             : Column(
+              mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   EventDisplay(event: ticket!.event),
                   ElevatedButton(
