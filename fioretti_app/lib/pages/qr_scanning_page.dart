@@ -90,7 +90,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start, 
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
               children:[ ElevatedButton(
                 onPressed: () {
                   setTicket("659feca27e5a22c34c37c99e");
