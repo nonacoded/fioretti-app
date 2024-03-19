@@ -3,6 +3,7 @@ import { apiEditSchoolEvent, apiGetSchoolEvent, apiGetSchoolEvents, apiInsertSch
 import { apiAdminPanelLogin, apiExchangeConfirmationToken, apiLoginUser, apiLogoutUser, apiVerifySession } from './api/auth';
 import { apiMarkTicketAsUsed, apiClaimFreeTicket, apiGetTicketById, apiGetTickets } from './api/tickets';
 import { apiGetUserById } from './api/users';
+import { apiCreateCheckoutSession } from './api/checkout';
 
 
 
@@ -14,6 +15,8 @@ router.route("/events").get(apiGetSchoolEvents).post(apiInsertSchoolEvent);
 router.route("/events/:id").get(apiGetSchoolEvent).put(apiEditSchoolEvent);
 
 router.route("/events/:id/tickets").post(apiClaimFreeTicket);
+
+router.route("/events/:id/checkout").post(apiCreateCheckoutSession);
 
 router.route("/tickets").get(apiGetTickets);
 

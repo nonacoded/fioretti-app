@@ -28,7 +28,7 @@ export async function apiCreateCheckoutSession(req: Request, res: Response, next
     }
 
 
-    let eventId = req.body.event;
+    let eventId = req.params.id;
     let event = await EventsDao.getSchoolEventById(new ObjectId(eventId));
 
     if (!event) {
@@ -42,25 +42,26 @@ export async function apiCreateCheckoutSession(req: Request, res: Response, next
         return;
     }
 
-    const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['ideal'],
-        line_items: [
-            {
-                price_data: {
-                    currency: 'eur',
-                    product_data: {
-                        name: event.title,
+    try {
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['ideal'],
+            line_items: [
+                {
+                    price_data: {
+                        currency: 'eur',
+                        product_data: {
+                            name: event.title,
+                        },
+                        unit_amount: price * 100,
                     },
-                    unit_amount: price * 100,
+                    quantity: 1,
                 },
-                quantity: 1,
-            },
-        ],
-    });
-
-
-
-    
-
+            ],
+        });
+        res.status(200).json({ id: session.id });
+    }
+    catch (e) {
+        res.status(500).json({ message: `Er is iets fout gegaan bij het aanmaken van de checkout sessie: ${e}` });
+    }
     
 }

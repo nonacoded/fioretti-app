@@ -24,25 +24,91 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
   }
 
   Future<List<Event>> fetchEvents() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     return [
-      Event(date: DateTime.now(), title: 'Evenement 1', description: 'Beschrijving van Evenement 1'),
-      Event(date: DateTime.now().add(Duration(days: 1)), title: 'Evenement 2', description: 'Beschrijving van Evenement 2'),
-      Event(date: DateTime.now().add(Duration(days: 31)), title: 'Evenement 3', description: 'Beschrijving van Evenement 3: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 62)), title: 'Evenement 4', description: 'Beschrijving van Evenement 4: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 93)), title: 'Evenement 5', description: 'Beschrijving van Evenement 5: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 124)), title: 'Evenement 6', description: 'Beschrijving van Evenement 6: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 155)), title: 'Evenement 7', description: 'Beschrijving van Evenement 7: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 186)), title: 'Evenement 8', description: 'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 217)), title: 'Evenement 9', description: 'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 248)), title: 'Evenement 10', description: 'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 279)), title: 'Evenement 6', description: 'Beschrijving van Evenement 6: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 310)), title: 'Evenement 7', description: 'Beschrijving van Evenement 7: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 341)), title: 'Evenement 8', description: 'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 372)), title: 'Evenement 9', description: 'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 403)), title: 'Evenement 10', description: 'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 434)), title: 'Evenement 11', description: 'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
-      Event(date: DateTime.now().add(Duration(days: 465)), title: 'Evenement 11', description: 'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now(),
+          title: 'Evenement 1',
+          description: 'Beschrijving van Evenement 1'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 1)),
+          title: 'Evenement 2',
+          description: 'Beschrijving van Evenement 2'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 31)),
+          title: 'Evenement 3',
+          description:
+              'Beschrijving van Evenement 3: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 62)),
+          title: 'Evenement 4',
+          description:
+              'Beschrijving van Evenement 4: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 93)),
+          title: 'Evenement 5',
+          description:
+              'Beschrijving van Evenement 5: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 124)),
+          title: 'Evenement 6',
+          description:
+              'Beschrijving van Evenement 6: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 155)),
+          title: 'Evenement 7',
+          description:
+              'Beschrijving van Evenement 7: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 186)),
+          title: 'Evenement 8',
+          description:
+              'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 217)),
+          title: 'Evenement 9',
+          description:
+              'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 248)),
+          title: 'Evenement 10',
+          description:
+              'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 279)),
+          title: 'Evenement 6',
+          description:
+              'Beschrijving van Evenement 6: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 310)),
+          title: 'Evenement 7',
+          description:
+              'Beschrijving van Evenement 7: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 341)),
+          title: 'Evenement 8',
+          description:
+              'Beschrijving van Evenement 8: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 372)),
+          title: 'Evenement 9',
+          description:
+              'Beschrijving van Evenement 9: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 403)),
+          title: 'Evenement 10',
+          description:
+              'Beschrijving van Evenement 10: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 434)),
+          title: 'Evenement 11',
+          description:
+              'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
+      Event(
+          date: DateTime.now().add(const Duration(days: 465)),
+          title: 'Evenement 11',
+          description:
+              'Beschrijving van Evenement 11: Dit is een langere beschrijving van het evenement om te testen hoe het eruitziet wanneer de beschrijving meer tekst bevat.'),
     ];
   }
 
@@ -58,9 +124,13 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
         future: _eventsFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),));
+            return const Center(
+                child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+            ));
           } else if (snapshot.hasError) {
-            return const Center(child: Text('Fout bij het ophalen van evenementen'));
+            return const Center(
+                child: Text('Fout bij het ophalen van evenementen'));
           } else {
             List<Event> events = snapshot.data ?? [];
             events.sort((a, b) => a.date.compareTo(b.date));
@@ -69,13 +139,14 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
               itemBuilder: (context, index) {
                 Event event = events[index];
                 // Extraheer de maand en dag uit de datum
-                String month = Utils.getMonthInLetters(event.date.month).substring(0, 3).toUpperCase();
+                String month = Utils.getMonthInLetters(event.date.month)
+                    .substring(0, 3)
+                    .toUpperCase();
                 String day = event.date.day.toString();
                 // Beperk de beschrijving tot één regel met puntjes indien nodig
-                String description =
-                    event.description.length > 30
-                        ? event.description.substring(0, 30) + "..."
-                        : event.description;
+                String description = event.description.length > 30
+                    ? "${event.description.substring(0, 30)}..."
+                    : event.description;
                 return Card(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -90,18 +161,20 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                             children: [
                               Text(
                                 month,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 8), // Ruimte tussen maand en dag
+                              const SizedBox(
+                                  height: 8), // Ruimte tussen maand en dag
                               Text(
                                 day,
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(width: 16), // Ruimte tussen linker- en rechterdeel
+                        const SizedBox(
+                            width: 16), // Ruimte tussen linker- en rechterdeel
                         // Rechterdeel: Titel van het evenement en beschrijving
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,11 +182,13 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                             // Titel van het evenement
                             Text(
                               event.title,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 4), // Ruimte tussen titel en beschrijving
+                            const SizedBox(
+                                height:
+                                    4), // Ruimte tussen titel en beschrijving
                             // Beschrijving van het evenement
                             Text(
                               description,
@@ -173,10 +248,4 @@ class Utils {
         return '';
     }
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: CalendarPage(),
-  ));
 }
