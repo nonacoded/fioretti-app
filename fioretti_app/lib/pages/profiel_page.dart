@@ -42,16 +42,17 @@ double height = MediaQuery.of(context).size.height;
             width: width * 0.9,
             height: height * 0.6,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // title
                 const SizedBox(height: 20),
-                Container(child: Text("Mijn gegevens",
+                Align(alignment: Alignment.center,
+                child: Container(child: Text("Mijn gegevens",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
                     ), textAlign: TextAlign.left,
-                    ),)],
+                    ),)),
                     const SizedBox(height: 10),
                     Align(alignment: Alignment.centerLeft,
                     child: ProfileTile(
