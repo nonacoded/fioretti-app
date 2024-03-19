@@ -52,7 +52,7 @@ double height = MediaQuery.of(context).size.height;
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
                     ), textAlign: TextAlign.left,
-                    ),)),
+                    ),margin: EdgeInsets.only(left: 20),)),
                     const SizedBox(height: 10),
                     Align(alignment: Alignment.centerLeft,
                     child: ProfileTile(
