@@ -45,7 +45,7 @@ class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: "ticket info",
+      title: "Ticket info",
       body: Center(
         child: event == null
             ? Text(!finishedLoading
