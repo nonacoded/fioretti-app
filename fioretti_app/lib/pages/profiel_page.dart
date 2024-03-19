@@ -29,7 +29,8 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
   @override
   Widget build(BuildContext context) {
     final User? user = ref.watch(userProvider);
-
+double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     if (user == null) {
       return const Text(
           "Geen gebruiker gevonden, dit is een bug. Probeer de app opnieuw te starten.");
@@ -37,22 +38,21 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
 
     return AppScaffold(
       title: "Profiel",
-      body: Column(
-        children: [
-          const SizedBox(height: 10),
-          Padding(padding:  const EdgeInsets.all(10.0),
-           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children:[ Container(child: Text('Mijn gegevens:',
-           style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18.0,
-            ),textAlign: TextAlign.left, ), 
-          ),],),),
-          ProfileTile(
-            icon: Icons.account_circle, // Standaard profielfoto-icoon
-            text: "${user.firstName} ${user.lastName}",
-          ),
+      body: Container(
+            width: width * 0.9,
+            height: height * 0.6,
+            child: Column(
+              children: [
+                // title
+                const SizedBox(height: 20),
+                Align(alignment: Alignment.centerLeft,
+                child: Container(child: Text("Mijn gegevens",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ), textAlign: TextAlign.left,
+                    ),)),
+                    const SizedBox(height: 10),
           
           ProfileTile(
             icon: Icons.email,
@@ -62,7 +62,7 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
           const LogoutButton(),
         ]
       ),
-  );}
+  ));}
 }
 
 class ProfileTile extends StatelessWidget {
