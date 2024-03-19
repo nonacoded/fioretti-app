@@ -45,7 +45,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
       body: Center(
         
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(height:10),
             ElevatedButton(
