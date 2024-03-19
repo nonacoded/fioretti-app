@@ -93,8 +93,7 @@ class EventDisplay extends StatelessWidget {
                   ],
                 ),
               ],
-            ))
-      ],
+            )),
     );
   }
 }
