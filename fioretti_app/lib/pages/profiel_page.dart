@@ -40,12 +40,15 @@ class _ProfielPageState extends ConsumerState<ProfielPage> {
       body: Column(
         children: [
           const SizedBox(height: 10),
-           Align(alignment: Alignment.centerLeft, child: Container(child: Text('Mijn gegevens:', 
+          Padding(padding:  const EdgeInsets.all(8.0),
+           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:[ Container(child: Text('Mijn gegevens:',
            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18.0,
             ),textAlign: TextAlign.left, ), 
-          ),),
+          ),],),),
           const SizedBox(height: 10),
           ProfileTile(
             icon: Icons.account_circle, // Standaard profielfoto-icoon
