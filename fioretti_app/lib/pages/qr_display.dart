@@ -12,13 +12,25 @@ class QrCodePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       title: ticket.event.title,
-      body: Center(
-        child: QrImageView(
+      body: Column(
+         children:[ GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, '/');
+                    },
+                    child: Image.asset(
+                      'assets/logo.png',
+                      width: 42, // Adjust the width to your desired size
+                      height: 42, // Adjust the height to your desired size
+                      semanticLabel:
+                          'Home', // Added semantic label for accessibility
+                    ),
+                  ),
+        QrImageView(
           data: ticket.id,
           version: QrVersions.auto,
-          size: 400.0,
+          size: 50.0,
         ),
-      ),
-    );
+         ],  
+    ),);
   }
 }
