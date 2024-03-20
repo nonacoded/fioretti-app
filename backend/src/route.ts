@@ -3,7 +3,7 @@ import { apiEditSchoolEvent, apiGetSchoolEvent, apiGetSchoolEvents, apiInsertSch
 import { apiAdminPanelLogin, apiExchangeConfirmationToken, apiLoginUser, apiLogoutUser, apiVerifySession } from './api/auth';
 import { apiMarkTicketAsUsed, apiClaimFreeTicket, apiGetTicketById, apiGetTickets } from './api/tickets';
 import { apiGetUserById } from './api/users';
-import { apiBuyTicket } from './api/checkout';
+import { apiBuyTicket, apiReceiveStripeWebhookEvent } from './api/purchases';
 
 
 
@@ -35,5 +35,8 @@ router.route("/auth/verifySession").post(apiVerifySession);
 router.route("/admin/auth/login").post(apiAdminPanelLogin);
 
 router.route("/users/:id").get(apiGetUserById);
+
+router.route("/webhooks/stripe").post(express.raw({type: '*/*'}), apiReceiveStripeWebhookEvent);
+
 
 export default router;

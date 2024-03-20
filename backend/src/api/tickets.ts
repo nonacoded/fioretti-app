@@ -64,7 +64,7 @@ export async function createTicket(event: SchoolEvent, user: User) {
         eventId: event._id,
         userId: user._id,
         createdAt: new Date(),
-        expiresAt: new Date(event.date.getTime() + 1000 * 60 * 60 * 24 * 2), // expires after 2 days
+        expiresAt: new Date(event.date.getTime() + 1000 * 60 * 60 * 24 * 2), // expires after 2 days after the event
         isUsed: false
     };
 
