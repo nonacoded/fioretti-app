@@ -15,9 +15,16 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fioretti_app/pages/qr_scanning_page.dart';
+import "package:flutter_stripe/flutter_stripe.dart";
 
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await dotenv.load(fileName: ".env");
+  String stripeKey = dotenv.get("STRIPE_PUBLIC_KEY");
+  Stripe.publishableKey = stripeKey;
+  await Stripe.instance.applySettings();
+
   runApp(const FiorettiApp());
 }
 

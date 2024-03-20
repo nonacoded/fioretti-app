@@ -12,20 +12,21 @@ import GlobalVars from "../globalVars";
 
 
 
-export async function apiCreateCheckoutSession(req: Request, res: Response, next: NextFunction) {
+export async function apiBuyTicket(req: Request, res: Response, next: NextFunction) {
 
+    console.log("Creating checkout session");
     const stripe = GlobalVars.stripeObject;
 
 
     const sessionCookie = req.cookies["session"];
 
-    let user: User;
+    /*let user: User;
     try {
         user = await getUserFromSessionCookie(sessionCookie);
     } catch (e) {
         res.status(401).json({ message: "Je bent niet ingelogd" });
         return;
-    }
+    }*/
 
 
     let eventId = req.params.id;
@@ -43,22 +44,12 @@ export async function apiCreateCheckoutSession(req: Request, res: Response, next
     }
 
     try {
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['ideal'],
-            line_items: [
-                {
-                    price_data: {
-                        currency: 'eur',
-                        product_data: {
-                            name: event.title,
-                        },
-                        unit_amount: price * 100,
-                    },
-                    quantity: 1,
-                },
-            ],
+        const intent = await stripe.paymentIntents.create({
+            payment_method_types: ['ideal', 'paypal'],
+            currency: 'eur',
+            amount: price * 100,
         });
-        res.status(200).json({ id: session.id });
+        res.status(200).json(intent);
     }
     catch (e) {
         res.status(500).json({ message: `Er is iets fout gegaan bij het aanmaken van de checkout sessie: ${e}` });

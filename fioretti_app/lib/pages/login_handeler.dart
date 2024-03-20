@@ -143,9 +143,10 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
                     },
                     child: const Text("Opniew Proberen"),
                     style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
-              onPrimary: Colors.white, // tekstkleur van de knop
-            ),
+                      backgroundColor:
+                          Colors.lightBlue[900], // achtergrondkleur van de knop
+                      foregroundColor: Colors.white, // tekstkleur van de knop
+                    ),
                   ),
                 ],
               ),

@@ -43,18 +43,18 @@ class _QrScanningPageState extends State<QrScanningPage> {
     return AppScaffold(
       title: "Scan QR",
       body: Center(
-        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height:10),
+            const SizedBox(height: 10),
             ElevatedButton(
               child: const Text('Scan QR'),
               style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
-              onPrimary: Colors.white, // tekstkleur van de knop
-            ),
+                backgroundColor:
+                    Colors.lightBlue[900], // achtergrondkleur van de knop
+                foregroundColor: Colors.white, // tekstkleur van de knop
+              ),
               onPressed: () async {
                 final result = await BarcodeScanner.scan();
                 if (result.type == ResultType.Barcode) {
@@ -88,18 +88,22 @@ class _QrScanningPageState extends State<QrScanningPage> {
                       : const SizedBox(height: 10)
                 ],
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start, 
+            Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 //crossAxisAlignment: CrossAxisAlignment.stretch,
-              children:[ ElevatedButton(
-                onPressed: () {
-                  setTicket("659feca27e5a22c34c37c99e");
-                },
-                child: Text("Test"),
-                style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
-              foregroundColor: Colors.white, // tekstkleur van de knop
-            ),)]),
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      setTicket("659feca27e5a22c34c37c99e");
+                    },
+                    child: Text("Test"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          Colors.lightBlue[900], // achtergrondkleur van de knop
+                      foregroundColor: Colors.white, // tekstkleur van de knop
+                    ),
+                  )
+                ]),
           ],
         ),
       ),
@@ -156,9 +160,9 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                 : "Markeer als gebruikt"),
       ),
       style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
-              foregroundColor: Colors.white, // tekstkleur van de knop
-            ),
+        backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
+        foregroundColor: Colors.white, // tekstkleur van de knop
+      ),
     );
   }
 }
