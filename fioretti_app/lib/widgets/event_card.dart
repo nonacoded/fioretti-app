@@ -22,20 +22,22 @@ class SchoolEventWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(children: [
-                Text(
+                Align(alignment: Alignment.topLeft,
+                child: Text(
                 event.title,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0,
                 ),
-              ),
-              Text(
+              ),),
+              Align(alignment: Alignment.topLeft,
+                child: Text(
                 "${dateTimeToString(event.date)}",
                 style: const TextStyle(
                   fontWeight: FontWeight.w200,
                   fontSize: 13.0,
                 ),
-              ),
+              ),),
               ],),
               
               const SizedBox(height: 8.0),
