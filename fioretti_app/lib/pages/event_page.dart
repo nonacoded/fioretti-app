@@ -73,6 +73,16 @@ class _EventPageState extends State<EventPage> {
                     ),
                     child:
                         Text(!boughtTicket ? "Koop ticket" : "Ticket gekocht"),
+<<<<<<< HEAD
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(5.0),
+                              ),
+              backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
+              foregroundColor: Colors.white, // tekstkleur van de knop
+                    ),
+=======
+>>>>>>> 4c5bb4ac63593bb722afd464ec02160dfc660b86
                   )
                 ],
               ),

@@ -72,10 +72,19 @@ class _StartPageState extends ConsumerState<StartPage> {
                 },
                 child: const Text("Login"),
                 style: ElevatedButton.styleFrom(
+<<<<<<< HEAD
+                  shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(5.0),
+                              ),
+              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
+              onPrimary: Colors.white, // tekstkleur van de knop
+            ),
+=======
                   backgroundColor:
                       Colors.lightBlue[900], // achtergrondkleur van de knop
                   foregroundColor: Colors.white, // tekstkleur van de knop
                 ),
+>>>>>>> 4c5bb4ac63593bb722afd464ec02160dfc660b86
               ),
       ),
     );

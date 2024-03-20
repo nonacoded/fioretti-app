@@ -12,13 +12,29 @@ class QrCodePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       title: ticket.event.title,
-      body: Center(
-        child: QrImageView(
+      body: Column(
+         children:[ 
+          Align(alignment: Alignment.topLeft,
+          child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child : Container(
+                padding: const EdgeInsets.all(15.0),
+                                  child: const Icon(Icons.arrow_back_ios_new,
+                    color: Colors.grey,
+                    size: 20,
+                    ),
+                  ),),),
+                  const SizedBox(height: 120),
+       Align(alignment: Alignment.center,
+          child:  QrImageView(
           data: ticket.id,
           version: QrVersions.auto,
-          size: 400.0,
+          size: 325.0,
         ),
-      ),
+      ),],
+          ),  
     );
   }
 }
