@@ -27,12 +27,13 @@ class QrCodePage extends StatelessWidget {
                     size: 20,
                     ),
                   ),),),
-        QrImageView(
+       Align(alignment: Alignment.center,
+          child:  QrImageView(
           data: ticket.id,
           version: QrVersions.auto,
           size: 300.0,
         ),
-         ],
+      ),],
           ),  
     );
   }
