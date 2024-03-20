@@ -32,7 +32,7 @@ class SchoolEventWidget extends StatelessWidget {
               ),),
               Align(alignment: Alignment.topLeft,
                 child: Text(
-                "${dateTimeToString(event.date)}",
+                "${dateTimeToString(event.date)}!",
                 style: const TextStyle(
                   fontWeight: FontWeight.w200,
                   fontSize: 13.0,
