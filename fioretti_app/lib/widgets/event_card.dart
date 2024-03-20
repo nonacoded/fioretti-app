@@ -37,10 +37,10 @@ class SchoolEventWidget extends StatelessWidget {
                 "${dateToString(event.date)}",
                 style: const TextStyle(fontSize: 10.0),
               ),
-              Text(
-                "${event.price}",
-                style: const TextStyle(fontSize: 10.0),
-              ),
+              // Text(
+              //   "${event.price}",
+              //   style: const TextStyle(fontSize: 10.0),
+              // ),
             ],
           ),
         ),
