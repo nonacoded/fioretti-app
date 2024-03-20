@@ -103,8 +103,8 @@ void buyTicket(SchoolEvent event) async {
     }
 
     Map<String, dynamic> paymentIntentJson = response.json();
-    print("hoi");
-    final paymentSheet = await Stripe.instance.initPaymentSheet(
+
+    await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         customFlow: false,
         merchantDisplayName: "Fioretti College Lisse",
