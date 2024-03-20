@@ -26,7 +26,7 @@ class QrCodePage extends StatelessWidget {
                     size: 20,
                     ),
                   ),),),
-                  const SizedBox(height: 80),
+                  const SizedBox(height: 90),
        Align(alignment: Alignment.center,
           child:  QrImageView(
           data: ticket.id,
