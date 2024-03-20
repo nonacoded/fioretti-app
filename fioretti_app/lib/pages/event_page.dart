@@ -113,6 +113,9 @@ class _EventPageState extends State<EventPage> {
       );
 
       await Stripe.instance.presentPaymentSheet();
+
+      showSnackBar(
+          "Het betalen is gelukt! Kijk bij 'Mijn tickets' voor je ticket.");
     } catch (e) {
       var err = e as StripeException;
       if (err.error.code == FailureCode.Canceled) {
@@ -131,6 +134,7 @@ class _EventPageState extends State<EventPage> {
         "${dotenv.env['API_URL']!}/events/${event.id}/tickets");
     if (response.statusCode == 200) {
       print("Ticket gekocht!");
+      showSnackBar("Je hebt je ticket ontvangen, kijk bij 'Mijn tickets'.");
     } else {
       print("Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
     }
