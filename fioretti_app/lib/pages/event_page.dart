@@ -1,3 +1,4 @@
+import 'package:fioretti_app/functions/utils.dart';
 import 'package:fioretti_app/models/school_event.dart';
 import 'package:fioretti_app/models/ticket.dart';
 import 'package:fioretti_app/widgets/event_display.dart';
@@ -5,6 +6,7 @@ import 'package:fioretti_app/widgets/scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:requests/requests.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class EventPage extends StatefulWidget {
   final String id;
@@ -52,21 +54,26 @@ class _EventPageState extends State<EventPage> {
                 ? "Bezig met laden..."
                 : "Evenement niet gevonden")
             : Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   EventDisplay(event: event!),
                   ElevatedButton(
                     onPressed: !canClickBuyButton
                         ? null
                         : () {
-                            buyTicket(event!.id);
+                            getTicket(event!);
                             setState(() {
-                              boughtTicket = true;
                               canClickBuyButton = false;
                             });
                           },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          Colors.lightBlue[900], // achtergrondkleur van de knop
+                      foregroundColor: Colors.white, // tekstkleur van de knop
+                    ),
                     child:
                         Text(!boughtTicket ? "Koop ticket" : "Ticket gekocht"),
+<<<<<<< HEAD
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.circular(5.0),
@@ -74,20 +81,68 @@ class _EventPageState extends State<EventPage> {
               backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
               foregroundColor: Colors.white, // tekstkleur van de knop
                     ),
+=======
+>>>>>>> 4c5bb4ac63593bb722afd464ec02160dfc660b86
                   )
                 ],
               ),
       ),
     );
   }
-}
 
-void buyTicket(String eventId) async {
-  final response =
-      await Requests.post("${dotenv.env['API_URL']!}/events/$eventId/tickets");
-  if (response.statusCode == 200) {
-    print("Ticket gekocht!");
-  } else {
-    print("Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
+  void getTicket(SchoolEvent event) async {
+    if (event.price < 0.1) {
+      claimFreeTicket(event);
+      return;
+    }
+
+    buyTicket(event);
+  }
+
+  void buyTicket(SchoolEvent event) async {
+    try {
+      final response = await Requests.post(
+          "${dotenv.env['API_URL']!}/events/${event.id}/buy");
+
+      if (response.statusCode != 200) {
+        print(
+            "Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
+        showSnackBar(
+            "Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
+      }
+
+      Map<String, dynamic> paymentIntentJson = response.json();
+
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          customFlow: false,
+          merchantDisplayName: "Fioretti College Lisse",
+          paymentIntentClientSecret: paymentIntentJson["client_secret"],
+          style: ThemeMode.light,
+        ),
+      );
+
+      await Stripe.instance.presentPaymentSheet();
+    } catch (e) {
+      var err = e as StripeException;
+      if (err.error.code == FailureCode.Canceled) {
+        showSnackBar("Het betalen is geannuleerd.");
+      } else {
+        showSnackBar("Het betalen is mislukt! Probeer het later opnieuw. $e");
+      }
+      setState(() {
+        canClickBuyButton = true;
+      });
+    }
+  }
+
+  void claimFreeTicket(SchoolEvent event) async {
+    final response = await Requests.post(
+        "${dotenv.env['API_URL']!}/events/${event.id}/tickets");
+    if (response.statusCode == 200) {
+      print("Ticket gekocht!");
+    } else {
+      print("Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
+    }
   }
 }

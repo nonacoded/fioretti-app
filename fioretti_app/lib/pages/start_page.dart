@@ -38,21 +38,25 @@ class _StartPageState extends ConsumerState<StartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Fioretti App", style: TextStyle(color: Colors.white),),
+        title: const Text(
+          "Fioretti App",
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
-          leading: GestureDetector(
-            /*onTap: () {
+        leading: GestureDetector(
+          /*onTap: () {
               Navigator.pushReplacementNamed(context, '/');
             },*/
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Image.asset(
-                'assets/logo.png',
-                width: 60, // Adjust the width to your desired size
-                height: 60, // Adjust the height to your desired size// Added semantic label for accessibility
-              ),
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/logo.png',
+              width: 60, // Adjust the width to your desired size
+              height:
+                  60, // Adjust the height to your desired size// Added semantic label for accessibility
             ),
           ),
+        ),
         backgroundColor: Colors.lightBlue[900],
       ),
       body: Center(
@@ -68,12 +72,19 @@ class _StartPageState extends ConsumerState<StartPage> {
                 },
                 child: const Text("Login"),
                 style: ElevatedButton.styleFrom(
+<<<<<<< HEAD
                   shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.circular(5.0),
                               ),
               primary: Colors.lightBlue[900], // achtergrondkleur van de knop
               onPrimary: Colors.white, // tekstkleur van de knop
             ),
+=======
+                  backgroundColor:
+                      Colors.lightBlue[900], // achtergrondkleur van de knop
+                  foregroundColor: Colors.white, // tekstkleur van de knop
+                ),
+>>>>>>> 4c5bb4ac63593bb722afd464ec02160dfc660b86
               ),
       ),
     );

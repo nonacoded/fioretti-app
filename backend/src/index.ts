@@ -22,17 +22,32 @@ const app: Express = express();
 const port = process.env.PORT;
 
 // Express configuration
+
+app.use((
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+): void => {
+  if (req.originalUrl.includes('/webhooks/stripe')) {
+    next();
+  } else {
+    express.json()(req, res, next);
+  }
+});
+
 app.use(cors({
   origin:process.env.ENV !== "dev" ? process.env.ADMIN_PANEL_URL : "http://localhost:3002",
   credentials: true
 }));
-app.use(express.json());
+
+
 app.use(cookieParser());
 
 
 
 // Routes
 app.use("/fioretti-app-api", router);
+
 
 app.use("*", (req: Request, res: Response) => {res.status(404).json({message: `Method not found: ${req.method} to ${req.originalUrl}`})});
 
@@ -41,6 +56,7 @@ app.use("*", (req: Request, res: Response) => {res.status(404).json({message: `M
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
   res.status(500).send(`Error (${err})`);
+  return;
 });
 
 
