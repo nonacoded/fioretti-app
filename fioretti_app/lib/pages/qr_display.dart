@@ -13,13 +13,14 @@ class QrCodePage extends StatelessWidget {
     return AppScaffold(
       title: ticket.event.title,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-         children:[ GestureDetector(
+         children:[ 
+          Align(alignment: Alignment.topLeft,
+          child: GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
                     },
                     child: const Icon(Icons.arrow_back_ios_new// Added semantic label for accessibility
+                    ),
                     ),
                   ),
         QrImageView(
