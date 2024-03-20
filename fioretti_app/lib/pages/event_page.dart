@@ -63,7 +63,6 @@ class _EventPageState extends State<EventPage> {
                         : () {
                             getTicket(event!);
                             setState(() {
-                              boughtTicket = true;
                               canClickBuyButton = false;
                             });
                           },
@@ -115,7 +114,12 @@ void buyTicket(SchoolEvent event) async {
 
     await Stripe.instance.presentPaymentSheet();
   } catch (e) {
-    showSnackBar("Het betalen is mislukt! Probeer het later opnieuw. $e");
+    var err = e as StripeException;
+    if (err.error.code == FailureCode.Canceled) {
+      showSnackBar("Het betalen is geannuleerd.");
+    } else {
+      showSnackBar("Het betalen is mislukt! Probeer het later opnieuw. $e");
+    }
   }
 }
 

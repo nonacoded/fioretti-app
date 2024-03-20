@@ -113,6 +113,8 @@ export async function apiReceiveStripeWebhookEvent(req: Request, res: Response, 
         }
 
         try {
+            
+
             await createTicket(schoolEvent, user);
         } catch (e) {
             var err = e as ApiFuncError;
