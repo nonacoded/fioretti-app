@@ -57,6 +57,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
                               ),
               primary: Colors.lightBlue[900], // achtergrondkleur van de knop
               onPrimary: Colors.white, // tekstkleur van de knop
+              padding: EdgeInsets.only(left: 10.0, right: 10.0)
             ),
               onPressed: () async {
                 final result = await BarcodeScanner.scan();
