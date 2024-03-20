@@ -66,69 +66,73 @@ class _EventPageState extends State<EventPage> {
                               canClickBuyButton = false;
                             });
                           },
-                    child:
-                        Text(!boughtTicket ? "Koop ticket" : "Ticket gekocht"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           Colors.lightBlue[900], // achtergrondkleur van de knop
                       foregroundColor: Colors.white, // tekstkleur van de knop
                     ),
+                    child:
+                        Text(!boughtTicket ? "Koop ticket" : "Ticket gekocht"),
                   )
                 ],
               ),
       ),
     );
   }
-}
 
-void getTicket(SchoolEvent event) async {
-  if (event.price < 0.1) {
-    claimFreeTicket(event);
-    return;
-  }
-
-  buyTicket(event);
-}
-
-void buyTicket(SchoolEvent event) async {
-  try {
-    final response =
-        await Requests.post("${dotenv.env['API_URL']!}/events/${event.id}/buy");
-
-    if (response.statusCode != 200) {
-      print("Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
-      showSnackBar(
-          "Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
+  void getTicket(SchoolEvent event) async {
+    if (event.price < 0.1) {
+      claimFreeTicket(event);
+      return;
     }
 
-    Map<String, dynamic> paymentIntentJson = response.json();
+    buyTicket(event);
+  }
 
-    await Stripe.instance.initPaymentSheet(
-      paymentSheetParameters: SetupPaymentSheetParameters(
-        customFlow: false,
-        merchantDisplayName: "Fioretti College Lisse",
-        paymentIntentClientSecret: paymentIntentJson["client_secret"],
-        style: ThemeMode.light,
-      ),
-    );
+  void buyTicket(SchoolEvent event) async {
+    try {
+      final response = await Requests.post(
+          "${dotenv.env['API_URL']!}/events/${event.id}/buy");
 
-    await Stripe.instance.presentPaymentSheet();
-  } catch (e) {
-    var err = e as StripeException;
-    if (err.error.code == FailureCode.Canceled) {
-      showSnackBar("Het betalen is geannuleerd.");
+      if (response.statusCode != 200) {
+        print(
+            "Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
+        showSnackBar(
+            "Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
+      }
+
+      Map<String, dynamic> paymentIntentJson = response.json();
+
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          customFlow: false,
+          merchantDisplayName: "Fioretti College Lisse",
+          paymentIntentClientSecret: paymentIntentJson["client_secret"],
+          style: ThemeMode.light,
+        ),
+      );
+
+      await Stripe.instance.presentPaymentSheet();
+    } catch (e) {
+      var err = e as StripeException;
+      if (err.error.code == FailureCode.Canceled) {
+        showSnackBar("Het betalen is geannuleerd.");
+      } else {
+        showSnackBar("Het betalen is mislukt! Probeer het later opnieuw. $e");
+      }
+      setState(() {
+        canClickBuyButton = true;
+      });
+    }
+  }
+
+  void claimFreeTicket(SchoolEvent event) async {
+    final response = await Requests.post(
+        "${dotenv.env['API_URL']!}/events/${event.id}/tickets");
+    if (response.statusCode == 200) {
+      print("Ticket gekocht!");
     } else {
-      showSnackBar("Het betalen is mislukt! Probeer het later opnieuw. $e");
+      print("Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
     }
-  }
-}
-
-void claimFreeTicket(SchoolEvent event) async {
-  final response = await Requests.post(
-      "${dotenv.env['API_URL']!}/events/${event.id}/tickets");
-  if (response.statusCode == 200) {
-    print("Ticket gekocht!");
-  } else {
-    print("Ticket kopen mislukt! [${response.statusCode}] ${response.body}");
   }
 }

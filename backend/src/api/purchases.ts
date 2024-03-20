@@ -113,9 +113,16 @@ export async function apiReceiveStripeWebhookEvent(req: Request, res: Response, 
         }
 
         try {
+            const ticket = await TicketsDao.getTicketByUserIdAndEventId(new ObjectId(userId), new ObjectId(eventId));
+            if (ticket) {
+                res.status(400).json({ message: "User already has a ticket for this event" });
+                return;
+            }
             
-
+            // create new ticket
             await createTicket(schoolEvent, user);
+
+            res.status(200).json({ message: "Ticket created" });
         } catch (e) {
             var err = e as ApiFuncError;
             res.status(err.code).json({ message: err.message });
@@ -123,10 +130,13 @@ export async function apiReceiveStripeWebhookEvent(req: Request, res: Response, 
 
 
         break;
-    case 'payment_intent.payment_failed':
+    /*case 'payment_intent.payment_failed':
         intent = event.data.object;
         const message = intent.last_payment_error && intent.last_payment_error.message;
         console.log('Failed:', intent.id, message);
-        break;
+        break;*/
+    default:
+        console.log(`Unhandled event type: ${event['type']}`);
+        res.status(200);
     }
 }
