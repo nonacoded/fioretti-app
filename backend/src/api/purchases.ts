@@ -52,7 +52,9 @@ export async function apiBuyTicket(req: Request, res: Response, next: NextFuncti
             amount: price * 100,
             metadata: {
                 event_id: eventId,
-                user_id: user._id.toString()
+                user_id: user._id.toString(),
+                event_title: event.title,
+                user_name: user.firstName + " " + user.lastName,
             }
         });
         res.status(200).json(intent);
