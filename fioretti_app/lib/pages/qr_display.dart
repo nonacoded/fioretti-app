@@ -13,6 +13,7 @@ class QrCodePage extends StatelessWidget {
     return AppScaffold(
       title: ticket.event.title,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
          children:[ GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
