@@ -13,7 +13,6 @@ class QrCodePage extends StatelessWidget {
     return AppScaffold(
       title: ticket.event.title,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
          children:[ 
           Align(alignment: Alignment.topLeft,
           child: GestureDetector(
@@ -27,6 +26,7 @@ class QrCodePage extends StatelessWidget {
                     size: 20,
                     ),
                   ),),),
+                  const SizedBox(height: 20),
        Align(alignment: Alignment.center,
           child:  QrImageView(
           data: ticket.id,
