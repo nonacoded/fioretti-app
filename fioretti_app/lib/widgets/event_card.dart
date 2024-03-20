@@ -21,10 +21,6 @@ class SchoolEventWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(alignment: Alignment.topRight, child: Text(
-                "${dateToString(event.date)}",
-                style: const TextStyle(fontSize: 10.0),
-              ),),
               Text(
                 event.title,
                 style: const TextStyle(
@@ -37,6 +33,10 @@ class SchoolEventWidget extends StatelessWidget {
                 event.description,
                 style: const TextStyle(fontSize: 16.0),
               ),
+              Align(alignment: Alignment.bottomRight, child: Text(
+                "${dateToString(event.date)}",
+                style: const TextStyle(fontSize: 10.0),
+              ),),
             // Text(
               //   "${event.price}",
               //   style: const TextStyle(fontSize: 10.0),
