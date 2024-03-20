@@ -108,17 +108,14 @@ void buyTicket(SchoolEvent event) async {
       paymentSheetParameters: SetupPaymentSheetParameters(
         customFlow: false,
         merchantDisplayName: "Fioretti College Lisse",
-        paymentIntentClientSecret: paymentIntentJson["clientSecret"],
+        paymentIntentClientSecret: paymentIntentJson["client_secret"],
         style: ThemeMode.light,
       ),
     );
-    print("aa");
 
     await Stripe.instance.presentPaymentSheet();
-    print("finish");
   } catch (e) {
     showSnackBar("Het betalen is mislukt! Probeer het later opnieuw. $e");
-    print("Payment failed: $e");
   }
 }
 
