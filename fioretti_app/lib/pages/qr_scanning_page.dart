@@ -51,20 +51,13 @@ class _QrScanningPageState extends State<QrScanningPage> {
             ElevatedButton(
               child: const Text('Scan QR'),
               style: ElevatedButton.styleFrom(
-<<<<<<< HEAD
-                shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(5.0),
-                              ),
-              primary: Colors.lightBlue[900], // achtergrondkleur van de knop
-              onPrimary: Colors.white, // tekstkleur van de knop
-              padding: EdgeInsets.only(left: 27.0, right: 27.0)
-            ),
-=======
-                backgroundColor:
-                    Colors.lightBlue[900], // achtergrondkleur van de knop
-                foregroundColor: Colors.white, // tekstkleur van de knop
-              ),
->>>>>>> 4c5bb4ac63593bb722afd464ec02160dfc660b86
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  backgroundColor:
+                      Colors.lightBlue[900], // achtergrondkleur van de knop
+                  foregroundColor: Colors.white, // tekstkleur van de knop
+                  padding: EdgeInsets.only(left: 27.0, right: 27.0)),
               onPressed: () async {
                 final result = await BarcodeScanner.scan();
                 if (result.type == ResultType.Barcode) {
@@ -101,22 +94,6 @@ class _QrScanningPageState extends State<QrScanningPage> {
             Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 //crossAxisAlignment: CrossAxisAlignment.stretch,
-<<<<<<< HEAD
-              children:[ ElevatedButton(
-                onPressed: () {
-                  setTicket("659feca27e5a22c34c37c99e");
-                },
-                child: Text("Test"),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(5.0),
-                              ),
-                             
-                backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
-              foregroundColor: Colors.white, // tekstkleur van de knop
-            padding: const EdgeInsets.only(left: 40.0, right: 40.0),
-            ),)]),
-=======
                 children: [
                   ElevatedButton(
                     onPressed: () {
@@ -124,13 +101,17 @@ class _QrScanningPageState extends State<QrScanningPage> {
                     },
                     child: Text("Test"),
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+
                       backgroundColor:
                           Colors.lightBlue[900], // achtergrondkleur van de knop
                       foregroundColor: Colors.white, // tekstkleur van de knop
+                      padding: const EdgeInsets.only(left: 40.0, right: 40.0),
                     ),
                   )
                 ]),
->>>>>>> 4c5bb4ac63593bb722afd464ec02160dfc660b86
           ],
         ),
       ),
@@ -187,18 +168,9 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                 : "Markeer als gebruikt"),
       ),
       style: ElevatedButton.styleFrom(
-<<<<<<< HEAD
-        shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(5.0),
-                              ),
-              backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
-              foregroundColor: Colors.white, // tekstkleur van de knop
-            ),
-=======
         backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
         foregroundColor: Colors.white, // tekstkleur van de knop
       ),
->>>>>>> 4c5bb4ac63593bb722afd464ec02160dfc660b86
     );
   }
 }
