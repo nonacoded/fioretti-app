@@ -19,16 +19,21 @@ class QrCodePage extends StatelessWidget {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: const Icon(Icons.arrow_back_ios_new// Added semantic label for accessibility
-                    ),
+                    child : Container(
+                padding: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(border: Border.all()),
+                  child: const Icon(Icons.arrow_back_ios_new,
+                    color: Colors.grey,
+                    size: 20,
                     ),
                   ),
-        QrImageView(
+        child: QrImageView(
           data: ticket.id,
           version: QrVersions.auto,
           size: 250.0,
         ),
-         ],  
-    ),);
+          ),
+          ),  
+    ],));
   }
 }
