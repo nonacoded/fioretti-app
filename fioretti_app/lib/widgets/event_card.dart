@@ -33,11 +33,11 @@ class SchoolEventWidget extends StatelessWidget {
                 event.description,
                 style: const TextStyle(fontSize: 16.0),
               ),
-              Align(alignment: Alignment.bottomRight, child: Text(
-                "${dateToString(event.date)}",
-                style: const TextStyle(fontSize: 10.0),
-              ),),
-            // Text(
+              // Text(
+              //   "${dateToString(event.date)}",
+              //   style: const TextStyle(fontSize: 10.0),
+              // ),
+              // Text(
               //   "${event.price}",
               //   style: const TextStyle(fontSize: 10.0),
               // ),
