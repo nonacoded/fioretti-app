@@ -21,8 +21,7 @@ class QrCodePage extends StatelessWidget {
                     },
                     child : Container(
                 padding: const EdgeInsets.all(15.0),
-                decoration: BoxDecoration(border: Border.all()),
-                  child: const Icon(Icons.arrow_back_ios_new,
+                                  child: const Icon(Icons.arrow_back_ios_new,
                     color: Colors.grey,
                     size: 20,
                     ),
