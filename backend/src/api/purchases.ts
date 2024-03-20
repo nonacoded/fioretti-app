@@ -94,53 +94,53 @@ export async function apiReceiveStripeWebhookEvent(req: Request, res: Response, 
 
     let intent = null;
     switch (event['type']) {
-    case 'payment_intent.succeeded':
-        intent = event.data.object;
+        case 'payment_intent.succeeded':
+            intent = event.data.object;
 
-        // create new ticket for paid event
-        const eventId = intent.metadata.event_id;
-        const userId = intent.metadata.user_id;
-        if (!eventId || !userId) {
-            console.log("Warning: metadata is missing in successful payment, this might mean someone paid but won't receive anything");
-            res.status(400).json({ message: "Missing metadata" });
-            return;
-        }
-        const user = await UsersDao.getUserById(new ObjectId(userId));
-        const schoolEvent = await EventsDao.getSchoolEventById(new ObjectId(eventId));
-        if (!user || !schoolEvent) {
-            console.log(`Warning: user or event couldn't be found, this might mean someone paid but won't receive anything. User id: ${userId}, event id: ${eventId}`);
-
-            res.status(404).json({ message: "User or event not found" });
-            return;
-        }
-
-        try {
-            const ticket = await TicketsDao.getTicketByUserIdAndEventId(new ObjectId(userId), new ObjectId(eventId));
-            if (ticket) {
-                res.status(400).json({ message: "User already has a ticket for this event" });
+            // create new ticket for paid event
+            const eventId = intent.metadata.event_id;
+            const userId = intent.metadata.user_id;
+            if (!eventId || !userId) {
+                console.log("Warning: metadata is missing in successful payment, this might mean someone paid but won't receive anything");
+                res.status(400).json({ message: "Missing metadata" });
                 return;
             }
-            
-            // create new ticket
-            await createTicket(schoolEvent, user);
+            const user = await UsersDao.getUserById(new ObjectId(userId));
+            const schoolEvent = await EventsDao.getSchoolEventById(new ObjectId(eventId));
+            if (!user || !schoolEvent) {
+                console.log(`Warning: user or event couldn't be found, this might mean someone paid but won't receive anything. User id: ${userId}, event id: ${eventId}`);
 
-            res.status(200).json({ message: "Ticket created" });
-        } catch (e) {
-            var err = e as ApiFuncError;
-            res.status(err.code).json({ message: err.message });
-        }
+                res.status(404).json({ message: "User or event not found" });
+                return;
+            }
+
+            try {
+                const ticket = await TicketsDao.getTicketByUserIdAndEventId(new ObjectId(userId), new ObjectId(eventId));
+                if (ticket) {
+                    res.status(400).json({ message: "User already has a ticket for this event" });
+                    return;
+                }
+                
+                // create new ticket
+                await createTicket(schoolEvent, user);
+
+                res.status(200).json({ message: "Ticket created" });
+            } catch (e) {
+                var err = e as ApiFuncError;
+                res.status(err.code).json({ message: err.message });
+            }
 
 
-        break;
-    /*case 'payment_intent.payment_failed':
-        intent = event.data.object;
-        const message = intent.last_payment_error && intent.last_payment_error.message;
-        console.log('Failed:', intent.id, message);
-        break;*/
-    default:
-        console.log(`Unhandled event type: ${event['type']}`);
-        res.status(200);
-        console.log("Received event: ", event.type);
-        break;
+            break;
+        /*case 'payment_intent.payment_failed':
+            intent = event.data.object;
+            const message = intent.last_payment_error && intent.last_payment_error.message;
+            console.log('Failed:', intent.id, message);
+            break;*/
+        default:
+            console.log(`Unhandled event type: ${event['type']}`);
+            res.status(200).send();
+            console.log("Received event: ", event.type);
+            break;
     }
 }
