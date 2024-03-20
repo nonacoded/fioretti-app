@@ -140,5 +140,7 @@ export async function apiReceiveStripeWebhookEvent(req: Request, res: Response, 
     default:
         console.log(`Unhandled event type: ${event['type']}`);
         res.status(200);
+        console.log("Received event: ", event.type);
+        break;
     }
 }
