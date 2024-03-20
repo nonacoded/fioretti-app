@@ -17,12 +17,7 @@ class QrCodePage extends StatelessWidget {
                     onTap: () {
                       Navigator.pushReplacementNamed(context, '/');
                     },
-                    child: Image.asset(
-                      'assets/logo.png',
-                      width: 42, // Adjust the width to your desired size
-                      height: 42, // Adjust the height to your desired size
-                      semanticLabel:
-                          'Home', // Added semantic label for accessibility
+                    child: const Icon(Icons.arrow_back_ios_new// Added semantic label for accessibility
                     ),
                   ),
         QrImageView(
