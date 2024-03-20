@@ -15,7 +15,7 @@ class QrCodePage extends StatelessWidget {
       body: Column(
          children:[ GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacementNamed(context, '/');
+                      Navigator.pop(context);
                     },
                     child: const Icon(Icons.arrow_back_ios_new// Added semantic label for accessibility
                     ),
