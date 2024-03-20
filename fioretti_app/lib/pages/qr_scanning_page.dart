@@ -52,6 +52,9 @@ class _QrScanningPageState extends State<QrScanningPage> {
             ElevatedButton(
               child: const Text('Scan QR'),
               style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(5.0),
+                              ),
               primary: Colors.lightBlue[900], // achtergrondkleur van de knop
               onPrimary: Colors.white, // tekstkleur van de knop
             ),
@@ -156,6 +159,9 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                 : "Markeer als gebruikt"),
       ),
       style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(5.0),
+                              ),
               backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
               foregroundColor: Colors.white, // tekstkleur van de knop
             ),
