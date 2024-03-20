@@ -106,7 +106,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
                              
                 backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
               foregroundColor: Colors.white, // tekstkleur van de knop
-            padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+            padding: const EdgeInsets.only(left: 40.0, right: 40.0),
             ),)]),
           ],
         ),
