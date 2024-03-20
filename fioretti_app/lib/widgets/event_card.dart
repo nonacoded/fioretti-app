@@ -32,15 +32,13 @@ class SchoolEventWidget extends StatelessWidget {
                 event.description,
                 style: const TextStyle(fontSize: 16.0),
               ),
-              const SizedBox(height: 8.0),
               Text(
                 "${event.date}",
-                style: const TextStyle(fontSize: 16.0),
+                style: const TextStyle(fontSize: 10.0),
               ),
-              const SizedBox(height: 8.0),
               Text(
                 "${event.price}",
-                style: const TextStyle(fontSize: 16.0),
+                style: const TextStyle(fontSize: 10.0),
               ),
             ],
           ),
