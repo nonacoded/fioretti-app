@@ -103,7 +103,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
                   shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.circular(5.0),
                               ),
-                             minimumSize: const Size.fromWidth(100.0),
+                             minimumSize: const Size.fromWidth(50.0),
                 backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
               foregroundColor: Colors.white, // tekstkleur van de knop
             ),)]),
