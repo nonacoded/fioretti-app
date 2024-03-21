@@ -27,15 +27,20 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
     }
 
     List<BottomNavigationBarItem> normalItems = const [
-      BottomNavigationBarItem(icon: Icon(Icons.home, ), label: "Home"),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.local_activity, ), label: "Mijn tickets"),
       BottomNavigationBarItem(
         icon: Icon(Icons.event),
         label: "Kalender",
       ),
       BottomNavigationBarItem(
-          icon: Icon(Icons.account_circle, ), label: "Profiel"),
+          icon: Icon(
+            Icons.local_activity,
+          ),
+          label: "Mijn tickets"),
+      BottomNavigationBarItem(
+          icon: Icon(
+            Icons.account_circle,
+          ),
+          label: "Profiel"),
     ];
 
     List<BottomNavigationBarItem> adminItems =
@@ -48,34 +53,34 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
     Scaffold result = Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlue[900],
-          title: Text(
-            widget.title,
-            style: TextStyle(color: Colors.white),
-          ),
-          centerTitle: true,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 10.0), // Padding from left
-            child: SizedBox(
-              width: 80.0, // Width of the SizedBox, adjust as needed
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, '/');
-                    },
-                    child: Image.asset(
-                      'assets/logo.png',
-                      width: 42, // Adjust the width to your desired size
-                      height: 42, // Adjust the height to your desired size
-                      semanticLabel:
-                          'Home', // Added semantic label for accessibility
-                    ),
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10.0), // Padding from left
+          child: SizedBox(
+            width: 80.0, // Width of the SizedBox, adjust as needed
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, '/');
+                  },
+                  child: Image.asset(
+                    'assets/logo.png',
+                    width: 42, // Adjust the width to your desired size
+                    height: 42, // Adjust the height to your desired size
+                    semanticLabel:
+                        'Home', // Added semantic label for accessibility
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
+      ),
       body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.grey[400],
@@ -86,18 +91,16 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
         onTap: (int index) {
           ref.read(navigationBarIndexProvider.notifier).state = index;
           if (index == 0) {
-            context.go("/home");
+            context.go("/calendar");
           } else if (index == 1) {
             context.go("/tickets");
-          /*} else if (index == 2) {
+            /*} else if (index == 2) {
             context.go("/events");*/
-          } else if (index == 3) {
+          } else if (index == 2) {
             context.go("/profile");
-          } else if (index == 4 && isAdmin) {
+          } else if (index == 3 && isAdmin) {
             context.go("/qr-scanning");
-          }else if (index == 2) {
-            context.go("/calendar"); 
-          }         
+          }
         },
         backgroundColor: Colors.lightBlue[900],
       ),

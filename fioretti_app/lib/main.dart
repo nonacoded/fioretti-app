@@ -10,7 +10,6 @@ import "package:fioretti_app/pages/tickets_page.dart";
 import "package:fioretti_app/pages/profiel_page.dart";
 import "package:fioretti_app/pages/calender_page.dart";
 import "package:flutter/material.dart";
-import "package:fioretti_app/pages/home.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -48,10 +47,6 @@ class FiorettiApp extends StatelessWidget {
             GoRoute(
               path: "/",
               builder: (context, state) => const StartPage(),
-            ),
-            GoRoute(
-              path: "/home",
-              builder: (context, state) => const HomePage(),
             ),
             GoRoute(
               path: "/test",

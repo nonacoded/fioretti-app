@@ -41,7 +41,7 @@ export default function LogoutButton() {
 
     return (
         <div>
-            <button className="bg-white rounded-lg w-20 m-10 text-slate-900" onClick={logout}>Logout</button>
+            <button className="bg-red-500 rounded-lg px-5 py-3 text-slate-100" onClick={logout}>Uitloggen </button>
             <ErrorMessage hidden={errorHidden} setHiddenCallback={errorOkButtonClicked} title="Uitloggen mislukt!" desc={errorMessage} />
         </div>
     )

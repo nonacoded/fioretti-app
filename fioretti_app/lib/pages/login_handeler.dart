@@ -103,7 +103,7 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
         ref.read(userProvider.notifier).state = user;
 
         // redirect to home page, but wait until the next frame to prevent a crash
-        Future.delayed(Duration.zero, () => context.go("/home"));
+        Future.delayed(Duration.zero, () => context.go("/calendar"));
       } else {
         print("Er is iets fout gegaan");
         ApiError error = ApiError.fromJson(jsonDecode(res.body));

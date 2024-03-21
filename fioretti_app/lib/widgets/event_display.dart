@@ -16,66 +16,68 @@ class EventDisplay extends StatelessWidget {
 
     return Stack(
       children: [
-        Container(
+        SizedBox(
             width: width * 0.9,
             height: height * 0.6,
             child: Column(
               children: [
                 // title
                 const SizedBox(height: 20),
-                Align(alignment: Alignment.centerLeft,
-                child: Container(child: Text(event.title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                    ), textAlign: TextAlign.left,
-                    ),)),
-                    const SizedBox(height: 10),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      event.title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                      ),
+                      textAlign: TextAlign.left,
+                    )),
+                const SizedBox(height: 10),
                 Column(
                   children: [
-                    
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    //color: const Color.fromRGBO(134, 195, 235, 100),
-                   child: Row(
-                    children: [
-                      Flexible(
-                      child: Column(
-                      children: [
-                        Text(event.description, style: const TextStyle(fontSize: 16.0),),]
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        children: [
+                          Flexible(
+                            child: Column(children: [
+                              Text(
+                                event.description,
+                                style: const TextStyle(fontSize: 16.0),
+                              ),
+                            ]),
+                          )
+                        ],
                       ),
-      )
-    ],
-  ), ), ),  
+                    ),
                     const SizedBox(height: 20),
-                   
-                    Row(
-                      children:[
-                        const Icon(Icons.calendar_month),
-                        Text(" ${dateToString(event.date)}",
+                    Row(children: [
+                      const Icon(Icons.calendar_month),
+                      Text(" ${dateToString(event.date)}",
                           style: const TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
+                              fontSize: 13.0, fontStyle: FontStyle.italic))
+                    ]),
                     const SizedBox(height: 20),
-                    const Row(
-                      children:[
-                         Icon(Icons.schedule),
-                         Text(" ..:.. - ..:..",
-                          style:  TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
-                    const SizedBox(height: 20),
-                    Row( 
-                      children:[ 
-                        const Icon(Icons.euro),
-                        Text(" ${event.price}",
-                          style: const TextStyle(fontSize: 13.0))]),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        const Icon(Icons.location_on),
-                        Text(event.location,
+                    Row(children: [
+                      const Icon(Icons.schedule),
+                      Text(" ${timeToString(event.date)}",
                           style: const TextStyle(
-                            fontSize: 13.0, fontStyle: FontStyle.italic))]),
+                              fontSize: 13.0, fontStyle: FontStyle.italic))
+                    ]),
+                    const SizedBox(height: 20),
+                    Row(children: [
+                      const Icon(Icons.euro),
+                      Text(" ${event.price}",
+                          style: const TextStyle(fontSize: 13.0))
+                    ]),
+                    const SizedBox(height: 20),
+                    Row(children: [
+                      const Icon(Icons.location_on),
+                      Text(event.location,
+                          style: const TextStyle(
+                              fontSize: 13.0, fontStyle: FontStyle.italic))
+                    ]),
                   ],
                 ),
               ],
@@ -84,4 +86,3 @@ class EventDisplay extends StatelessWidget {
     );
   }
 }
-

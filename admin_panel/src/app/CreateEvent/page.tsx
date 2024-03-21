@@ -24,7 +24,7 @@ interface EventData {
 export default function CreateEventPage() {
 
     const eventNameRef = useRef<HTMLInputElement>(null);
-    const eventDescriptionRef = useRef<HTMLInputElement>(null);
+    const eventDescriptionRef = useRef<HTMLTextAreaElement>(null);
     const eventDateRef = useRef<HTMLInputElement>(null);
     const eventLocationRef = useRef<HTMLInputElement>(null);
     const eventPriceRef = useRef<HTMLInputElement>(null);
@@ -87,6 +87,24 @@ export default function CreateEventPage() {
         e.preventDefault();
 
         console.log("Form submitted");
+        
+        let price = 0.0;
+        try {
+            parseFloat(eventPriceRef.current?.value as string)
+        } catch (e) {
+            setErrorMessage("Vul een geldige prijs in!");
+            setErrorTitle("Evenement aanmaken mislukt!");
+            setErrorHidden(false);
+            return;
+        }
+
+        if (price < 0) {
+            setErrorMessage("Prijs moet positief zijn!");
+            setErrorTitle("Evenement aanmaken mislukt!");
+            setErrorHidden(false);
+            return;
+        }
+
 
         let eventData: EventData = {
             _id: eventId,
@@ -95,10 +113,10 @@ export default function CreateEventPage() {
             date: new Date(eventDateRef.current?.value as string).getTime(),
            // time: new Date(eventDateRef.current?.value as string).getTime(),
             location: eventLocationRef.current?.value as string,
-            price: parseFloat(eventPriceRef.current?.value as string)
+            price: price
         };
 
-        if (eventData.title.length < 1 || eventData.description.length < 1 || eventData.location.length < 1 || eventData.price < 1 || isNaN(eventData.date)) {
+        if (eventData.title.length < 1 || eventData.description.length < 1 || eventData.location.length < 1 || isNaN(eventData.date)) {
             setErrorMessage("Vul alle velden in!");
             setErrorTitle("Evenement aanmaken mislukt!");
             setErrorHidden(false);
@@ -167,19 +185,26 @@ export default function CreateEventPage() {
     return (<div>
         <CheckLogin />
         <ErrorMessage title={errorTitle} desc={errorMessage} setHiddenCallback={setErrorHidden} hidden={errorHidden} />
-        <form onSubmit={CreateEvent}>
-            <p>Naam Evenement:</p>
-            <input type="text" placeholder="Evenement naam" className="text-slate-600" ref={eventNameRef} defaultValue={eventData?.title} />
-            <p>Evenement beschrijving:</p>
-            <input type="text" placeholder="Evenement beschrijving" className="text-slate-600" ref={eventDescriptionRef} defaultValue={eventData?.description} />
-            <p>Evenement datum:</p>
-            <input type="datetime-local" placeholder="Evenement datum" className="text-slate-600" ref={eventDateRef} />
-            <p>Evenement locatie:</p>
-            <input type="text" placeholder="Evenement locatie" className="text-slate-600" ref={eventLocationRef} defaultValue={eventData?.location} />
-            <p>Evenement prijs:</p>
-            <input type="text" inputMode="numeric" pattern="^[1-9]\d*(\.\d+)?$" placeholder="Evenement prijs" className="text-slate-600" ref={eventPriceRef} defaultValue={eventData?.price} />
-            <br />
-            <input type="submit" value={editingEvent ? "Pas evenement aan" : "Maak evenement aan"} className="bg-green-500 m-5 p-3 rounded-md" />
-        </form>
+
+        <div className="grid h-screen place-items-center">
+            <div className="bg-white p-20 rounded-3xl text-slate-800 text-center">
+                <form onSubmit={CreateEvent}>
+                    <p>Naam Evenement:</p>
+                    <input type="text" placeholder="Evenement naam" className="text-black bg-slate-200 rounded-md p-3" ref={eventNameRef} defaultValue={eventData?.title} />
+                    <p>Evenement beschrijving:</p>
+                    <textarea cols={30} placeholder="Evenement beschrijving" className="text-black bg-slate-200 rounded-md p-3" ref={eventDescriptionRef} defaultValue={eventData?.description} />
+                    <p>Evenement datum:</p>
+                    <input type="datetime-local" placeholder="Evenement datum" className="text-black bg-slate-200 rounded-md p-3" ref={eventDateRef} />
+                    <p>Evenement locatie:</p>
+                    <input type="text" placeholder="Evenement locatie" className="text-black bg-slate-200 rounded-md p-3" ref={eventLocationRef} defaultValue={eventData?.location} />
+                    <p>Evenement prijs:</p>
+                    <input type="text" inputMode="numeric" placeholder="Evenement prijs" className="text-black bg-slate-200 rounded-md p-3" ref={eventPriceRef} defaultValue={eventData?.price} />
+                    <br />
+                    <input type="submit" value={editingEvent ? "Pas evenement aan" : "Maak evenement aan"} className="bg-green-500 m-5 p-3 rounded-md text-white" />
+                </form>
+            </div>
+            
+        </div>
+        
     </div>)
 }

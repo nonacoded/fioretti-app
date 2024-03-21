@@ -91,27 +91,6 @@ class _QrScanningPageState extends State<QrScanningPage> {
                       : const SizedBox(height: 10)
                 ],
               ),
-            Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                //crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      setTicket("659feca27e5a22c34c37c99e");
-                    },
-                    child: Text("Test"),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-
-                      backgroundColor:
-                          Colors.lightBlue[900], // achtergrondkleur van de knop
-                      foregroundColor: Colors.white, // tekstkleur van de knop
-                      padding: const EdgeInsets.only(left: 40.0, right: 40.0),
-                    ),
-                  )
-                ]),
           ],
         ),
       ),
