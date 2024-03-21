@@ -68,7 +68,8 @@ class EventDisplay extends StatelessWidget {
                     const SizedBox(height: 20),
                     Row(children: [
                       const Icon(Icons.euro),
-                      Text(" ${event.price}",
+                      Text(
+                          " ${event.price < 0.1 ? "Gratis" : event.price.toStringAsFixed(2)}",
                           style: const TextStyle(fontSize: 13.0))
                     ]),
                     const SizedBox(height: 20),

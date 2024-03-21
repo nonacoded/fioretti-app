@@ -40,6 +40,10 @@ class FiorettiApp extends StatelessWidget {
         scaffoldMessengerKey: scaffoldMessengerKey,
         theme: ThemeData(
           primarySwatch: Colors.green,
+          textTheme: Theme.of(context).textTheme.apply(
+                fontSizeFactor: 1.1,
+                fontSizeDelta: 2.0,
+              ),
         ),
         debugShowCheckedModeBanner: false,
         routerConfig: GoRouter(

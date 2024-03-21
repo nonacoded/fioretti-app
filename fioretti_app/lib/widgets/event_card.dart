@@ -15,8 +15,8 @@ class SchoolEventCard extends StatelessWidget {
         getMonthInLetters(event.date.month).substring(0, 3).toUpperCase();
     String day = event.date.day.toString();
     // Beperk de beschrijving tot één regel met puntjes indien nodig
-    String description = event.description.length > 40
-        ? "${event.description.substring(0, 40)}..."
+    String description = event.description.length > 30
+        ? "${event.description.substring(0, 30)}..."
         : event.description;
     return GestureDetector(
       onTap: () {

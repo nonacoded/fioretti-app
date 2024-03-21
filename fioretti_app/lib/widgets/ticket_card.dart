@@ -9,6 +9,10 @@ class TicketWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String description = ticket.event.description.length > 100
+        ? "${ticket.event.description.substring(0, 100)}..."
+        : ticket.event.description;
+
     return GestureDetector(
       onTap: () {
         context.push("/tickets/${ticket.id}");
@@ -29,7 +33,7 @@ class TicketWidget extends StatelessWidget {
               ),
               const SizedBox(height: 8.0),
               Text(
-                ticket.event.description,
+                description,
                 style: const TextStyle(fontSize: 16.0),
               ),
             ],
