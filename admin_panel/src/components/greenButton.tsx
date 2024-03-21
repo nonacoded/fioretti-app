@@ -1,6 +1,6 @@
 
 
-export default function({text, onClick, href}: {text: string, onClick?: Function, href?: string}) {
+export default function GreenButton({text, onClick, href}: {text: string, onClick?: Function, href?: string}) {
 
 
 

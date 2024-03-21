@@ -23,7 +23,7 @@ export default function EventsList() {
     
     return <ul className="flex-coulumn items-start inline-block">
         {events.map((event) => {
-            return <EventDisplay event={event} i={events.indexOf(event)} />;
+            return <EventDisplay event={event} key={events.indexOf(event)} />;
         })}
     </ul>
 }

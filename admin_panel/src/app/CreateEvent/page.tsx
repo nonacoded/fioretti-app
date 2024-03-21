@@ -81,7 +81,7 @@ export default function CreateEventPage() {
                 }
             });
         }
-    }, []);
+    }, [searchParams]);
 
     function CreateEvent(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
