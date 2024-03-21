@@ -25,7 +25,7 @@ class _StartPageState extends ConsumerState<StartPage> {
     checkLogin().then((user) {
       if (user != null) {
         ref.read(userProvider.notifier).state = user;
-        context.go("/home");
+        context.go("/calendar");
       } else {
         setState(() {
           loading = false;

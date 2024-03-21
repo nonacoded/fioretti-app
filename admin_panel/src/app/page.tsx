@@ -16,15 +16,23 @@ export default function Home() {
   return (
     <div>
       <CheckLogin />
-      <div>
-        <LogoutButton />
-        <GreenButton text="Create New Event" href={"CreateEvent"} />
+      <div className="m-auto w-1/6">
+        <div className="text-center">
+          <div className="m-10">
+            <LogoutButton />
+          </div>
+          <div className="m-10">
+            <GreenButton text="Nieuw Evenement Aanmaken" href={"CreateEvent"} />
+          </div>
+        </div>
+        
       </div>
       
 
 
-
-      <EventsList />
+      <div className="flex justify-center">
+        <EventsList />
+      </div>
     </div>
   )
 }
