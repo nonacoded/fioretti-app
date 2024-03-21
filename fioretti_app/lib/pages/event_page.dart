@@ -74,8 +74,13 @@ class _EventPageState extends State<EventPage> {
                           Colors.lightBlue[900], // achtergrondkleur van de knop
                       foregroundColor: Colors.white, // tekstkleur van de knop
                     ),
-                    child:
-                        Text(!boughtTicket ? "Koop ticket" : "Ticket gekocht"),
+                    child: Text(event!.price < 0.1
+                        ? !boughtTicket
+                            ? "Neem gratis ticket"
+                            : "Ticket gekregen"
+                        : !boughtTicket
+                            ? "Koop ticket"
+                            : "Ticket gekocht"),
                   )
                 ],
               ),
