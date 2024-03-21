@@ -12,6 +12,9 @@ export default function EventDisplay({event}: {event: SchoolEvent}) {
         <h3>{new Date(event.date).toString()}</h3>
         <h4>{event.location}</h4>
         <br />
-        <GreenButton text="Aanpassen" href={`CreateEvent?edit=${event._id}`} />
+        <div className="w-max">
+            <GreenButton  text="Aanpassen" href={`CreateEvent?edit=${event._id}`} />
+
+        </div>
     </li>);
 }
