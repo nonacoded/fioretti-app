@@ -1,7 +1,5 @@
 import "dart:convert";
 import "package:fioretti_app/functions/utils.dart";
-import "package:fioretti_app/widgets/scaffold.dart";
-import "package:flutter/material.dart";
 import "package:flutter_dotenv/flutter_dotenv.dart";
 import "package:requests/requests.dart";
 

@@ -6,7 +6,7 @@ import "package:flutter_secure_storage/flutter_secure_storage.dart";
 Future<User?> checkLogin() async {
   print("checkLogin");
   // aqquire stored session
-  var secureStorage = FlutterSecureStorage();
+  var secureStorage = const FlutterSecureStorage();
   var sessionToken = await secureStorage.read(key: "session");
 
   if (sessionToken == null) {

@@ -49,7 +49,6 @@ class _QrScanningPageState extends State<QrScanningPage> {
           children: [
             const SizedBox(height: 10),
             ElevatedButton(
-              child: const Text('Scan QR'),
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0),
@@ -57,13 +56,14 @@ class _QrScanningPageState extends State<QrScanningPage> {
                   backgroundColor:
                       Colors.lightBlue[900], // achtergrondkleur van de knop
                   foregroundColor: Colors.white, // tekstkleur van de knop
-                  padding: EdgeInsets.only(left: 27.0, right: 27.0)),
+                  padding: const EdgeInsets.only(left: 27.0, right: 27.0)),
               onPressed: () async {
                 final result = await BarcodeScanner.scan();
                 if (result.type == ResultType.Barcode) {
                   setTicket(result.rawContent);
                 }
               },
+              child: const Text('Scan QR'),
             ),
             if (scannedTicket != null && userThatBoughtTicket != null)
               Column(
@@ -71,7 +71,7 @@ class _QrScanningPageState extends State<QrScanningPage> {
                 children: [
                   EventDisplay(event: scannedTicket!.event),
                   Text(
-                    "Ticket gekocht op: ${dateTimeToString(scannedTicket!.createdAt)} ${userThatBoughtTicket!.firstName != null ? 'door ${userThatBoughtTicket!.firstName}' : ''} ${userThatBoughtTicket!.lastName != null ? userThatBoughtTicket!.lastName : ''}",
+                    "Ticket gekocht op: ${dateTimeToString(scannedTicket!.createdAt)} ${userThatBoughtTicket!.firstName != null ? 'door ${userThatBoughtTicket!.firstName}' : ''} ${userThatBoughtTicket!.lastName ?? ''}",
                     style: const TextStyle(fontSize: 15),
                   ),
                   scannedTicket!.isUsed
@@ -139,16 +139,16 @@ class _MarkAsUsedButtonState extends State<MarkAsUsedButton> {
                 });
               });
             },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
+        foregroundColor: Colors.white, // tekstkleur van de knop
+      ),
       child: Text(
         isLoading
             ? "Laden..."
             : (isMarkedAsUsed
                 ? "Markeer als ongebruikt"
                 : "Markeer als gebruikt"),
-      ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
-        foregroundColor: Colors.white, // tekstkleur van de knop
       ),
     );
   }

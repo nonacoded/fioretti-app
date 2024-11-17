@@ -5,7 +5,7 @@ import "package:fioretti_app/models/ticket.dart";
 class TicketWidget extends StatelessWidget {
   final Ticket ticket;
 
-  const TicketWidget({required this.ticket});
+  const TicketWidget({super.key, required this.ticket});
 
   @override
   Widget build(BuildContext context) {

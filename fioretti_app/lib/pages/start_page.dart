@@ -48,7 +48,7 @@ class _StartPageState extends ConsumerState<StartPage> {
               Navigator.pushReplacementNamed(context, '/');
             },*/
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Image.asset(
               'assets/logo.png',
               width: 60, // Adjust the width to your desired size
@@ -70,7 +70,6 @@ class _StartPageState extends ConsumerState<StartPage> {
                     throw Exception('Could not launch url');
                   }
                 },
-                child: const Text("Login"),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.circular(5.0),
@@ -79,6 +78,7 @@ class _StartPageState extends ConsumerState<StartPage> {
                       Colors.lightBlue[900], // achtergrondkleur van de knop
                   foregroundColor: Colors.white, // tekstkleur van de knop
                 ),
+                child: const Text("Login"),
               ),
       ),
     );

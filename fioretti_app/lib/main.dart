@@ -7,23 +7,22 @@ import "package:fioretti_app/pages/login_handeler.dart";
 import "package:fioretti_app/pages/event_page.dart";
 import "package:fioretti_app/pages/ticket_page.dart";
 import "package:fioretti_app/pages/tickets_page.dart";
-import "package:fioretti_app/pages/profiel_page.dart";
-import "package:fioretti_app/pages/calender_page.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fioretti_app/pages/qr_scanning_page.dart';
-import "package:flutter_stripe/flutter_stripe.dart";
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load(fileName: ".env");
+
+/*  
   String stripeKey = dotenv.get("STRIPE_PUBLIC_KEY");
   Stripe.publishableKey = stripeKey;
   await Stripe.instance.applySettings();
-
+*/
   runApp(const FiorettiApp());
 }
 

@@ -2,15 +2,10 @@ import 'package:fioretti_app/widgets/event_card.dart';
 import 'package:flutter/material.dart';
 import 'package:fioretti_app/widgets/scaffold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fioretti_app/providers.dart';
-import "package:go_router/go_router.dart";
-import "package:fioretti_app/models/user.dart";
-import 'package:fioretti_app/functions/utils.dart';
 import 'package:fioretti_app/models/school_event.dart';
-import 'dart:math';
 
 class CalendarPage extends ConsumerStatefulWidget {
-  const CalendarPage({Key? key}) : super(key: key);
+  const CalendarPage({super.key});
 
   @override
   _CalendarPageState createState() => _CalendarPageState();

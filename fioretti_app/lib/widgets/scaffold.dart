@@ -55,7 +55,7 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
         backgroundColor: Colors.lightBlue[900],
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         leading: Padding(

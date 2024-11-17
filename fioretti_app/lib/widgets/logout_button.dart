@@ -29,14 +29,14 @@ class LogoutButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
       onPressed: () => logout(context, ref),
-      child: const Text("Uitloggen"),
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.circular(5.0),
                               ),
               backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
               foregroundColor: Colors.white, // tekstkleur van de knop
-      )
+      ),
+      child: const Text("Uitloggen")
     );
   }
 }

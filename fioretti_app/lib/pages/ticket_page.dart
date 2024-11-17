@@ -45,7 +45,6 @@ class _TicketPageState extends State<TicketPage> {
                     onPressed: () {
                       context.push("/tickets/${ticket!.id}/qr", extra: ticket);
                     },
-                    child: const Text("Toon QR code"),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                            borderRadius: BorderRadius.circular(5.0),
@@ -53,6 +52,7 @@ class _TicketPageState extends State<TicketPage> {
               backgroundColor: Colors.lightBlue[900], // achtergrondkleur van de knop
               foregroundColor: Colors.white, // tekstkleur van de knop
             ),
+                    child: const Text("Toon QR code"),
                   ),
                 ],
               ),

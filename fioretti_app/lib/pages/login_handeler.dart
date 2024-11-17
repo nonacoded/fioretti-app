@@ -77,10 +77,10 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
 
       var hostname = Requests.getHostname(dotenv.env['API_URL']!);
 
-      CookieJar cookie_jar = await Requests.getStoredCookies(hostname);
+      CookieJar cookieJar = await Requests.getStoredCookies(hostname);
 
       // check if cookie exists
-      if (cookie_jar["session"] == null) {
+      if (cookieJar["session"] == null) {
         setState(() {
           errorOccurred = true;
           errorMessage =
@@ -91,10 +91,10 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
       }
 
       // store cookie
-      final storage = new FlutterSecureStorage();
-      await storage.write(key: "session", value: cookie_jar["session"]!.value);
+      const storage = FlutterSecureStorage();
+      await storage.write(key: "session", value: cookieJar["session"]!.value);
 
-      print(cookie_jar["session"]!.value);
+      print(cookieJar["session"]!.value);
 
       if (res.statusCode == 200) {
         if (!context.mounted) return;
@@ -141,12 +141,12 @@ class _LoginHandelerState extends ConsumerState<LoginHandeler> {
                     onPressed: () {
                       context.go("/");
                     },
-                    child: const Text("Opniew Proberen"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           Colors.lightBlue[900], // achtergrondkleur van de knop
                       foregroundColor: Colors.white, // tekstkleur van de knop
                     ),
+                    child: const Text("Opniew Proberen"),
                   ),
                 ],
               ),

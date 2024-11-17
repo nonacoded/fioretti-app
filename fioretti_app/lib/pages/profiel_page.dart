@@ -38,7 +38,7 @@ double height = MediaQuery.of(context).size.height;
 
     return AppScaffold(
       title: "Profiel",
-      body: Container(
+      body: SizedBox(
             width: width * 0.9,
             height: height * 0.6,
             child: Column(
@@ -48,12 +48,12 @@ double height = MediaQuery.of(context).size.height;
                 // title
                 const SizedBox(height: 20),
                 Align(alignment: Alignment.centerLeft,
-                child: Container(child: Text("Mijn gegevens",
-                    style: const TextStyle(
+                child: Container(margin: const EdgeInsets.only(left: 25),child: const Text("Mijn gegevens",
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
                     ), textAlign: TextAlign.left,
-                    ),margin: EdgeInsets.only(left: 25),)),
+                    ),)),
                     const SizedBox(height: 10),
                     Align(alignment: Alignment.centerLeft,
                     child: ProfileTile(
@@ -65,7 +65,7 @@ double height = MediaQuery.of(context).size.height;
           Align(alignment: Alignment.centerLeft,
           child: ProfileTile(
             icon: Icons.email,
-            text: "${user.email}",
+            text: user.email,
             ),),
           const SizedBox(height: 10),
           Container(
@@ -80,7 +80,7 @@ class ProfileTile extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const ProfileTile({
+  const ProfileTile({super.key, 
     required this.icon,
     required this.text,
   });
