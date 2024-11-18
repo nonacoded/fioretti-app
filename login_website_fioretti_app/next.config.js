@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    basePath: '/fioretti-app-login',
+    basePath: '',
 }
 
 module.exports = nextConfig
