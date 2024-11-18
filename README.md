@@ -18,11 +18,17 @@ With android studio also install the ndk
 Make sure you have jdk 11 installed and in your path
 
 ## step 1
-with your terminal go to the fioretti_app folder in the project and run the flutter to grab all dependencies
+With your terminal go to the fioretti_app folder in the project and run the flutter to grab all dependencies
 ```bash
 cd fioretti_app
 flutter pub get
 ```
+Now make a file named .env in ./fioretti_app and add the folowing:
+```
+API_URL=<the url of your api/backend>
+LOGIN_WEBSITE_URL=<the url of the login website>
+```
+
 If all goes right you sould be able to run main.dart in windows debug mode
 
 ## step 2 android time!!!
