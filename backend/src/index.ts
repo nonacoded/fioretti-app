@@ -43,7 +43,10 @@ app.use(cors({
 
 app.use(cookieParser());
 
-
+app.use((req: Request, res: Response, next: NextFunction): void => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
+  next();
+});
 
 // Routes
 app.use("/fioretti-app-api", router);
