@@ -12,17 +12,25 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fioretti_app/pages/qr_scanning_page.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter/services.dart'; 
+import 'package:fioretti_app/pages/notifications_page.dart';
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   await dotenv.load(fileName: ".env");
 
-/*  
   String stripeKey = dotenv.get("STRIPE_PUBLIC_KEY");
   Stripe.publishableKey = stripeKey;
   await Stripe.instance.applySettings();
-*/
+
   runApp(const FiorettiApp());
 }
 
@@ -102,6 +110,12 @@ class FiorettiApp extends StatelessWidget {
               path: "/calendar",
               builder: (context, state) => const CalendarPage(),
             ),
+            GoRoute(
+              name: "notifications",
+              path: "/notifications",
+              builder: (context, state) => const NotificationsPage(),
+            ),
+
           ],
         ),
       ),

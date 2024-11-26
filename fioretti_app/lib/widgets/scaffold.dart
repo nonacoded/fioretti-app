@@ -59,27 +59,27 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
         ),
         centerTitle: true,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 10.0), // Padding from left
-          child: SizedBox(
-            width: 80.0, // Width of the SizedBox, adjust as needed
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacementNamed(context, '/');
-                  },
-                  child: Image.asset(
-                    'assets/logo.png',
-                    width: 42, // Adjust the width to your desired size
-                    height: 42, // Adjust the height to your desired size
-                    semanticLabel:
-                        'Home', // Added semantic label for accessibility
-                  ),
-                ),
-              ],
+          padding: const EdgeInsets.only(left: 10.0),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, '/');
+            },
+            child: Image.asset(
+              'assets/logo.png',
+              width: 42,
+              height: 42,
+              semanticLabel: 'Home',
             ),
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () {
+              context.go('/notifications'); // Navigeren naar notificatiepagina
+            },
+          ),
+        ],
       ),
       body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
@@ -94,8 +94,6 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
             context.go("/calendar");
           } else if (index == 1) {
             context.go("/tickets");
-            /*} else if (index == 2) {
-            context.go("/events");*/
           } else if (index == 2) {
             context.go("/profile");
           } else if (index == 3 && isAdmin) {
@@ -105,7 +103,6 @@ class AppScaffoldState extends ConsumerState<AppScaffold> {
         backgroundColor: Colors.lightBlue[900],
       ),
     );
-/*let op index navigationbar*/
     return result;
   }
 }
